@@ -1,0 +1,45 @@
+{
+    "name": "Lifen",
+    "description": "Lifen est votre messagerie m\u00e9dicale simple et s\u00e9curis\u00e9e. Envoyez et recevez des courriers m\u00e9dicaux entre professionnels de sant\u00e9. D\u00e9mat\u00e9rialisez jusqu'\u00e0 80% des envois de comptes rendus. Compatible avec tous les logiciels de cabinet et tous les outils ...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/28166-developers-lifen-fr.jpg",
+    "tags": [
+        "api provider",
+        "have api",
+        "healthcare"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/lifen\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Lifen",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/28166-developers-lifen-fr.jpg",
+            "humanURL": "http:\/\/lifen.fr",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/lifen-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Developers",
+            "url": "http:\/\/developers.lifen.fr\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/lifen_fr"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/lifen.fr"
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/machine-to-machine-communications
+docs: https://developer.lifen.fr/docs/machine-to-machine-communications
+summary:
+  types:
+  - oauth2
+  - openIdConnect
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows:
+  - clientCredentials
+  - authorizationCode
+schemes:
+- name: client_credentials
+  type: oauth2
+  flow: clientCredentials
+  token_endpoint: https://authentication.lifen.fr/v1/token
+  token_endpoint_test: https://authentication.post-prod.lifen.fr/v1/token
+  request_parameters:
+  - client_id
+  - client_secret
+  - audience
+  - database_reference
+  - grant_type
+  token_type: Bearer
+  token_lifetime_seconds: 172800
+  applied_as: Authorization header, "Bearer {access_token}"
+  notes: >-
+    Machine-to-machine access to the FHIR API. `audience` selects the environment
+    (https://production.platform-apis/ or https://post-prod.platform-apis/) and `database_reference`
+    binds the token to one healthcare organisation. Credentials are issued by a Lifen account
+    manager, not self-service.
+  sources:
+  - openapi/lifen-authentication-api-openapi.json
+  - https://developer.lifen.fr/docs/machine-to-machine-communications
+- name: sso_oidc
+  type: openIdConnect
+  flow: authorizationCode
+  issuer: https://login.lifen.fr/
+  authorization_endpoint: https://authentication.lifen.fr/authorize
+  token_endpoint: https://authentication.lifen.fr/v1/authorization_code/token
+  jwks_uri: https://authentication.lifen.fr/.well-known/jwks.json
+  pkce: true
+  code_challenge_methods:
+  - S256
+  token_endpoint_auth_methods:
+  - none
+  logout_endpoint: https://api.lifen.fr/sso/v1/session/logout
+  notes: >-
+    User-facing SSO for embedding Lifen in a partner application; PKCE-only public client.
+  sources:
+  - well-known/lifen-oauth-authorization-server.json
+  - https://developer.lifen.fr/docs/sso-api
+- name: sec0
+  type: apiKey
+  in: header
+  parameter: Authorization
+  notes: >-
+    How the published OpenAPI models the bearer token (x-bearer-format bearer). Functionally this is
+    the OAuth 2.0 access token from the client_credentials scheme above, not a static API key.
+  sources:
+  - openapi/lifen-fhir-api-openapi.json
+webhook_authentication:
+  mechanism: HMAC-SHA256 signature
+  header: x-lifen-platform-signature
+  secret: generated per application in the developer portal
+  ip_allowlist:
+    test:
+    - 15.236.169.32
+    production:
+    - 15.236.169.164
+    - 35.180.249.12
+  docs: https://developer.lifen.fr/docs/secure-your-webhooks
+scopes: scopes/lifen-scopes.yml

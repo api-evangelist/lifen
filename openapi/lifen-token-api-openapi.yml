@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: lifen-authentication-api CommunicationRequest Token API
+  version: '3'
+servers:
+- url: https://authentication.lifen.fr/
+security:
+- {}
+tags:
+- name: Token
+paths:
+  /v1/token:
+    post:
+      summary: Authenticate application
+      description: "Accessing Lifen's APIs in Machine To Machine involves obtaining an Access Token with the Client credentials grant flow of OAuth 2.0 from a back-end server.\n\nGet a token : \nA request to Lifen must be perfomed to generate an access token. In the request, the client has to provide his credentials and some configuration.\n\nPerform an API call :\nThe Access Token allows you to make requests to the API on the behalf of the client. Each request must include the Access Token in the Authorization header using the Bearer format.\n\nExample :\n`curl -H \"Authorization: Bearer $ACCESS_TOKEN\" https://api.lifen.fr/fhir/v3/$endpoint`"
+      operationId: authenticate-application
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - client_id
+              - client_secret
+              - audience
+              - grant_type
+              - database_reference
+              properties:
+                client_id:
+                  type: string
+                  description: which you obtain from your account manager
+                client_secret:
+                  type: string
+                  description: which you obtain from your account manager
+                audience:
+                  type: string
+                  description: the domain where your access token is available
+                  default: https://production.platform-apis/
+                grant_type:
+                  type: string
+                  description: allows you to request server to server Lifen's API
+                  default: client_credentials
+                database_reference:
+                  type: string
+                  description: which you obtain from your account manager, is the identifier connecting your application with a healthcare organization
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"access_token\": \"eyJ...Y7p9g\",\n  \"scope\": \"BINARY_READ BINARY_SEARCH\",\n  \"expires_in\": 172800,\n  \"token_type\": \"Bearer\"\n}"
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJ...Y7p9g
+                  scope:
+                    type: string
+                    example: BINARY_READ BINARY_SEARCH
+                  expires_in:
+                    type: integer
+                    example: 172800
+                    default: 0
+                  token_type:
+                    type: string
+                    example: Bearer
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"error\": \"invalid_request\",\n\t\"error_description\": \"A valid database_reference must be provided.\"\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: invalid_request
+                  error_description:
+                    type: string
+                    example: A valid database_reference must be provided.
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"error\": \"access_denied\",\n  \"error_description\": \"Unauthorized\"\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+                  error_description:
+                    type: string
+                    example: Unauthorized
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"error\": \"access_denied\",\n\t\"error_description\": \"Service not enabled within domain: https://production.platform-apis/\"\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+                  error_description:
+                    type: string
+                    example: 'Service not enabled within domain: https://production.platform-apis/'
+      deprecated: false
+      security: []
+      tags:
+      - Token
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

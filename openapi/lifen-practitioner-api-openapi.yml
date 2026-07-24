@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: lifen-authentication-api CommunicationRequest Practitioner API
+  version: '3'
+servers:
+- url: https://authentication.lifen.fr/
+security:
+- {}
+tags:
+- name: Practitioner
+paths:
+  /v3/Practitioner/$search-for-mss:
+    post:
+      summary: Search healthcare professional
+      description: ''
+      operationId: search-healthcare-professional
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/x-www-form-urlencoded
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: family or/and given
+                identifier:
+                  type: string
+                  description: RPPS of the healthcare professional
+                given:
+                  type: string
+                  description: firstname of the healthcare professional
+                family:
+                  type: string
+                  description: lastname of the healthcare professional
+                telecom:
+                  type: string
+                  description: address mssante of the healthcare professional
+                address:
+                  type: string
+                  description: postal address of the healthcare professional
+                _id:
+                  type: string
+                  description: multivalued supported
+                _count:
+                  type: string
+                  description: 'max: 100 (0 forbidden)'
+                _sort:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"resourceType\": \"Bundle\",\n\t\"id\": \"aff6fcd5-76fb-40eb-bfb0-64fde9a0678c\",\n\t\"type\": \"searchset\",\n\t\"total\": 451247,\n\t\"entry\": [\n\t\t{\n\t\t\t\"fullUrl\": \"https://api.post-prod.lifen.fr/fhir/v3/Practitioner/[id]\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Practitioner\",\n\t\t\t\t\"id\": \"[id]\",\n\t\t\t\t\"identifier\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"system\": \"urn:oid:1.2.250.1.71.4.2.1\",\n\t\t\t\t\t\t\"value\": \"811111111111111\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"name\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"use\": \"official\",\n\t\t\t\t\t\t\"family\": \"Michue\",\n\t\t\t\t\t\t\"given\": [\n\t\t\t\t\t\t\t\"Paulette\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"prefix\": [\n\t\t\t\t\t\t\t\"DR\"\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"telecom\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"6673280\",\n\t\t\t\t\t\t\"system\": \"email\",\n\t\t\t\t\t\t\"value\": \"mail1@mssante.fr\",\n\t\t\t\t\t\t\"use\": \"work\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"6673280\",\n\t\t\t\t\t\t\"system\": \"email\",\n\t\t\t\t\t\t\"value\": \"mail2@mssante.fr\",\n\t\t\t\t\t\t\"use\": \"work\",\n\t\t\t\t\t\t\"rank\": 1 \n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"address\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"42941332\",\n\t\t\t\t\t\t\"use\": \"work\",\n\t\t\t\t\t\t\"line\": [\n\t\t\t\t\t\t\t\"CLINIQUE TEST\",\n\t\t\t\t\t\t\t\"71 RUE TEST\",\n\t\t\t\t\t\t\t\"12345 ST TEST CEDEX\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"city\": \"TEST\",\n\t\t\t\t\t\t\"postalCode\": \"12345\",\n\t\t\t\t\t\t\"country\": \"FRA\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t\"search\": {\n\t\t\t\t\"mode\": \"match\"\n\t\t\t}\n\t\t}\n]}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Bundle
+                  id:
+                    type: string
+                    example: aff6fcd5-76fb-40eb-bfb0-64fde9a0678c
+                  type:
+                    type: string
+                    example: searchset
+                  total:
+                    type: integer
+                    example: 451247
+                    default: 0
+                  entry:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fullUrl:
+                          type: string
+                          example: https://api.post-prod.lifen.fr/fhir/v3/Practitioner/[id]
+                        resource:
+                          type: object
+                          properties:
+                            resourceType:
+                              type: string
+                              example: Practitioner
+                            id:
+                              type: string
+                              example: '[id]'
+                            identifier:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  system:
+                                    type: string
+                                    example: urn:oid:1.2.250.1.71.4.2.1
+                                  value:
+                                    type: string
+                                    example: '811111111111111'
+                            name:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  use:
+                                    type: string
+                                    example: official
+                                  family:
+                                    type: string
+                                    example: Michue
+                                  given:
+                                    type: array
+                                    items:
+                                      type: string
+                                      example: Paulette
+                                  prefix:
+                                    type: array
+                                    items:
+                                      type: string
+                                      example: DR
+                            telecom:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '6673280'
+                                  system:
+                                    type: string
+                                    example: email
+                                  value:
+                                    type: string
+                                    example: mail1@mssante.fr
+                                  use:
+                                    type: string
+                                    example: work
+                            address:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '42941332'
+                                  use:
+                                    type: string
+                                    example: work
+                                  line:
+                                    type: array
+                                    items:
+                                      type: string
+                                      example: CLINIQUE TEST
+                                  city:
+                                    type: string
+                                    example: TEST
+                                  postalCode:
+                                    type: string
+                                    example: '12345'
+                                  country:
+                                    type: string
+                                    example: FRA
+                        search:
+                          type: object
+                          properties:
+                            mode:
+                              type: string
+                              example: match
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of family, given, name, birthdate, phone or identifier fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: At least one of family, given, name, birthdate, phone or identifier fields must be filled
+                        location:
+                          type: string
+                          example: allValueNull
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n  --url https://fhir-api.private.lifen.fr/fhir/v3/Practitioner/_search \\\n  --header 'Authorization: Bearer xxxxx' \\\n  --header 'Content-Type: application/x-www-form-urlencoded' \\\n  --data 'family=michue' \\\n  --data 'given=paulette'  "
+        samples-languages:
+        - curl
+      tags:
+      - Practitioner
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

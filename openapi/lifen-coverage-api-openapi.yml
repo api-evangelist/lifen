@@ -1,0 +1,193 @@
+openapi: 3.1.0
+info:
+  title: lifen-authentication-api CommunicationRequest Coverage API
+  version: '3'
+servers:
+- url: https://authentication.lifen.fr/
+security:
+- {}
+tags:
+- name: Coverage
+paths:
+  /v3/Coverage/_search:
+    post:
+      summary: Access Coverage Patient information
+      description: ''
+      operationId: access-coverage-patient-information
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+          default: application/x-www-form-urlencoded
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - beneficiary
+              properties:
+                beneficiary:
+                  type: string
+                  description: patient beneficiary of the coverage
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Résultat trouvé:
+                  value: "{\n    \"resourceType\": \"Bundle\",\n    \"meta\": {\n        \"lastUpdated\": \"2023-01-23T16:37:18.692+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 1,\n    \"entry\": [\n        {\n            \"resource\": {\n                \"resourceType\": \"Coverage\",\n                \"identifier\": [\n                    {\n                        \"use\": \"official\",\n                        \"type\": {\n                            \"coding\": [\n                                {\n                                    \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n                                    \"code\": \"NH\"\n                                }\n                            ]\n                        },\n                        \"system\": \"urn:oid:1.2.250.1.213.1.4.8\",\n                        \"value\": \"[NIR-OD/NIR-NIA]\"\n                    }\n                ],\n                \"status\": \"active\",\n                \"beneficiary\": {\n                    \"reference\": \"Patient/[id]\"\n                },\n                \"payor\": [\n                    {\n                        \"reference\": \"Organization/21793798\"\n                    }\n                ]\n            },\n            \"search\": {\n                \"mode\": \"match\"\n            }\n        }\n    ]\n}"
+                Pas de résultat:
+                  value: "{\n    \"resourceType\": \"Bundle\",\n    \"meta\": {\n        \"lastUpdated\": \"2023-01-23T16:39:41.774+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 0\n}"
+              schema:
+                oneOf:
+                - title: Résultat trouvé
+                  type: object
+                  properties:
+                    resourceType:
+                      type: string
+                      example: Bundle
+                    meta:
+                      type: object
+                      properties:
+                        lastUpdated:
+                          type: string
+                          example: '2023-01-23T16:37:18.692+00:00'
+                    type:
+                      type: string
+                      example: searchset
+                    total:
+                      type: integer
+                      example: 1
+                      default: 0
+                    entry:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          resource:
+                            type: object
+                            properties:
+                              resourceType:
+                                type: string
+                                example: Coverage
+                              identifier:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    use:
+                                      type: string
+                                      example: official
+                                    type:
+                                      type: object
+                                      properties:
+                                        coding:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              system:
+                                                type: string
+                                                example: http://terminology.hl7.org/CodeSystem/v2-0203
+                                              code:
+                                                type: string
+                                                example: NH
+                                    system:
+                                      type: string
+                                      example: urn:oid:1.2.250.1.213.1.4.8
+                                    value:
+                                      type: string
+                                      example: '[NIR-OD/NIR-NIA]'
+                              status:
+                                type: string
+                                example: active
+                              beneficiary:
+                                type: object
+                                properties:
+                                  reference:
+                                    type: string
+                                    example: Patient/[id]
+                              payor:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    reference:
+                                      type: string
+                                      example: Organization/21793798
+                          search:
+                            type: object
+                            properties:
+                              mode:
+                                type: string
+                                example: match
+                - title: Pas de résultat
+                  type: object
+                  properties:
+                    resourceType:
+                      type: string
+                      example: Bundle
+                    meta:
+                      type: object
+                      properties:
+                        lastUpdated:
+                          type: string
+                          example: '2023-01-23T16:39:41.774+00:00'
+                    type:
+                      type: string
+                      example: searchset
+                    total:
+                      type: integer
+                      example: 0
+                      default: 0
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Champ patient non renseigné:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"must not be empty\",\n            \"location\": \"patient\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: must not be empty
+                        location:
+                          type: string
+                          example: patient
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request POST ''https://api.post-prod.lifen.fr.fr/fhir/v3/Coverage/_search'' \
+
+            --header ''Content-Type: application/x-www-form-urlencoded'' \
+
+            --data-urlencode ''beneficiary=Patient/[id]'''
+        samples-languages:
+        - curl
+      tags:
+      - Coverage
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

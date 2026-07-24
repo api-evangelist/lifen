@@ -1,0 +1,497 @@
+openapi: 3.1.0
+info:
+  title: lifen-authentication-api CommunicationRequest Patient API
+  version: '3'
+servers:
+- url: https://authentication.lifen.fr/
+security:
+- {}
+tags:
+- name: Patient
+paths:
+  /v3/Patient/_search:
+    post:
+      summary: Access Patient Information
+      description: ''
+      operationId: patient
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/x-www-form-urlencoded
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                given:
+                  type: string
+                name:
+                  type: string
+                family:
+                  type: string
+                birthdate:
+                  type: string
+                  format: date
+                identifier:
+                  type: string
+                phone:
+                  type: string
+                _id:
+                  type: string
+                  description: multivalued supported
+                _count:
+                  type: integer
+                  description: 'max: 100 (0 forbidden)'
+                  format: int32
+                _sort:
+                  type: string
+                  default: _lastUpdated
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"Bundle\",\n    \"id\": \"[uuid]\",\n    \"meta\": {\n        \"lastUpdated\": \"2022-10-05T15:39:27.759+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 1,\n    \"link\": [\n        {\n            \"relation\": \"self\",\n            \"url\": \"https://api.post-prod.lifen.fr/fhir/v3/Patient?name=LY&_sort=-_lastUpdated\"\n        }\n    ],\n    \"entry\": [\n        {\n            \"fullUrl\": \"https://api.post-prod.lifen.fr/fhir/v3/Patient/[id]\",\n            \"resource\": {\n                \"resourceType\": \"Patient\",\n                \"id\": \"[id]\",\n                \"meta\": {\n                    \"versionId\": \"2\",\n                    \"lastUpdated\": \"2022-10-04T09:34:43.000+00:00\",\n                    \"tag\": [\n                        {\n                            \"system\": \"https://www.lifen.fr/default\",\n                            \"code\": \"DEFAULT\",\n                            \"display\": \"Default tag\"\n                        }\n                    ]\n                },\n                \"extension\": [\n                    {\n                        \"url\": \"http://hl7.org/fhir/StructureDefinition/birthPlace\",\n                        \"valueAddress\": {\n                            \"city\": \"[city]\",\n                            \"district\": \"77487\",\n                            \"postalCode\": \"77000\",\n                            \"country\": \"FRA\"\n                        }\n                    },\n                    {\n                        \"url\": \"http://lifen.fr/fhir/StructureDefinition/Patient/Extension/ReliabilityINS\",\n                        \"valueCode\": \"QUALI\"\n                    },\n                    {\n                        \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n                        \"valueString\": \"[databse_reference]\"\n                    }\n                ],\n                \"identifier\": [\n                    {\n                        \"use\": \"official\",\n                        \"type\": {\n                            \"coding\": [\n                                {\n                                    \"system\": \"http://interopsante.org/fhir/valueset/fr-patient-identifier-type\",\n                                    \"version\": \"1.0\",\n                                    \"code\": \"PI\",\n                                    \"display\": \"PI\"\n                                }\n                            ]\n                        },\n                        \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n                        \"value\": \"[ipp_value]\"\n                    }\n                ],\n                \"name\": [\n                    {\n                        \"use\": \"maiden\",\n                        \"family\": \"MICHUE\",\n                        \"given\": [\n                            \"PAULETTE\"\n                        ]\n                    },\n                    {\n                        \"use\": \"usual\",\n                        \"family\": \"MICHUE\",\n                        \"given\": [\n                            \"PAULETTE\"\n                        ]\n                    },\n                    {\n                        \"use\": \"official\",\n                        \"family\": \"MICHUE\",\n                        \"given\": [\n                            \"PAULETTE\"\n                        ]\n                    }\n                ],\n                \"gender\": \"female\",\n                \"birthDate\": \"1940-11-10\",\n                \"multipleBirthInteger\": 1,\n              \t\"deceasedDateTime\": \"2022-01-31T00:00:00+01:00\",\n                \"managingOrganization\": {\n                    \"reference\": \"Organization/[structure_id]\"\n                }\n            },\n            \"search\": {\n                \"mode\": \"match\"\n            }\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Bundle
+                  id:
+                    type: string
+                    example: '[uuid]'
+                  meta:
+                    type: object
+                    properties:
+                      lastUpdated:
+                        type: string
+                        example: '2022-10-05T15:39:27.759+00:00'
+                  type:
+                    type: string
+                    example: searchset
+                  total:
+                    type: integer
+                    example: 1
+                    default: 0
+                  link:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        relation:
+                          type: string
+                          example: self
+                        url:
+                          type: string
+                          example: https://api.post-prod.lifen.fr/fhir/v3/Patient?name=LY&_sort=-_lastUpdated
+                  entry:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fullUrl:
+                          type: string
+                          example: https://api.post-prod.lifen.fr/fhir/v3/Patient/[id]
+                        resource:
+                          type: object
+                          properties:
+                            resourceType:
+                              type: string
+                              example: Patient
+                            id:
+                              type: string
+                              example: '[id]'
+                            meta:
+                              type: object
+                              properties:
+                                versionId:
+                                  type: string
+                                  example: '2'
+                                lastUpdated:
+                                  type: string
+                                  example: '2022-10-04T09:34:43.000+00:00'
+                                tag:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      system:
+                                        type: string
+                                        example: https://www.lifen.fr/default
+                                      code:
+                                        type: string
+                                        example: DEFAULT
+                                      display:
+                                        type: string
+                                        example: Default tag
+                            extension:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  url:
+                                    type: string
+                                    example: http://hl7.org/fhir/StructureDefinition/birthPlace
+                                  valueAddress:
+                                    type: object
+                                    properties:
+                                      city:
+                                        type: string
+                                        example: '[city]'
+                                      district:
+                                        type: string
+                                        example: '77487'
+                                      postalCode:
+                                        type: string
+                                        example: '77000'
+                                      country:
+                                        type: string
+                                        example: FRA
+                            identifier:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  use:
+                                    type: string
+                                    example: official
+                                  type:
+                                    type: object
+                                    properties:
+                                      coding:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            system:
+                                              type: string
+                                              example: http://interopsante.org/fhir/valueset/fr-patient-identifier-type
+                                            version:
+                                              type: string
+                                              example: '1.0'
+                                            code:
+                                              type: string
+                                              example: PI
+                                            display:
+                                              type: string
+                                              example: PI
+                                  system:
+                                    type: string
+                                    example: urn:oid:1.2.250.1.71.4.2.2.[structure_id]
+                                  value:
+                                    type: string
+                                    example: '[ipp_value]'
+                            name:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  use:
+                                    type: string
+                                    example: maiden
+                                  family:
+                                    type: string
+                                    example: MICHUE
+                                  given:
+                                    type: array
+                                    items:
+                                      type: string
+                                      example: PAULETTE
+                            gender:
+                              type: string
+                              example: female
+                            birthDate:
+                              type: string
+                              example: '1940-11-10'
+                            multipleBirthInteger:
+                              type: integer
+                              example: 1
+                              default: 0
+                            deceasedDateTime:
+                              type: string
+                              example: '2022-01-31T00:00:00+01:00'
+                            managingOrganization:
+                              type: object
+                              properties:
+                                reference:
+                                  type: string
+                                  example: Organization/[structure_id]
+                        search:
+                          type: object
+                          properties:
+                            mode:
+                              type: string
+                              example: match
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of family, given, name, birthdate, phone or identifier fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: At least one of family, given, name, birthdate, phone or identifier fields must be filled
+                        location:
+                          type: string
+                          example: allValueNull
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request POST ''https://api.lifen.fr/fhir/v3/Patient/_search'' \
+
+            --header ''Authorization: Bearer xxxx'' \
+
+            --header ''Content-Type: application/x-www-form-urlencoded'' \
+
+            --data-urlencode ''name=MICHUE'' \
+
+            --data-urlencode ''_sort=-_lastUpdated'''
+        samples-languages:
+        - curl
+      tags:
+      - Patient
+  /v3/Patient/{id}:
+    get:
+      summary: Access Patient by id
+      description: ''
+      operationId: access-patient-by-id
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/fhir+json
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"[id]\",\n  \"meta\": {\n    \"versionId\": \"2\",\n      \"lastUpdated\": \"2022-10-04T09:34:43.000+00:00\",\n        \"tag\": [\n          {\n            \"system\": \"https://www.lifen.fr/default\",\n            \"code\": \"DEFAULT\",\n            \"display\": \"Default tag\"\n          }\n        ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/birthPlace\",\n      \"valueAddress\": {\n        \"city\": \"[city]\",\n        \"district\": \"77487\",\n        \"postalCode\": \"77000\",\n        \"country\": \"FRA\"\n      }\n    },\n    {\n      \"url\": \"http://lifen.fr/fhir/StructureDefinition/Patient/Extension/ReliabilityINS\",\n      \"valueCode\": \"QUALI\"\n    },\n    {\n      \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n      \"valueString\": \"[databse_reference]\"\n    }\n  ],\n  \"identifier\": [\n    {\n      \"use\": \"official\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"http://interopsante.org/fhir/valueset/fr-patient-identifier-type\",\n            \"version\": \"1.0\",\n            \"code\": \"PI\",\n            \"display\": \"PI\"\n          }\n        ]\n      },\n      \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n      \"value\": \"[ipp_value]\"\n    }\n  ],\n  \"name\": [\n      {\n        \"use\": \"maiden\",\n        \"family\": \"MICHUE\",\n        \"given\": [\n          \"PAULETTE\"\n        ]\n      },\n      {\n        \"use\": \"usual\",\n        \"family\": \"MICHUE\",\n        \"given\": [\n          \"PAULETTE\"\n        ]\n      },\n      {\n        \"use\": \"official\",\n        \"family\": \"MICHUE\",\n        \"given\": [\n          \"PAULETTE\"\n        ]\n      }\n    ],\n    \"gender\": \"female\",\n    \"birthDate\": \"1940-11-10\",\n    \"multipleBirthInteger\": 1,\n    \"deceasedDateTime\": \"2022-01-31T00:00:00+01:00\",\n    \"managingOrganization\": {\n        \"reference\": \"Organization/[structure_id]\"\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Patient
+                  id:
+                    type: string
+                    example: '[id]'
+                  meta:
+                    type: object
+                    properties:
+                      versionId:
+                        type: string
+                        example: '2'
+                      lastUpdated:
+                        type: string
+                        example: '2022-10-04T09:34:43.000+00:00'
+                      tag:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            system:
+                              type: string
+                              example: https://www.lifen.fr/default
+                            code:
+                              type: string
+                              example: DEFAULT
+                            display:
+                              type: string
+                              example: Default tag
+                  extension:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: http://hl7.org/fhir/StructureDefinition/birthPlace
+                        valueAddress:
+                          type: object
+                          properties:
+                            city:
+                              type: string
+                              example: '[city]'
+                            district:
+                              type: string
+                              example: '77487'
+                            postalCode:
+                              type: string
+                              example: '77000'
+                            country:
+                              type: string
+                              example: FRA
+                  identifier:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        use:
+                          type: string
+                          example: official
+                        type:
+                          type: object
+                          properties:
+                            coding:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  system:
+                                    type: string
+                                    example: http://interopsante.org/fhir/valueset/fr-patient-identifier-type
+                                  version:
+                                    type: string
+                                    example: '1.0'
+                                  code:
+                                    type: string
+                                    example: PI
+                                  display:
+                                    type: string
+                                    example: PI
+                        system:
+                          type: string
+                          example: urn:oid:1.2.250.1.71.4.2.2.[structure_id]
+                        value:
+                          type: string
+                          example: '[ipp_value]'
+                  name:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        use:
+                          type: string
+                          example: maiden
+                        family:
+                          type: string
+                          example: MICHUE
+                        given:
+                          type: array
+                          items:
+                            type: string
+                            example: PAULETTE
+                  gender:
+                    type: string
+                    example: female
+                  birthDate:
+                    type: string
+                    example: '1940-11-10'
+                  multipleBirthInteger:
+                    type: integer
+                    example: 1
+                    default: 0
+                  deceasedDateTime:
+                    type: string
+                    example: '2022-01-31T00:00:00+01:00'
+                  managingOrganization:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: Organization/[structure_id]
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"NOTFOUND\",\n            \"diagnostics\": \"Unknown service (GET) : Patient/[id]\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: NOTFOUND
+                        diagnostics:
+                          type: string
+                          example: 'Unknown service (GET) : Patient/[id]'
+        '415':
+          description: '415'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"STRUCTURE\",\n            \"diagnostics\": \"Issue with media type\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: STRUCTURE
+                        diagnostics:
+                          type: string
+                          example: Issue with media type
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://api.lifen.fr/fhir/v3/Patient/[id]'' \
+
+            --header ''Content-Type: application/fhir+json'''
+        samples-languages:
+        - curl
+      tags:
+      - Patient
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

@@ -1,0 +1,471 @@
+openapi: 3.1.0
+info:
+  title: lifen-authentication-api CommunicationRequest Encounter API
+  version: '3'
+servers:
+- url: https://authentication.lifen.fr/
+security:
+- {}
+tags:
+- name: Encounter
+paths:
+  /v3/Encounter/_search:
+    post:
+      summary: Access Encounter Information
+      description: ''
+      operationId: encounter_search
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/x-www-form-urlencoded
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                patient:
+                  type: string
+                  default: Patient/
+                date:
+                  type: string
+                identifier:
+                  type: string
+                status:
+                  type: string
+                service-provider:
+                  properties:
+                    _extension:
+                      type: string
+                  required: []
+                  type: object
+                _id:
+                  type: string
+                  description: multivalued supported
+                _count:
+                  type: integer
+                  description: 'max: 100 (0 forbidden)'
+                  format: int32
+                _sort:
+                  type: string
+                  default: _lastUpdated
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"Bundle\",\n    \"id\": \"[uuid]\",\n    \"meta\": {\n        \"lastUpdated\": \"2022-10-05T15:39:43.152+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 1,\n    \"link\": [\n        {\n            \"relation\": \"self\",\n            \"url\": \"https://api.post-prod.lifen.fr/fhir/v3/Encounter?identifier=[identifier]\"\n        }\n    ],\n    \"entry\": [\n        {\n            \"fullUrl\": \"https://api.post-prod.lifen.fr/fhir/v3/Encounter/[id]\",\n            \"resource\": {\n                \"resourceType\": \"Encounter\",\n                \"id\": \"[id]\",\n                \"meta\": {\n                    \"versionId\": \"2\",\n                    \"lastUpdated\": \"2022-10-04T09:41:57.000+00:00\",\n                    \"tag\": [\n                        {\n                            \"system\": \"https://www.lifen.fr/default\",\n                            \"code\": \"DEFAULT\",\n                            \"display\": \"Default tag\"\n                        }\n                    ]\n                },\n                \"extension\": [\n                    {\n                        \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n                        \"valueString\": \"[db_ref]\"\n                    }\n                ],\n                \"identifier\": [\n                    {\n                        \"use\": \"official\",\n                        \"type\": {\n                            \"coding\": [\n                                {\n                                    \"system\": \"http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type\",\n                                    \"version\": \"3.0.1\",\n                                    \"code\": \"VN\",\n                                    \"display\": \"Visit Number\"\n                                }\n                            ]\n                        },\n                        \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n                        \"value\": \"[visit_number]\",\n                        \"assigner\": {\n                            \"reference\": \"Organization/[structure_id]\"\n                        }\n                    }\n                ],\n                \"status\": \"in-progress\",\n                \"statusHistory\": [\n                    {\n                        \"status\": \"in-progress\",\n                        \"period\": {\n                            \"start\": \"2022-07-12T11:00:35.000Z\"\n                        }\n                    }\n                ],\n                \"subject\": {\n                    \"reference\": \"Patient/[patient_id]\"\n                },\n                \"period\": {\n                    \"start\": \"2021-11-23T00:00:00+01:00\",\n                    \"end\": \"2022-10-24T00:00:00+02:00\"\n                },\n                \"serviceProvider\": {\n                    \"reference\": \"Organization/[structure_id]\"\n                }\n            },\n            \"search\": {\n                \"mode\": \"match\"\n            }\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Bundle
+                  id:
+                    type: string
+                    example: '[uuid]'
+                  meta:
+                    type: object
+                    properties:
+                      lastUpdated:
+                        type: string
+                        example: '2022-10-05T15:39:43.152+00:00'
+                  type:
+                    type: string
+                    example: searchset
+                  total:
+                    type: integer
+                    example: 1
+                    default: 0
+                  link:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        relation:
+                          type: string
+                          example: self
+                        url:
+                          type: string
+                          example: https://api.post-prod.lifen.fr/fhir/v3/Encounter?identifier=[identifier]
+                  entry:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fullUrl:
+                          type: string
+                          example: https://api.post-prod.lifen.fr/fhir/v3/Encounter/[id]
+                        resource:
+                          type: object
+                          properties:
+                            resourceType:
+                              type: string
+                              example: Encounter
+                            id:
+                              type: string
+                              example: '[id]'
+                            meta:
+                              type: object
+                              properties:
+                                versionId:
+                                  type: string
+                                  example: '2'
+                                lastUpdated:
+                                  type: string
+                                  example: '2022-10-04T09:41:57.000+00:00'
+                                tag:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      system:
+                                        type: string
+                                        example: https://www.lifen.fr/default
+                                      code:
+                                        type: string
+                                        example: DEFAULT
+                                      display:
+                                        type: string
+                                        example: Default tag
+                            extension:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  url:
+                                    type: string
+                                    example: http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference
+                                  valueString:
+                                    type: string
+                                    example: '[db_ref]'
+                            identifier:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  use:
+                                    type: string
+                                    example: official
+                                  type:
+                                    type: object
+                                    properties:
+                                      coding:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            system:
+                                              type: string
+                                              example: http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type
+                                            version:
+                                              type: string
+                                              example: 3.0.1
+                                            code:
+                                              type: string
+                                              example: VN
+                                            display:
+                                              type: string
+                                              example: Visit Number
+                                  system:
+                                    type: string
+                                    example: urn:oid:1.2.250.1.71.4.2.2.[structure_id]
+                                  value:
+                                    type: string
+                                    example: '[visit_number]'
+                                  assigner:
+                                    type: object
+                                    properties:
+                                      reference:
+                                        type: string
+                                        example: Organization/[structure_id]
+                            status:
+                              type: string
+                              example: in-progress
+                            statusHistory:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  status:
+                                    type: string
+                                    example: in-progress
+                                  period:
+                                    type: object
+                                    properties:
+                                      start:
+                                        type: string
+                                        example: '2022-07-12T11:00:35.000Z'
+                            subject:
+                              type: object
+                              properties:
+                                reference:
+                                  type: string
+                                  example: Patient/[patient_id]
+                            period:
+                              type: object
+                              properties:
+                                start:
+                                  type: string
+                                  example: '2021-11-23T00:00:00+01:00'
+                                end:
+                                  type: string
+                                  example: '2022-10-24T00:00:00+02:00'
+                            serviceProvider:
+                              type: object
+                              properties:
+                                reference:
+                                  type: string
+                                  example: Organization/[structure_id]
+                        search:
+                          type: object
+                          properties:
+                            mode:
+                              type: string
+                              example: match
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of patient, date, identifier, service-provider._extension or status fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: At least one of patient, date, identifier, service-provider._extension or status fields must be filled
+                        location:
+                          type: string
+                          example: allValueNull
+      deprecated: false
+      tags:
+      - Encounter
+  /v3/Encounter/{id}:
+    get:
+      summary: Access Encounter by id
+      description: ''
+      operationId: access-encounter-by-id
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/fhir+json
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"Encounter\",\n    \"id\": \"[id]\",\n    \"meta\": {\n      \"versionId\": \"2\",\n        \"lastUpdated\": \"2022-10-04T09:41:57.000+00:00\",\n          \"tag\": [\n            {\n              \"system\": \"https://www.lifen.fr/default\",\n              \"code\": \"DEFAULT\",\n              \"display\": \"Default tag\"\n            }\n          ]\n    },\n    \"extension\": [\n        {\n          \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n          \"valueString\": \"[db_ref]\"\n        }\n    ],\n    \"identifier\": [\n        {\n          \"use\": \"official\",\n          \"type\": {\n            \"coding\": [\n              {\n                \"system\": \"http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type\",\n                \"version\": \"3.0.1\",\n                \"code\": \"VN\",\n                \"display\": \"Visit Number\"\n              }\n            ]\n          },\n          \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n          \"value\": \"[visit_number]\",\n          \"assigner\": {\n            \"reference\": \"Organization/[structure_id]\"\n          }\n        }\n    ],\n    \"status\": \"in-progress\",\n    \"statusHistory\": [\n        {\n          \"status\": \"in-progress\",\n          \"period\": {\n            \"start\": \"2022-07-12T11:00:35.000Z\"\n          }\n        }\n    ],\n    \"subject\": {\n        \"reference\": \"Patient/[patient_id]\"\n    },\n    \"period\": {\n        \"start\": \"2021-11-23T00:00:00+01:00\",\n        \"end\": \"2022-10-24T00:00:00+02:00\"\n    },\n    \"serviceProvider\": {\n        \"reference\": \"Organization/[structure_id]\"\n    }\n}\n"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Encounter
+                  id:
+                    type: string
+                    example: '[id]'
+                  meta:
+                    type: object
+                    properties:
+                      versionId:
+                        type: string
+                        example: '2'
+                      lastUpdated:
+                        type: string
+                        example: '2022-10-04T09:41:57.000+00:00'
+                      tag:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            system:
+                              type: string
+                              example: https://www.lifen.fr/default
+                            code:
+                              type: string
+                              example: DEFAULT
+                            display:
+                              type: string
+                              example: Default tag
+                  extension:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference
+                        valueString:
+                          type: string
+                          example: '[db_ref]'
+                  identifier:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        use:
+                          type: string
+                          example: official
+                        type:
+                          type: object
+                          properties:
+                            coding:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  system:
+                                    type: string
+                                    example: http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type
+                                  version:
+                                    type: string
+                                    example: 3.0.1
+                                  code:
+                                    type: string
+                                    example: VN
+                                  display:
+                                    type: string
+                                    example: Visit Number
+                        system:
+                          type: string
+                          example: urn:oid:1.2.250.1.71.4.2.2.[structure_id]
+                        value:
+                          type: string
+                          example: '[visit_number]'
+                        assigner:
+                          type: object
+                          properties:
+                            reference:
+                              type: string
+                              example: Organization/[structure_id]
+                  status:
+                    type: string
+                    example: in-progress
+                  statusHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          example: in-progress
+                        period:
+                          type: object
+                          properties:
+                            start:
+                              type: string
+                              example: '2022-07-12T11:00:35.000Z'
+                  subject:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: Patient/[patient_id]
+                  period:
+                    type: object
+                    properties:
+                      start:
+                        type: string
+                        example: '2021-11-23T00:00:00+01:00'
+                      end:
+                        type: string
+                        example: '2022-10-24T00:00:00+02:00'
+                  serviceProvider:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: Organization/[structure_id]
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"NOTFOUND\",\n            \"diagnostics\": \"Unknown service (GET) : Encounter/[id]\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: NOTFOUND
+                        diagnostics:
+                          type: string
+                          example: 'Unknown service (GET) : Encounter/[id]'
+        '415':
+          description: '415'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"STRUCTURE\",\n            \"diagnostics\": \"Issue with media type\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: STRUCTURE
+                        diagnostics:
+                          type: string
+                          example: Issue with media type
+      deprecated: false
+      tags:
+      - Encounter
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

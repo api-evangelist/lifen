@@ -1,0 +1,419 @@
+openapi: 3.1.0
+info:
+  title: lifen-authentication-api CommunicationRequest API
+  version: '3'
+servers:
+- url: https://authentication.lifen.fr/
+security:
+- {}
+tags:
+- name: CommunicationRequest
+paths:
+  /v3/CommunicationRequest/$send-to-ehr:
+    post:
+      summary: Send document to the EHR
+      description: ''
+      operationId: communicationrequestsend-to-ehr-1
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/fhir+json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - resourceType
+              - parameter
+              properties:
+                resourceType:
+                  type: string
+                  default: Parameters
+                parameter:
+                  type: array
+                  description: 'The parameters : subject (valueReference), context (valueReference), content-type (valueCode - optional), document-type (valueCode - optional), document-title (valueString - optional), payload (valueString), sender-identifier (valueString - optional)'
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      valueReference:
+                        type: object
+                        required:
+                        - reference
+                        properties:
+                          reference:
+                            type: string
+                      valueString:
+                        type: string
+                      valueCode:
+                        type: string
+                      part:
+                        type: array
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            resource:
+                              type: object
+                          required:
+                          - name
+                          - resource
+                          type: object
+                    required:
+                    - name
+                    type: object
+            examples:
+              send-to-ehr-example:
+                value:
+                  resourceType: Parameters
+                  parameter:
+                  - name: subject
+                    valueReference:
+                      reference: Patient/{{patientId}}
+                  - name: context
+                    valueReference:
+                      reference: Encounter/{{encounterId}}
+                  - name: content-type
+                    valueCode: application/pdf
+                  - name: document-type
+                    valueCode: 11488-4
+                  - name: document-title
+                    valueString: Compte rendu de télémédecine
+                  - name: payload
+                    valueString: '{{base64}}'
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"resourceType\": \"Parameters\",\n\t\"parameter\": [\n\t\t{\n\t\t\t\"name\": \"tracking-url\",\n\t\t\t\"valueString\": \"https://api.post-prod.lifen.fr/fhir/v3/Communication?based-on=CommunicationRequest/[id_communication_request]&_elements=status,notDoneReason\"\n\t\t}\n\t]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Parameters
+                  parameter:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: tracking-url
+                        valueString:
+                          type: string
+                          example: https://api.post-prod.lifen.fr/fhir/v3/Communication?based-on=CommunicationRequest/[id_communication_request]&_elements=status,notDoneReason
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"resourceType\": \"OperationOutcome\",\n\t\"issue\": [\n\t\t{\n\t\t\t\"severity\": \"error\",\n\t\t\t\"code\": \"processing\",\n\t\t\t\"diagnostics\": \"Invalid access token\"\n\t\t}\n\t]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: error
+                        code:
+                          type: string
+                          example: processing
+                        diagnostics:
+                          type: string
+                          example: Invalid access token
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"resourceType\": \"OperationOutcome\",\n\t\"issue\": [\n\t\t{\n\t\t\t\"severity\": \"ERROR\",\n\t\t\t\"code\": \"FORBIDDEN\",\n\t\t\t\"diagnostics\": \"[error_diagnostic]\"\n\t\t}\n\t]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: FORBIDDEN
+                        diagnostics:
+                          type: string
+                          example: '[error_diagnostic]'
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"[error_diagnostic]\",\n            \"location\": \"[error_location]\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: '[error_diagnostic]'
+                        location:
+                          type: string
+                          example: '[error_location]'
+      deprecated: false
+      tags:
+      - CommunicationRequest
+  /v3/CommunicationRequest/$send-to-mss:
+    post:
+      summary: Send document to Healthcare Professionals
+      description: For more details, please refer to the "Guides" section
+      operationId: send-document-to-the-hcp
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+          default: application/fhir+json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - resourceType
+              - parameter
+              properties:
+                resourceType:
+                  type: string
+                  default: Parameters
+                parameter:
+                  type: array
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      valueReference:
+                        type: object
+                        required:
+                        - reference
+                        properties:
+                          reference:
+                            type: string
+                      valueString:
+                        type: string
+                      valueCode:
+                        type: string
+                      part:
+                        type: array
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            resource:
+                              type: object
+                          required:
+                          - name
+                          - resource
+                          type: object
+                    required:
+                    - name
+                    type: object
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"Parameters\",\n    \"parameter\": [\n        {\n            \"name\": \"tracking-url\",\n            \"valueString\": \"https://api.lifen.fr/fhir/v3/CommunicationRequest/$tracking?transaction-id=ifad1343e-496f-11ed-b878-0242ac120002\"\n        },\n      \t{\n            \"name\": \"transaction-id\",\n            \"valueString\": \"ifad1343e-496f-11ed-b878-0242ac120002\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Parameters
+                  parameter:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: tracking-url
+                        valueString:
+                          type: string
+                          example: https://api.lifen.fr/fhir/v3/CommunicationRequest/$tracking?transaction-id=ifad1343e-496f-11ed-b878-0242ac120002
+        '412':
+          description: '412'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Mail support missing, please defined it in `https://portal.lifen.fr`\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: Mail support missing, please defined it in `https://portal.lifen.fr`
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"[error_diagnostic]\",\n            \"location\": \"[error_location]\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: OperationOutcome
+                  issue:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                          example: ERROR
+                        code:
+                          type: string
+                          example: PROCESSING
+                        diagnostics:
+                          type: string
+                          example: '[error_diagnostic]'
+                        location:
+                          type: string
+                          example: '[error_location]'
+      deprecated: false
+      tags:
+      - CommunicationRequest
+  /v3/CommunicationRequest/$tracking?transaction-id={transaction-id}:
+    get:
+      summary: Check sending status
+      description: ''
+      operationId: send-to-mss-check-sending-status
+      parameters:
+      - name: transaction-id
+        in: query
+        required: true
+        schema:
+          type: string
+          default: ifad1343e-496f-11ed-b878-0242ac120002
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+          default: application/fhir+json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"resourceType\": \"Bundle\",\n\t\"type\": \"collection\",\n\t\"total\": 1,\n\t\"entry\": [\n\t\t{\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Communication\",\n\t\t\t\t\"status\": \"completed\",\n        \"medium\": [\n          {\n            \"coding\": [\n              {\n                \"system\": \"http://lifen.fr/fhir/ValueSet/communication-medium\",\n                \"code\": \"MSSANTE\"\n              }\n            ],\n            \"text\": \"paulette.michue@test.lifen.mssante.fr\"\n          }\n        ]\n\t\t\t}\n\t\t}\n\t]\n}"
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    example: Bundle
+                  type:
+                    type: string
+                    example: collection
+                  total:
+                    type: integer
+                    example: 1
+                    default: 0
+                  entry:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        resource:
+                          type: object
+                          properties:
+                            resourceType:
+                              type: string
+                              example: Communication
+                            status:
+                              type: string
+                              example: completed
+                            medium:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  coding:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        system:
+                                          type: string
+                                          example: http://lifen.fr/fhir/ValueSet/communication-medium
+                                        code:
+                                          type: string
+                                          example: MSSANTE
+                                  text:
+                                    type: string
+                                    example: paulette.michue@test.lifen.mssante.fr
+      deprecated: false
+      tags:
+      - CommunicationRequest
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

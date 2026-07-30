@@ -1,0 +1,26 @@
+{
+  "provider": "lifen",
+  "sources": [
+    "lifen-communicationrequest-api-openapi.yml",
+    "lifen-coverage-api-openapi.yml",
+    "lifen-encounter-api-openapi.yml",
+    "lifen-organization-api-openapi.yml",
+    "lifen-patient-api-openapi.yml",
+    "lifen-practitioner-api-openapi.yml",
+    "lifen-token-api-openapi.yml"
+  ],
+  "outputs": [
+    "lifen-communicationrequest-api-openapi.yml",
+    "lifen-coverage-api-openapi.yml",
+    "lifen-encounter-api-openapi.yml",
+    "lifen-organization-api-openapi.yml",
+    "lifen-patient-api-openapi.yml",
+    "lifen-practitioner-api-openapi.yml",
+    "lifen-token-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

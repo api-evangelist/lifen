@@ -1,0 +1,23 @@
+# Lifen Documentation
+
+> Documentation for Lifen
+
+## Guides
+- [API Services Documentation](https://developer.lifen.fr/docs/platform-services-documentation.md)
+- [API basics](https://developer.lifen.fr/docs/api-basics.md)
+- [Machine To Machine Communications](https://developer.lifen.fr/docs/machine-to-machine-communications.md)
+- [Access Patient Information](https://developer.lifen.fr/docs/access-patient-information.md)
+- [Access Encounter Information](https://developer.lifen.fr/docs/access-encounter-information.md)
+- [Access Appointment Information](https://developer.lifen.fr/docs/access-appointment-information.md)
+- [Send a medical document to Healthcare Professionals via MS Santé](https://developer.lifen.fr/docs/send-a-document-to-healthcare-professional.md)
+- [Without Patient Information API](https://developer.lifen.fr/docs/send-a-document-to-healthcare-professional-without-patient-information-api.md)
+
+## API Reference
+- [Authenticate application](https://developer.lifen.fr/reference/authenticate-application.md): Accessing Lifen's APIs in Machine To Machine involves obtaining an Access Token with the Client credentials grant flow of OAuth 2.0 from a back-end server.  Get a token :  A request to Lifen must be perfomed to generate an access token. In the request, the client has to provide his credentials and some configuration.  Perform an API call : The Access Token allows you to make requests to the API on the behalf of the client. Each request must include the Access Token in the Authorization header using the Bearer format.  Example : `curl -H "Authorization: Bearer $ACCESS_TOKEN" https://api.lifen.fr/fhir/v3/$endpoint`
+
+## Changelog
+- [V3 - Mises à jour et nouveautés juin 2023](https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-juin-2023.md)
+- [V3 - Mises à jour et nouveautés Avril 2023](https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-avril-2023.md)
+- [V3 - Mises à jour et nouveautés - Février 2023](https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-février-2023.md)
+- [[V3] Mises à jour et nouveautés Janvier 2023](https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-janvier-2023.md)
+- [[v3]  API “envoi de documents via la MSSanté”](https://developer.lifen.fr/changelog/v3-api-envoi-de-documents-via-la-mssanté.md)

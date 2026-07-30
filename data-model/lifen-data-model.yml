@@ -1,0 +1,132 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/lifen-fhir-api-openapi.json
+docs: https://developer.lifen.fr/docs/platform-services-documentation
+model: HL7 FHIR R4
+model_note: >-
+  Lifen exposes standard FHIR resource types. Relationships below are derived from the reference
+  fields present in the published request/response examples in the OpenAPI, and from the service
+  documentation. Resource identifiers are opaque strings; Appointment ids observed in examples are
+  compound (for example "1590811279:APT-c7aff434").
+entities:
+- name: Patient
+  fhir_type: Patient
+  description: Patient administrative identity within one healthcare organisation.
+  identifiers:
+  - name: id
+    description: Lifen resource id.
+  - name: IPP
+    description: Identifiant Permanent du Patient — the hospital's internal patient identifier.
+  - name: INS / NIA
+    description: French national health identifier. Exposed only when the INS is qualified.
+  operations:
+  - patient
+  - access-patient-by-id
+- name: Coverage
+  fhir_type: Coverage
+  description: Patient insurance coverage information.
+  operations:
+  - access-coverage-patient-information
+- name: Encounter
+  fhir_type: Encounter
+  description: A patient stay (séjour) within the hospital, including functional units and status.
+  operations:
+  - encounter_search
+  - access-encounter-by-id
+- name: Appointment
+  fhir_type: Appointment
+  description: A scheduled appointment. Documented as a distinct API Service with its own
+    APPOINTMENT_GAM_SEARCH scope.
+  documented_endpoints:
+  - POST /v3/Appointment/_search
+  - GET /v3/Appointment/{id}
+  note: Documented at https://developer.lifen.fr/docs/access-appointment-information but not present
+    in the published OpenAPI harvested here.
+- name: Practitioner
+  fhir_type: Practitioner
+  description: A healthcare professional, searchable against the MSSanté directory.
+  operations:
+  - search-healthcare-professional
+- name: Organization
+  fhir_type: Organization
+  description: A healthcare structure, searchable against the MSSanté directory; also the hospital
+    context for reads.
+  operations:
+  - search-healthcare-structure
+- name: CommunicationRequest
+  fhir_type: CommunicationRequest
+  description: The send operation for a medical document, to an EHR or over MSSanté. Returns a
+    transaction-id and a tracking URL.
+  operations:
+  - communicationrequestsend-to-ehr-1
+  - send-document-to-the-hcp
+  - send-to-mss-check-sending-status
+- name: DocumentReference
+  fhir_type: DocumentReference
+  description: Metadata describing the document being sent (type, title, author, context).
+  scope: DOCUMENTREFERENCE_CREATE
+- name: Binary
+  fhir_type: Binary
+  description: The document payload itself. Max 15 MB on $send-to-ehr.
+  scope: BINARY_CREATE
+- name: Bundle
+  fhir_type: Bundle
+  description: The searchset envelope returned by every _search operation, carrying total, link and
+    entry.
+- name: OperationOutcome
+  fhir_type: OperationOutcome
+  description: The error envelope for every non-2xx response.
+relationships:
+- from: Encounter
+  to: Patient
+  kind: belongs_to
+  via: subject
+- from: Patient
+  to: Encounter
+  kind: has_many
+  via: patient search parameter on Encounter/_search
+- from: Coverage
+  to: Patient
+  kind: belongs_to
+  via: beneficiary
+- from: Appointment
+  to: Patient
+  kind: belongs_to
+  via: participant
+- from: CommunicationRequest
+  to: Patient
+  kind: belongs_to
+  via: subject
+- from: CommunicationRequest
+  to: DocumentReference
+  kind: has_many
+  via: payload contentReference
+- from: DocumentReference
+  to: Binary
+  kind: has_one
+  via: content attachment url
+- from: CommunicationRequest
+  to: Practitioner
+  kind: has_many
+  via: recipient (MSSanté send)
+- from: CommunicationRequest
+  to: Organization
+  kind: has_many
+  via: recipient (MSSanté send to a structure)
+- from: CommunicationRequest
+  to: Practitioner
+  kind: has_one
+  via: sender
+- from: Encounter
+  to: Organization
+  kind: belongs_to
+  via: serviceProvider / functional units
+- from: Bundle
+  to: Patient
+  kind: has_many
+  via: entry.resource
+events:
+  artifact: asyncapi/lifen-platform-webhooks.yml
+  entities_with_events:
+  - Patient
+  - Encounter

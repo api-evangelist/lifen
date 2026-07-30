@@ -1,0 +1,291 @@
+{
+  "info": {
+    "_postman_id": "4106510d-79e5-4d82-a68b-4f17d10c8839",
+    "name": "lifen-authentication-api CommunicationRequest Token API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:47.000Z",
+    "updatedAt": "2026-07-28T02:06:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4106510d-79e5-4d82-a68b-4f17d10c8839"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Authenticate application",
+              "id": "806a6f41-e1d7-4f68-aa19-328662ca9ddf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"audience\": \"https://production.platform-apis/\",\n  \"grant_type\": \"client_credentials\",\n  \"database_reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "token"
+                  ]
+                },
+                "description": "Accessing Lifen's APIs in Machine To Machine involves obtaining an Access Token with the Client credentials grant flow of OAuth 2.0 from a back-end server.\n\nGet a token : \nA request to Lifen must be perfomed to generate an access token. In the request, the client has to provide his credentials and some configuration.\n\nPerform an API call :\nThe Access Token allows you to make requests to the API on the behalf of the client. Each request must include the Access Token in the Authorization header using the Bearer format.\n\nExample :\n`curl -H \"Authorization: Bearer $ACCESS_TOKEN\" https://api.lifen.fr/fhir/v3/$endpoint`"
+              },
+              "response": [
+                {
+                  "id": "f973309d-6a4e-445e-b968-4a01c5730936",
+                  "name": "200",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"audience\": \"https://production.platform-apis/\",\n  \"grant_type\": \"client_credentials\",\n  \"database_reference\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"expires_in\": 0,\n  \"token_type\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:06:47.000Z",
+                  "updatedAt": "2026-07-28T02:06:47.000Z",
+                  "uid": "35240-f973309d-6a4e-445e-b968-4a01c5730936"
+                },
+                {
+                  "id": "42bb21a8-3e51-4ce6-8b6d-2a5101dd9c35",
+                  "name": "400",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"audience\": \"https://production.platform-apis/\",\n  \"grant_type\": \"client_credentials\",\n  \"database_reference\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"error_description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:06:47.000Z",
+                  "updatedAt": "2026-07-28T02:06:47.000Z",
+                  "uid": "35240-42bb21a8-3e51-4ce6-8b6d-2a5101dd9c35"
+                },
+                {
+                  "id": "649e5959-04f3-4cde-8ddc-dd3409ea625d",
+                  "name": "401",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"audience\": \"https://production.platform-apis/\",\n  \"grant_type\": \"client_credentials\",\n  \"database_reference\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"error_description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:06:47.000Z",
+                  "updatedAt": "2026-07-28T02:06:47.000Z",
+                  "uid": "35240-649e5959-04f3-4cde-8ddc-dd3409ea625d"
+                },
+                {
+                  "id": "37cc5d6e-efdd-4fa1-a375-322ef9aa2b38",
+                  "name": "403",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"audience\": \"https://production.platform-apis/\",\n  \"grant_type\": \"client_credentials\",\n  \"database_reference\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"error_description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:06:47.000Z",
+                  "updatedAt": "2026-07-28T02:06:47.000Z",
+                  "uid": "35240-37cc5d6e-efdd-4fa1-a375-322ef9aa2b38"
+                }
+              ],
+              "createdAt": "2026-07-28T02:06:47.000Z",
+              "updatedAt": "2026-07-28T02:06:47.000Z",
+              "uid": "35240-806a6f41-e1d7-4f68-aa19-328662ca9ddf"
+            }
+          ],
+          "id": "608e05eb-9eb2-4148-969d-f8cecb60c550",
+          "createdAt": "2026-07-28T02:06:47.000Z",
+          "updatedAt": "2026-07-28T02:06:47.000Z",
+          "uid": "35240-608e05eb-9eb2-4148-969d-f8cecb60c550"
+        }
+      ],
+      "id": "743f042c-45c1-458c-8026-98b6f0877c6f",
+      "createdAt": "2026-07-28T02:06:47.000Z",
+      "updatedAt": "2026-07-28T02:06:47.000Z",
+      "uid": "35240-743f042c-45c1-458c-8026-98b6f0877c6f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authentication.lifen.fr/"
+    }
+  ]
+}

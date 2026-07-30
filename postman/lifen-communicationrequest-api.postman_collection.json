@@ -1,0 +1,617 @@
+{
+  "info": {
+    "_postman_id": "b602acac-66e8-49be-8b28-a2fdee182527",
+    "name": "lifen-authentication-api CommunicationRequest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:37.000Z",
+    "updatedAt": "2026-07-28T02:06:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b602acac-66e8-49be-8b28-a2fdee182527"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "CommunicationRequest",
+          "item": [
+            {
+              "name": "$send-to-ehr",
+              "item": [
+                {
+                  "name": "Send document to the EHR",
+                  "id": "a8eb8659-07e7-4f62-bb90-3847be00b9a3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-ehr",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "CommunicationRequest",
+                        "$send-to-ehr"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b6909941-5968-4c2a-b9d3-d31daa13fb3d",
+                      "name": "201",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-ehr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-ehr"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueString\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueString\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-b6909941-5968-4c2a-b9d3-d31daa13fb3d"
+                    },
+                    {
+                      "id": "bb42c11a-236a-46b6-8f66-8e4ce45f4f19",
+                      "name": "401",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-ehr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-ehr"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-bb42c11a-236a-46b6-8f66-8e4ce45f4f19"
+                    },
+                    {
+                      "id": "c2364106-5eb8-4723-ae0c-3cc0fd178ca7",
+                      "name": "403",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-ehr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-ehr"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-c2364106-5eb8-4723-ae0c-3cc0fd178ca7"
+                    },
+                    {
+                      "id": "ef5d97a5-2bed-4776-9935-99b1c1296e44",
+                      "name": "422",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-ehr",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-ehr"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-ef5d97a5-2bed-4776-9935-99b1c1296e44"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:38.000Z",
+                  "updatedAt": "2026-07-28T02:06:38.000Z",
+                  "uid": "35240-a8eb8659-07e7-4f62-bb90-3847be00b9a3"
+                }
+              ],
+              "id": "fa4c6a3f-4d71-47ac-b3df-5b1a1a3d185a",
+              "createdAt": "2026-07-28T02:06:38.000Z",
+              "updatedAt": "2026-07-28T02:06:38.000Z",
+              "uid": "35240-fa4c6a3f-4d71-47ac-b3df-5b1a1a3d185a"
+            },
+            {
+              "name": "$send-to-mss",
+              "item": [
+                {
+                  "name": "Send document to Healthcare Professionals",
+                  "id": "14907c39-473e-4c4c-ba6f-81a2571e8499",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-mss",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "CommunicationRequest",
+                        "$send-to-mss"
+                      ]
+                    },
+                    "description": "For more details, please refer to the \"Guides\" section"
+                  },
+                  "response": [
+                    {
+                      "id": "70522bdb-bcde-4f77-93c2-ac6d478cf975",
+                      "name": "201",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-mss",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-mss"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueString\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueString\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-70522bdb-bcde-4f77-93c2-ac6d478cf975"
+                    },
+                    {
+                      "id": "4946b1f4-d81e-4fad-b2eb-bdee2326e203",
+                      "name": "412",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-mss",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-mss"
+                          ]
+                        }
+                      },
+                      "status": "Precondition Failed",
+                      "code": 412,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-4946b1f4-d81e-4fad-b2eb-bdee2326e203"
+                    },
+                    {
+                      "id": "a5abc612-37b4-480e-b2aa-ebdff7f4b9fc",
+                      "name": "422",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": {}\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$send-to-mss",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$send-to-mss"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-a5abc612-37b4-480e-b2aa-ebdff7f4b9fc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:38.000Z",
+                  "updatedAt": "2026-07-28T02:06:38.000Z",
+                  "uid": "35240-14907c39-473e-4c4c-ba6f-81a2571e8499"
+                }
+              ],
+              "id": "8dae9466-b9d1-4b99-ac15-890c6d8ab5b6",
+              "createdAt": "2026-07-28T02:06:38.000Z",
+              "updatedAt": "2026-07-28T02:06:38.000Z",
+              "uid": "35240-8dae9466-b9d1-4b99-ac15-890c6d8ab5b6"
+            },
+            {
+              "name": "$tracking?transaction-id={transaction-id}",
+              "item": [
+                {
+                  "name": "Check sending status",
+                  "id": "0891fffa-c212-4591-bbe3-ad4c7a26fe90",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/CommunicationRequest/$tracking?transaction-id={{transaction-id}}&transaction-id=ifad1343e-496f-11ed-b878-0242ac120002",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "CommunicationRequest",
+                        "$tracking"
+                      ],
+                      "query": [
+                        {
+                          "key": "transaction-id",
+                          "value": "{{transaction-id}}"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "transaction-id",
+                          "value": "ifad1343e-496f-11ed-b878-0242ac120002"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "d0490efe-e1e4-44cb-a0de-46fb48a01e4d",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/CommunicationRequest/$tracking?transaction-id=ifad1343e-496f-11ed-b878-0242ac120002",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "CommunicationRequest",
+                            "$tracking"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "transaction-id",
+                              "value": "ifad1343e-496f-11ed-b878-0242ac120002"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"total\": 0,\n  \"entry\": [\n    {\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"status\": \"<string>\",\n        \"medium\": [\n          {\n            \"coding\": [\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              },\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              }\n            ],\n            \"text\": \"<string>\"\n          },\n          {\n            \"coding\": [\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              },\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              }\n            ],\n            \"text\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"status\": \"<string>\",\n        \"medium\": [\n          {\n            \"coding\": [\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              },\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              }\n            ],\n            \"text\": \"<string>\"\n          },\n          {\n            \"coding\": [\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              },\n              {\n                \"system\": \"<string>\",\n                \"code\": \"<string>\"\n              }\n            ],\n            \"text\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:38.000Z",
+                      "updatedAt": "2026-07-28T02:06:38.000Z",
+                      "uid": "35240-d0490efe-e1e4-44cb-a0de-46fb48a01e4d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:38.000Z",
+                  "updatedAt": "2026-07-28T02:06:38.000Z",
+                  "uid": "35240-0891fffa-c212-4591-bbe3-ad4c7a26fe90"
+                }
+              ],
+              "id": "89db8b57-1edc-4b85-b40f-9353a8a61c4d",
+              "createdAt": "2026-07-28T02:06:38.000Z",
+              "updatedAt": "2026-07-28T02:06:38.000Z",
+              "uid": "35240-89db8b57-1edc-4b85-b40f-9353a8a61c4d"
+            }
+          ],
+          "id": "472a9331-9f89-4d34-aa48-e75c328b41e7",
+          "createdAt": "2026-07-28T02:06:38.000Z",
+          "updatedAt": "2026-07-28T02:06:38.000Z",
+          "uid": "35240-472a9331-9f89-4d34-aa48-e75c328b41e7"
+        }
+      ],
+      "id": "4ac290db-74c0-42d9-af59-9c5a7bfea984",
+      "createdAt": "2026-07-28T02:06:38.000Z",
+      "updatedAt": "2026-07-28T02:06:38.000Z",
+      "uid": "35240-4ac290db-74c0-42d9-af59-9c5a7bfea984"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authentication.lifen.fr/"
+    }
+  ]
+}

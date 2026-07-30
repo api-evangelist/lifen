@@ -1,0 +1,86 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/lifen-fhir-api-openapi.json
+status: candidate
+search_note: >-
+  No official or third-party Lifen MCP server was found on the developer portal, the honestica
+  GitHub organisation, npm, or the public MCP registries as of 2026-07-19. The tools below are a
+  CANDIDATE surface derived one-to-one from the published OpenAPI operations, not a published
+  server.
+server:
+  name: lifen
+  transport: stdio
+  url: null
+authentication:
+  type: oauth2
+  flow: clientCredentials
+  token_endpoint: https://authentication.lifen.fr/v1/token
+  required_config:
+  - LIFEN_CLIENT_ID
+  - LIFEN_CLIENT_SECRET
+  - LIFEN_DATABASE_REFERENCE
+  - LIFEN_AUDIENCE
+  artifact: authentication/lifen-authentication.yml
+safety_note: >-
+  Every tool here reads or writes protected health information under French health-data rules. A
+  real deployment must bind each tool to the functional scope granted on the token and keep
+  document-sending tools behind human confirmation.
+tools:
+- name: search_patients
+  description: Search patients by name, family name, given name, birthdate, identifier or phone
+    within the hospital bound to the access token. Returns at most 10 results.
+  read_only: true
+  scope: PATIENT_GAM_SEARCH
+  source_operation: openapi/lifen-fhir-api-openapi.json#patient
+- name: get_patient
+  description: Read a single patient by Lifen resource id.
+  read_only: true
+  scope: PATIENT_GAM_SEARCH
+  source_operation: openapi/lifen-fhir-api-openapi.json#access-patient-by-id
+- name: search_patient_coverage
+  description: Search a patient's insurance coverage information.
+  read_only: true
+  scope: PATIENT_GAM_SEARCH
+  source_operation: openapi/lifen-fhir-api-openapi.json#access-coverage-patient-information
+- name: search_encounters
+  description: Search patient encounters (séjours), optionally over a date range. Returns at most 10
+    results.
+  read_only: true
+  scope: PATIENT_GAM_SEARCH
+  source_operation: openapi/lifen-fhir-api-openapi.json#encounter_search
+- name: get_encounter
+  description: Read a single encounter by Lifen resource id.
+  read_only: true
+  scope: PATIENT_GAM_SEARCH
+  source_operation: openapi/lifen-fhir-api-openapi.json#access-encounter-by-id
+- name: search_healthcare_professional
+  description: Search the MSSanté directory for a healthcare professional to use as a document
+    recipient or sender.
+  read_only: true
+  scope: SEND_TO_MSS
+  source_operation: openapi/lifen-fhir-api-openapi.json#search-healthcare-professional
+- name: search_healthcare_structure
+  description: Search the MSSanté directory for a healthcare structure (Organization) to use as a
+    document recipient.
+  read_only: true
+  scope: SEND_TO_MSS
+  source_operation: openapi/lifen-fhir-api-openapi.json#search-healthcare-structure
+- name: send_document_to_ehr
+  description: Send a medical document into a hospital Electronic Health Record. Writes PHI —
+    require explicit human confirmation.
+  read_only: false
+  human_in_the_loop: required
+  scope: SEND_TO_EHR
+  source_operation: openapi/lifen-fhir-api-openapi.json#communicationrequestsend-to-ehr-1
+- name: send_document_to_healthcare_professional
+  description: Send a medical document to a healthcare professional over MSSanté. Writes PHI —
+    require explicit human confirmation.
+  read_only: false
+  human_in_the_loop: required
+  scope: SEND_TO_MSS
+  source_operation: openapi/lifen-fhir-api-openapi.json#send-document-to-the-hcp
+- name: check_sending_status
+  description: Check the delivery status of a previously sent document using its transaction-id.
+  read_only: true
+  scope: SEND_TO_MSS
+  source_operation: openapi/lifen-fhir-api-openapi.json#send-to-mss-check-sending-status

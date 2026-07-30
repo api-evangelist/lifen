@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/
+versioning:
+  scheme: uri-path
+  current: v3
+  current_base: https://api.lifen.fr/fhir/v3
+  docs: https://developer.lifen.fr/docs/api-basics
+  versions:
+  - version: v3
+    state: current
+    docs: https://developer.lifen.fr/
+  - version: v2
+    state: deprecated
+    note: The v2 documentation branch on developer.lifen.fr is marked deprecated; no sunset date is
+      published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Lifen publishes no written deprecation or sunset policy and does not document RFC 8594
+    Sunset/Deprecation headers. Version state is only visible through the documentation branch
+    status (v2 marked deprecated) and through dated changelog entries announcing behaviour changes.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime target is published on the developer portal.
+status_page: https://status.lifen.fr/793930656
+status_page_features:
+- Current Lifen Platform up/down state
+- Email subscription to status updates
+changelog: https://developer.lifen.fr/changelog
+changelog_artifact: changelog/lifen-changelog.yml
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in openapi/lifen-fhir-api-openapi.json is flagged deprecated.
+behaviour_changes:
+- date: '2023-03-09'
+  change: The INS/NIA matricule is no longer exposed on Patient resources unless the patient has a
+    qualified INS.
+  breaking: true
+  source: https://developer.lifen.fr/changelog/ne-plus-exposer-le-matricule-ins-si-il-nest-pas-qualifié

@@ -1,0 +1,117 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/webhook
+type: Webhooks
+spec_type: null
+spec_note: >-
+  Lifen documents a full webhook event catalog but publishes no AsyncAPI document. This artifact
+  captures the documented webhook surface verbatim; it is NOT a fabricated AsyncAPI spec.
+docs:
+- https://developer.lifen.fr/docs/webhook
+- https://developer.lifen.fr/docs/secure-your-webhooks
+subscription:
+  managed_in: Lifen developer portal
+  configuration:
+  - callback URL
+  - optional webhook name
+  - selected event types
+  test_button: true
+  test_recommendation: Use webhook.site as a throwaway endpoint, then press the test button in the
+    developer portal.
+delivery:
+  transport: HTTPS POST
+  content_type: application/json
+  batching: true
+  batching_note: Events are delivered in batches of a single event-type to avoid spamming the
+    endpoint; up to ~2 minutes of delay between trigger and delivery. The delay is not configurable.
+  required_consumer_throughput: 10 requests/second
+  expected_response: 2xx within 10 seconds
+  retry:
+    timeout_seconds: 30
+    schedule:
+    - 5 retries over 15 minutes
+    - if all fail, 3 more retries over 3 hours starting one hour later
+    on_exhaustion: The webhook is suspended and an email is sent to all developer-portal members;
+      it can be re-enabled from the portal after fixing the endpoint.
+    respects_retry_after: true
+    respects_retry_after_note: If the consumer replies 429 with a Retry-After header in seconds,
+      Lifen honours it.
+security:
+  signature:
+    header: x-lifen-platform-signature
+    algorithm: HMAC-SHA256
+    key: per-application secret generated in the developer portal
+    signed_payload: the whole request body, as a string
+    encoding: hex
+  ip_allowlist:
+    test:
+    - 15.236.169.32
+    production:
+    - 15.236.169.164
+    - 35.180.249.12
+    note: Use the X-Forwarded-For header to read the source IP.
+  headers:
+  - name: x-lifen-platform-signature
+    description: HMAC-SHA256 signature of the payload.
+  - name: x-lifen-platform-database-reference
+    description: Identifier of the application deployment in one healthcare structure.
+  - name: x-lifen-platform-event-type
+    description: The event type carried in the batch.
+envelope:
+  fields:
+  - name: notification-uuid
+    type: uuid
+    description: Unique id of the notification batch sent to the endpoint.
+  - name: events
+    type: array
+    description: List of events, all of the same event-type.
+  - name: events[].event-uuid
+    type: uuid
+    description: Unique id of the event — use it to avoid processing the same event twice.
+  - name: events[].webhook-id
+    type: uuid
+    description: Unique id of the subscribing webhook.
+  - name: events[].event-type
+    type: string
+    description: Event type chosen at subscription time.
+  - name: events[].database-reference
+    type: string
+    description: Identifier of the application deployed in one healthcare structure.
+  - name: events[].timestamp
+    type: string
+    format: ISO 8601 UTC
+    description: When the event was triggered in the Lifen system.
+  - name: events[].event-details
+    type: object
+    description: Per-event-type payload.
+events:
+- type: patient.updated
+  summary: A patient record has been updated.
+  event_details:
+  - name: patient-id
+    type: string
+  - name: patient-ipp
+    type: string
+- type: patient.merged
+  summary: A patient record has been merged with another one.
+  event_details:
+  - name: source-patient-id
+    type: string
+  - name: source-patient-ipp
+    type: string
+  - name: target-patient-id
+    type: string
+  - name: target-patient-ipp
+    type: string
+- type: encounter.created
+  summary: An encounter (séjour) has been created.
+  event_details:
+  - name: encounter-id
+    type: string
+  - name: encounter-status
+    type: string
+    example: in-progress
+  - name: patient-id
+    type: string
+  - name: functional-units
+    type: array

@@ -1,0 +1,103 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/machine-to-machine-communications
+docs: https://developer.lifen.fr/docs/platform-services-documentation
+notes: >-
+  The Lifen Platform issues OAuth 2.0 client-credentials access tokens whose `scope` claim carries a
+  space-delimited list of technical scopes. Lifen groups these behind FUNCTIONAL scopes granted per
+  application by the account manager; each functional scope expands to the technical scopes listed
+  below. The published OpenAPI does not declare an oauth2 securityScheme (it models the bearer token
+  as an apiKey header), so the scope inventory here is harvested from the per-service documentation
+  pages rather than derived from the spec.
+schemes:
+- name: client_credentials
+  type: oauth2
+  flow: clientCredentials
+  token_endpoint: https://authentication.lifen.fr/v1/token
+  token_endpoint_test: https://authentication.post-prod.lifen.fr/v1/token
+  audience_production: https://production.platform-apis/
+  audience_test: https://post-prod.platform-apis/
+  extra_parameters:
+  - name: database_reference
+    description: Identifier connecting the application with a healthcare organization; obtained from
+      the Lifen account manager.
+  source: https://developer.lifen.fr/docs/machine-to-machine-communications
+- name: sso_oidc
+  type: openIdConnect
+  flow: authorizationCode
+  authorization_endpoint: https://authentication.lifen.fr/authorize
+  token_endpoint: https://authentication.lifen.fr/v1/authorization_code/token
+  issuer: https://login.lifen.fr/
+  source: https://authentication.lifen.fr/.well-known/oauth-authorization-server
+functional_scopes:
+- scope: PATIENT_GAM_SEARCH
+  description: Access to the Patient / Encounter API Service — patient identity, coverage and
+    encounter (sejour) data within a given hospital.
+  grants:
+  - ORGANIZATION_READ
+  - PATIENT_READ
+  - PATIENT_SEARCH
+  - ENCOUNTER_READ
+  - ENCOUNTER_SEARCH
+  docs: https://developer.lifen.fr/docs/access-patient-information
+- scope: APPOINTMENT_GAM_SEARCH
+  description: Access to the Appointment API Service — scheduled appointment data within a given
+    hospital.
+  grants:
+  - APPOINTMENT_READ
+  - APPOINTMENT_SEARCH
+  docs: https://developer.lifen.fr/docs/access-appointment-information
+- scope: SEND_TO_EHR
+  description: Access to the Send-documents-to-EHR API Service — push a medical document into a
+    hospital Electronic Health Record.
+  grants:
+  - ORGANIZATION_READ
+  - BINARY_CREATE
+  - COMMUNICATIONREQUEST_CREATE
+  - DOCUMENTREFERENCE_CREATE
+  docs: https://developer.lifen.fr/docs/send-a-document-to-the-ehr
+- scope: SEND_TO_MSS
+  description: Access to the MSS API Service — send a medical document to healthcare professionals
+    over the French MSSante secure-messaging network.
+  docs: https://developer.lifen.fr/docs/send-a-document-to-healthcare-professional
+technical_scopes:
+- scope: ORGANIZATION_READ
+  description: Read an Organization (healthcare structure) resource.
+- scope: PATIENT_READ
+  description: Read a Patient resource by id.
+- scope: PATIENT_SEARCH
+  description: Search Patient resources.
+- scope: ENCOUNTER_READ
+  description: Read an Encounter (sejour) resource by id.
+- scope: ENCOUNTER_SEARCH
+  description: Search Encounter resources.
+- scope: APPOINTMENT_READ
+  description: Read an Appointment resource by id.
+- scope: APPOINTMENT_SEARCH
+  description: Search Appointment resources.
+- scope: BINARY_CREATE
+  description: Create a Binary resource (the document payload being sent).
+- scope: BINARY_READ
+  description: Read a Binary resource.
+  source: token response example, https://developer.lifen.fr/reference/authenticate-application
+- scope: BINARY_SEARCH
+  description: Search Binary resources.
+  source: token response example, https://developer.lifen.fr/reference/authenticate-application
+- scope: COMMUNICATIONREQUEST_CREATE
+  description: Create a CommunicationRequest — the send operation for a document.
+- scope: DOCUMENTREFERENCE_CREATE
+  description: Create a DocumentReference describing the document being sent.
+sso_scopes:
+- scope: openid
+  description: OIDC base scope.
+- scope: profile
+  description: Profile claims.
+- scope: email
+  description: Email claim.
+- scope: address
+  description: Address claim.
+- scope: phone
+  description: Phone claim.
+- scope: offline_access
+  description: Refresh-token issuance.
+sso_scopes_source: https://authentication.lifen.fr/.well-known/oauth-authorization-server

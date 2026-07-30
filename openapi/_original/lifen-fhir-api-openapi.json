@@ -1,0 +1,2800 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "lifen-fhir-api",
+  "version": "3"
+ },
+ "servers": [
+  {
+   "url": "https://api.lifen.fr/fhir"
+  }
+ ],
+ "components": {
+  "securitySchemes": {
+   "sec0": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "Authorization",
+    "x-bearer-format": "bearer"
+   }
+  }
+ },
+ "security": [
+  {
+   "sec0": []
+  }
+ ],
+ "paths": {
+  "/v3/Patient/_search": {
+   "post": {
+    "summary": "Access Patient Information",
+    "description": "",
+    "operationId": "patient",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/x-www-form-urlencoded"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "given": {
+          "type": "string"
+         },
+         "name": {
+          "type": "string"
+         },
+         "family": {
+          "type": "string"
+         },
+         "birthdate": {
+          "type": "string",
+          "format": "date"
+         },
+         "identifier": {
+          "type": "string"
+         },
+         "phone": {
+          "type": "string"
+         },
+         "_id": {
+          "type": "string",
+          "description": "multivalued supported"
+         },
+         "_count": {
+          "type": "integer",
+          "description": "max: 100 (0 forbidden)",
+          "format": "int32"
+         },
+         "_sort": {
+          "type": "string",
+          "default": "_lastUpdated"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"Bundle\",\n    \"id\": \"[uuid]\",\n    \"meta\": {\n        \"lastUpdated\": \"2022-10-05T15:39:27.759+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 1,\n    \"link\": [\n        {\n            \"relation\": \"self\",\n            \"url\": \"https://api.post-prod.lifen.fr/fhir/v3/Patient?name=LY&_sort=-_lastUpdated\"\n        }\n    ],\n    \"entry\": [\n        {\n            \"fullUrl\": \"https://api.post-prod.lifen.fr/fhir/v3/Patient/[id]\",\n            \"resource\": {\n                \"resourceType\": \"Patient\",\n                \"id\": \"[id]\",\n                \"meta\": {\n                    \"versionId\": \"2\",\n                    \"lastUpdated\": \"2022-10-04T09:34:43.000+00:00\",\n                    \"tag\": [\n                        {\n                            \"system\": \"https://www.lifen.fr/default\",\n                            \"code\": \"DEFAULT\",\n                            \"display\": \"Default tag\"\n                        }\n                    ]\n                },\n                \"extension\": [\n                    {\n                        \"url\": \"http://hl7.org/fhir/StructureDefinition/birthPlace\",\n                        \"valueAddress\": {\n                            \"city\": \"[city]\",\n                            \"district\": \"77487\",\n                            \"postalCode\": \"77000\",\n                            \"country\": \"FRA\"\n                        }\n                    },\n                    {\n                        \"url\": \"http://lifen.fr/fhir/StructureDefinition/Patient/Extension/ReliabilityINS\",\n                        \"valueCode\": \"QUALI\"\n                    },\n                    {\n                        \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n                        \"valueString\": \"[databse_reference]\"\n                    }\n                ],\n                \"identifier\": [\n                    {\n                        \"use\": \"official\",\n                        \"type\": {\n                            \"coding\": [\n                                {\n                                    \"system\": \"http://interopsante.org/fhir/valueset/fr-patient-identifier-type\",\n                                    \"version\": \"1.0\",\n                                    \"code\": \"PI\",\n                                    \"display\": \"PI\"\n                                }\n                            ]\n                        },\n                        \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n                        \"value\": \"[ipp_value]\"\n                    }\n                ],\n                \"name\": [\n                    {\n                        \"use\": \"maiden\",\n                        \"family\": \"MICHUE\",\n                        \"given\": [\n                            \"PAULETTE\"\n                        ]\n                    },\n                    {\n                        \"use\": \"usual\",\n                        \"family\": \"MICHUE\",\n                        \"given\": [\n                            \"PAULETTE\"\n                        ]\n                    },\n                    {\n                        \"use\": \"official\",\n                        \"family\": \"MICHUE\",\n                        \"given\": [\n                            \"PAULETTE\"\n                        ]\n                    }\n                ],\n                \"gender\": \"female\",\n                \"birthDate\": \"1940-11-10\",\n                \"multipleBirthInteger\": 1,\n              \t\"deceasedDateTime\": \"2022-01-31T00:00:00+01:00\",\n                \"managingOrganization\": {\n                    \"reference\": \"Organization/[structure_id]\"\n                }\n            },\n            \"search\": {\n                \"mode\": \"match\"\n            }\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Bundle"
+          },
+          "id": {
+           "type": "string",
+           "example": "[uuid]"
+          },
+          "meta": {
+           "type": "object",
+           "properties": {
+            "lastUpdated": {
+             "type": "string",
+             "example": "2022-10-05T15:39:27.759+00:00"
+            }
+           }
+          },
+          "type": {
+           "type": "string",
+           "example": "searchset"
+          },
+          "total": {
+           "type": "integer",
+           "example": 1,
+           "default": 0
+          },
+          "link": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "relation": {
+              "type": "string",
+              "example": "self"
+             },
+             "url": {
+              "type": "string",
+              "example": "https://api.post-prod.lifen.fr/fhir/v3/Patient?name=LY&_sort=-_lastUpdated"
+             }
+            }
+           }
+          },
+          "entry": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "fullUrl": {
+              "type": "string",
+              "example": "https://api.post-prod.lifen.fr/fhir/v3/Patient/[id]"
+             },
+             "resource": {
+              "type": "object",
+              "properties": {
+               "resourceType": {
+                "type": "string",
+                "example": "Patient"
+               },
+               "id": {
+                "type": "string",
+                "example": "[id]"
+               },
+               "meta": {
+                "type": "object",
+                "properties": {
+                 "versionId": {
+                  "type": "string",
+                  "example": "2"
+                 },
+                 "lastUpdated": {
+                  "type": "string",
+                  "example": "2022-10-04T09:34:43.000+00:00"
+                 },
+                 "tag": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "system": {
+                     "type": "string",
+                     "example": "https://www.lifen.fr/default"
+                    },
+                    "code": {
+                     "type": "string",
+                     "example": "DEFAULT"
+                    },
+                    "display": {
+                     "type": "string",
+                     "example": "Default tag"
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "extension": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "url": {
+                   "type": "string",
+                   "example": "http://hl7.org/fhir/StructureDefinition/birthPlace"
+                  },
+                  "valueAddress": {
+                   "type": "object",
+                   "properties": {
+                    "city": {
+                     "type": "string",
+                     "example": "[city]"
+                    },
+                    "district": {
+                     "type": "string",
+                     "example": "77487"
+                    },
+                    "postalCode": {
+                     "type": "string",
+                     "example": "77000"
+                    },
+                    "country": {
+                     "type": "string",
+                     "example": "FRA"
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "identifier": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "use": {
+                   "type": "string",
+                   "example": "official"
+                  },
+                  "type": {
+                   "type": "object",
+                   "properties": {
+                    "coding": {
+                     "type": "array",
+                     "items": {
+                      "type": "object",
+                      "properties": {
+                       "system": {
+                        "type": "string",
+                        "example": "http://interopsante.org/fhir/valueset/fr-patient-identifier-type"
+                       },
+                       "version": {
+                        "type": "string",
+                        "example": "1.0"
+                       },
+                       "code": {
+                        "type": "string",
+                        "example": "PI"
+                       },
+                       "display": {
+                        "type": "string",
+                        "example": "PI"
+                       }
+                      }
+                     }
+                    }
+                   }
+                  },
+                  "system": {
+                   "type": "string",
+                   "example": "urn:oid:1.2.250.1.71.4.2.2.[structure_id]"
+                  },
+                  "value": {
+                   "type": "string",
+                   "example": "[ipp_value]"
+                  }
+                 }
+                }
+               },
+               "name": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "use": {
+                   "type": "string",
+                   "example": "maiden"
+                  },
+                  "family": {
+                   "type": "string",
+                   "example": "MICHUE"
+                  },
+                  "given": {
+                   "type": "array",
+                   "items": {
+                    "type": "string",
+                    "example": "PAULETTE"
+                   }
+                  }
+                 }
+                }
+               },
+               "gender": {
+                "type": "string",
+                "example": "female"
+               },
+               "birthDate": {
+                "type": "string",
+                "example": "1940-11-10"
+               },
+               "multipleBirthInteger": {
+                "type": "integer",
+                "example": 1,
+                "default": 0
+               },
+               "deceasedDateTime": {
+                "type": "string",
+                "example": "2022-01-31T00:00:00+01:00"
+               },
+               "managingOrganization": {
+                "type": "object",
+                "properties": {
+                 "reference": {
+                  "type": "string",
+                  "example": "Organization/[structure_id]"
+                 }
+                }
+               }
+              }
+             },
+             "search": {
+              "type": "object",
+              "properties": {
+               "mode": {
+                "type": "string",
+                "example": "match"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of family, given, name, birthdate, phone or identifier fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "At least one of family, given, name, birthdate, phone or identifier fields must be filled"
+             },
+             "location": {
+              "type": "string",
+              "example": "allValueNull"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false,
+    "x-readme": {
+     "code-samples": [
+      {
+       "language": "curl",
+       "code": "curl --location --request POST 'https://api.lifen.fr/fhir/v3/Patient/_search' \\\n--header 'Authorization: Bearer xxxx' \\\n--header 'Content-Type: application/x-www-form-urlencoded' \\\n--data-urlencode 'name=MICHUE' \\\n--data-urlencode '_sort=-_lastUpdated'"
+      }
+     ],
+     "samples-languages": [
+      "curl"
+     ]
+    }
+   }
+  },
+  "/v3/Patient/{id}": {
+   "get": {
+    "summary": "Access Patient by id",
+    "description": "",
+    "operationId": "access-patient-by-id",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/fhir+json"
+      }
+     },
+     {
+      "name": "id",
+      "in": "path",
+      "schema": {
+       "type": "string"
+      },
+      "required": true
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"[id]\",\n  \"meta\": {\n    \"versionId\": \"2\",\n      \"lastUpdated\": \"2022-10-04T09:34:43.000+00:00\",\n        \"tag\": [\n          {\n            \"system\": \"https://www.lifen.fr/default\",\n            \"code\": \"DEFAULT\",\n            \"display\": \"Default tag\"\n          }\n        ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/birthPlace\",\n      \"valueAddress\": {\n        \"city\": \"[city]\",\n        \"district\": \"77487\",\n        \"postalCode\": \"77000\",\n        \"country\": \"FRA\"\n      }\n    },\n    {\n      \"url\": \"http://lifen.fr/fhir/StructureDefinition/Patient/Extension/ReliabilityINS\",\n      \"valueCode\": \"QUALI\"\n    },\n    {\n      \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n      \"valueString\": \"[databse_reference]\"\n    }\n  ],\n  \"identifier\": [\n    {\n      \"use\": \"official\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"http://interopsante.org/fhir/valueset/fr-patient-identifier-type\",\n            \"version\": \"1.0\",\n            \"code\": \"PI\",\n            \"display\": \"PI\"\n          }\n        ]\n      },\n      \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n      \"value\": \"[ipp_value]\"\n    }\n  ],\n  \"name\": [\n      {\n        \"use\": \"maiden\",\n        \"family\": \"MICHUE\",\n        \"given\": [\n          \"PAULETTE\"\n        ]\n      },\n      {\n        \"use\": \"usual\",\n        \"family\": \"MICHUE\",\n        \"given\": [\n          \"PAULETTE\"\n        ]\n      },\n      {\n        \"use\": \"official\",\n        \"family\": \"MICHUE\",\n        \"given\": [\n          \"PAULETTE\"\n        ]\n      }\n    ],\n    \"gender\": \"female\",\n    \"birthDate\": \"1940-11-10\",\n    \"multipleBirthInteger\": 1,\n    \"deceasedDateTime\": \"2022-01-31T00:00:00+01:00\",\n    \"managingOrganization\": {\n        \"reference\": \"Organization/[structure_id]\"\n    }\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Patient"
+          },
+          "id": {
+           "type": "string",
+           "example": "[id]"
+          },
+          "meta": {
+           "type": "object",
+           "properties": {
+            "versionId": {
+             "type": "string",
+             "example": "2"
+            },
+            "lastUpdated": {
+             "type": "string",
+             "example": "2022-10-04T09:34:43.000+00:00"
+            },
+            "tag": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "system": {
+                "type": "string",
+                "example": "https://www.lifen.fr/default"
+               },
+               "code": {
+                "type": "string",
+                "example": "DEFAULT"
+               },
+               "display": {
+                "type": "string",
+                "example": "Default tag"
+               }
+              }
+             }
+            }
+           }
+          },
+          "extension": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "url": {
+              "type": "string",
+              "example": "http://hl7.org/fhir/StructureDefinition/birthPlace"
+             },
+             "valueAddress": {
+              "type": "object",
+              "properties": {
+               "city": {
+                "type": "string",
+                "example": "[city]"
+               },
+               "district": {
+                "type": "string",
+                "example": "77487"
+               },
+               "postalCode": {
+                "type": "string",
+                "example": "77000"
+               },
+               "country": {
+                "type": "string",
+                "example": "FRA"
+               }
+              }
+             }
+            }
+           }
+          },
+          "identifier": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "use": {
+              "type": "string",
+              "example": "official"
+             },
+             "type": {
+              "type": "object",
+              "properties": {
+               "coding": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "system": {
+                   "type": "string",
+                   "example": "http://interopsante.org/fhir/valueset/fr-patient-identifier-type"
+                  },
+                  "version": {
+                   "type": "string",
+                   "example": "1.0"
+                  },
+                  "code": {
+                   "type": "string",
+                   "example": "PI"
+                  },
+                  "display": {
+                   "type": "string",
+                   "example": "PI"
+                  }
+                 }
+                }
+               }
+              }
+             },
+             "system": {
+              "type": "string",
+              "example": "urn:oid:1.2.250.1.71.4.2.2.[structure_id]"
+             },
+             "value": {
+              "type": "string",
+              "example": "[ipp_value]"
+             }
+            }
+           }
+          },
+          "name": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "use": {
+              "type": "string",
+              "example": "maiden"
+             },
+             "family": {
+              "type": "string",
+              "example": "MICHUE"
+             },
+             "given": {
+              "type": "array",
+              "items": {
+               "type": "string",
+               "example": "PAULETTE"
+              }
+             }
+            }
+           }
+          },
+          "gender": {
+           "type": "string",
+           "example": "female"
+          },
+          "birthDate": {
+           "type": "string",
+           "example": "1940-11-10"
+          },
+          "multipleBirthInteger": {
+           "type": "integer",
+           "example": 1,
+           "default": 0
+          },
+          "deceasedDateTime": {
+           "type": "string",
+           "example": "2022-01-31T00:00:00+01:00"
+          },
+          "managingOrganization": {
+           "type": "object",
+           "properties": {
+            "reference": {
+             "type": "string",
+             "example": "Organization/[structure_id]"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "404",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"NOTFOUND\",\n            \"diagnostics\": \"Unknown service (GET) : Patient/[id]\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "NOTFOUND"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "Unknown service (GET) : Patient/[id]"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "415": {
+      "description": "415",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"STRUCTURE\",\n            \"diagnostics\": \"Issue with media type\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "STRUCTURE"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "Issue with media type"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false,
+    "x-readme": {
+     "code-samples": [
+      {
+       "language": "curl",
+       "code": "curl --location --request GET 'https://api.lifen.fr/fhir/v3/Patient/[id]' \\\n--header 'Content-Type: application/fhir+json'"
+      }
+     ],
+     "samples-languages": [
+      "curl"
+     ]
+    }
+   }
+  },
+  "/v3/Coverage/_search": {
+   "post": {
+    "summary": "Access Coverage Patient information",
+    "description": "",
+    "operationId": "access-coverage-patient-information",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "schema": {
+       "type": "string",
+       "default": "application/x-www-form-urlencoded"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "required": [
+         "beneficiary"
+        ],
+        "properties": {
+         "beneficiary": {
+          "type": "string",
+          "description": "patient beneficiary of the coverage"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "R\u00e9sultat trouv\u00e9": {
+          "value": "{\n    \"resourceType\": \"Bundle\",\n    \"meta\": {\n        \"lastUpdated\": \"2023-01-23T16:37:18.692+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 1,\n    \"entry\": [\n        {\n            \"resource\": {\n                \"resourceType\": \"Coverage\",\n                \"identifier\": [\n                    {\n                        \"use\": \"official\",\n                        \"type\": {\n                            \"coding\": [\n                                {\n                                    \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n                                    \"code\": \"NH\"\n                                }\n                            ]\n                        },\n                        \"system\": \"urn:oid:1.2.250.1.213.1.4.8\",\n                        \"value\": \"[NIR-OD/NIR-NIA]\"\n                    }\n                ],\n                \"status\": \"active\",\n                \"beneficiary\": {\n                    \"reference\": \"Patient/[id]\"\n                },\n                \"payor\": [\n                    {\n                        \"reference\": \"Organization/21793798\"\n                    }\n                ]\n            },\n            \"search\": {\n                \"mode\": \"match\"\n            }\n        }\n    ]\n}"
+         },
+         "Pas de r\u00e9sultat": {
+          "value": "{\n    \"resourceType\": \"Bundle\",\n    \"meta\": {\n        \"lastUpdated\": \"2023-01-23T16:39:41.774+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 0\n}"
+         }
+        },
+        "schema": {
+         "oneOf": [
+          {
+           "title": "R\u00e9sultat trouv\u00e9",
+           "type": "object",
+           "properties": {
+            "resourceType": {
+             "type": "string",
+             "example": "Bundle"
+            },
+            "meta": {
+             "type": "object",
+             "properties": {
+              "lastUpdated": {
+               "type": "string",
+               "example": "2023-01-23T16:37:18.692+00:00"
+              }
+             }
+            },
+            "type": {
+             "type": "string",
+             "example": "searchset"
+            },
+            "total": {
+             "type": "integer",
+             "example": 1,
+             "default": 0
+            },
+            "entry": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "resource": {
+                "type": "object",
+                "properties": {
+                 "resourceType": {
+                  "type": "string",
+                  "example": "Coverage"
+                 },
+                 "identifier": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "use": {
+                     "type": "string",
+                     "example": "official"
+                    },
+                    "type": {
+                     "type": "object",
+                     "properties": {
+                      "coding": {
+                       "type": "array",
+                       "items": {
+                        "type": "object",
+                        "properties": {
+                         "system": {
+                          "type": "string",
+                          "example": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                         },
+                         "code": {
+                          "type": "string",
+                          "example": "NH"
+                         }
+                        }
+                       }
+                      }
+                     }
+                    },
+                    "system": {
+                     "type": "string",
+                     "example": "urn:oid:1.2.250.1.213.1.4.8"
+                    },
+                    "value": {
+                     "type": "string",
+                     "example": "[NIR-OD/NIR-NIA]"
+                    }
+                   }
+                  }
+                 },
+                 "status": {
+                  "type": "string",
+                  "example": "active"
+                 },
+                 "beneficiary": {
+                  "type": "object",
+                  "properties": {
+                   "reference": {
+                    "type": "string",
+                    "example": "Patient/[id]"
+                   }
+                  }
+                 },
+                 "payor": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "reference": {
+                     "type": "string",
+                     "example": "Organization/21793798"
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "search": {
+                "type": "object",
+                "properties": {
+                 "mode": {
+                  "type": "string",
+                  "example": "match"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          {
+           "title": "Pas de r\u00e9sultat",
+           "type": "object",
+           "properties": {
+            "resourceType": {
+             "type": "string",
+             "example": "Bundle"
+            },
+            "meta": {
+             "type": "object",
+             "properties": {
+              "lastUpdated": {
+               "type": "string",
+               "example": "2023-01-23T16:39:41.774+00:00"
+              }
+             }
+            },
+            "type": {
+             "type": "string",
+             "example": "searchset"
+            },
+            "total": {
+             "type": "integer",
+             "example": 0,
+             "default": 0
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Champ patient non renseign\u00e9": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"must not be empty\",\n            \"location\": \"patient\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "must not be empty"
+             },
+             "location": {
+              "type": "string",
+              "example": "patient"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false,
+    "x-readme": {
+     "code-samples": [
+      {
+       "language": "curl",
+       "code": "curl --location --request POST 'https://api.post-prod.lifen.fr.fr/fhir/v3/Coverage/_search' \\\n--header 'Content-Type: application/x-www-form-urlencoded' \\\n--data-urlencode 'beneficiary=Patient/[id]'"
+      }
+     ],
+     "samples-languages": [
+      "curl"
+     ]
+    }
+   }
+  },
+  "/v3/Encounter/_search": {
+   "post": {
+    "summary": "Access Encounter Information",
+    "description": "",
+    "operationId": "encounter_search",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/x-www-form-urlencoded"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "patient": {
+          "type": "string",
+          "default": "Patient/"
+         },
+         "date": {
+          "type": "string"
+         },
+         "identifier": {
+          "type": "string"
+         },
+         "status": {
+          "type": "string"
+         },
+         "service-provider": {
+          "properties": {
+           "_extension": {
+            "type": "string"
+           }
+          },
+          "required": [],
+          "type": "object"
+         },
+         "_id": {
+          "type": "string",
+          "description": "multivalued supported"
+         },
+         "_count": {
+          "type": "integer",
+          "description": "max: 100 (0 forbidden)",
+          "format": "int32"
+         },
+         "_sort": {
+          "type": "string",
+          "default": "_lastUpdated"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"Bundle\",\n    \"id\": \"[uuid]\",\n    \"meta\": {\n        \"lastUpdated\": \"2022-10-05T15:39:43.152+00:00\"\n    },\n    \"type\": \"searchset\",\n    \"total\": 1,\n    \"link\": [\n        {\n            \"relation\": \"self\",\n            \"url\": \"https://api.post-prod.lifen.fr/fhir/v3/Encounter?identifier=[identifier]\"\n        }\n    ],\n    \"entry\": [\n        {\n            \"fullUrl\": \"https://api.post-prod.lifen.fr/fhir/v3/Encounter/[id]\",\n            \"resource\": {\n                \"resourceType\": \"Encounter\",\n                \"id\": \"[id]\",\n                \"meta\": {\n                    \"versionId\": \"2\",\n                    \"lastUpdated\": \"2022-10-04T09:41:57.000+00:00\",\n                    \"tag\": [\n                        {\n                            \"system\": \"https://www.lifen.fr/default\",\n                            \"code\": \"DEFAULT\",\n                            \"display\": \"Default tag\"\n                        }\n                    ]\n                },\n                \"extension\": [\n                    {\n                        \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n                        \"valueString\": \"[db_ref]\"\n                    }\n                ],\n                \"identifier\": [\n                    {\n                        \"use\": \"official\",\n                        \"type\": {\n                            \"coding\": [\n                                {\n                                    \"system\": \"http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type\",\n                                    \"version\": \"3.0.1\",\n                                    \"code\": \"VN\",\n                                    \"display\": \"Visit Number\"\n                                }\n                            ]\n                        },\n                        \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n                        \"value\": \"[visit_number]\",\n                        \"assigner\": {\n                            \"reference\": \"Organization/[structure_id]\"\n                        }\n                    }\n                ],\n                \"status\": \"in-progress\",\n                \"statusHistory\": [\n                    {\n                        \"status\": \"in-progress\",\n                        \"period\": {\n                            \"start\": \"2022-07-12T11:00:35.000Z\"\n                        }\n                    }\n                ],\n                \"subject\": {\n                    \"reference\": \"Patient/[patient_id]\"\n                },\n                \"period\": {\n                    \"start\": \"2021-11-23T00:00:00+01:00\",\n                    \"end\": \"2022-10-24T00:00:00+02:00\"\n                },\n                \"serviceProvider\": {\n                    \"reference\": \"Organization/[structure_id]\"\n                }\n            },\n            \"search\": {\n                \"mode\": \"match\"\n            }\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Bundle"
+          },
+          "id": {
+           "type": "string",
+           "example": "[uuid]"
+          },
+          "meta": {
+           "type": "object",
+           "properties": {
+            "lastUpdated": {
+             "type": "string",
+             "example": "2022-10-05T15:39:43.152+00:00"
+            }
+           }
+          },
+          "type": {
+           "type": "string",
+           "example": "searchset"
+          },
+          "total": {
+           "type": "integer",
+           "example": 1,
+           "default": 0
+          },
+          "link": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "relation": {
+              "type": "string",
+              "example": "self"
+             },
+             "url": {
+              "type": "string",
+              "example": "https://api.post-prod.lifen.fr/fhir/v3/Encounter?identifier=[identifier]"
+             }
+            }
+           }
+          },
+          "entry": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "fullUrl": {
+              "type": "string",
+              "example": "https://api.post-prod.lifen.fr/fhir/v3/Encounter/[id]"
+             },
+             "resource": {
+              "type": "object",
+              "properties": {
+               "resourceType": {
+                "type": "string",
+                "example": "Encounter"
+               },
+               "id": {
+                "type": "string",
+                "example": "[id]"
+               },
+               "meta": {
+                "type": "object",
+                "properties": {
+                 "versionId": {
+                  "type": "string",
+                  "example": "2"
+                 },
+                 "lastUpdated": {
+                  "type": "string",
+                  "example": "2022-10-04T09:41:57.000+00:00"
+                 },
+                 "tag": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "system": {
+                     "type": "string",
+                     "example": "https://www.lifen.fr/default"
+                    },
+                    "code": {
+                     "type": "string",
+                     "example": "DEFAULT"
+                    },
+                    "display": {
+                     "type": "string",
+                     "example": "Default tag"
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "extension": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "url": {
+                   "type": "string",
+                   "example": "http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference"
+                  },
+                  "valueString": {
+                   "type": "string",
+                   "example": "[db_ref]"
+                  }
+                 }
+                }
+               },
+               "identifier": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "use": {
+                   "type": "string",
+                   "example": "official"
+                  },
+                  "type": {
+                   "type": "object",
+                   "properties": {
+                    "coding": {
+                     "type": "array",
+                     "items": {
+                      "type": "object",
+                      "properties": {
+                       "system": {
+                        "type": "string",
+                        "example": "http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type"
+                       },
+                       "version": {
+                        "type": "string",
+                        "example": "3.0.1"
+                       },
+                       "code": {
+                        "type": "string",
+                        "example": "VN"
+                       },
+                       "display": {
+                        "type": "string",
+                        "example": "Visit Number"
+                       }
+                      }
+                     }
+                    }
+                   }
+                  },
+                  "system": {
+                   "type": "string",
+                   "example": "urn:oid:1.2.250.1.71.4.2.2.[structure_id]"
+                  },
+                  "value": {
+                   "type": "string",
+                   "example": "[visit_number]"
+                  },
+                  "assigner": {
+                   "type": "object",
+                   "properties": {
+                    "reference": {
+                     "type": "string",
+                     "example": "Organization/[structure_id]"
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "status": {
+                "type": "string",
+                "example": "in-progress"
+               },
+               "statusHistory": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "status": {
+                   "type": "string",
+                   "example": "in-progress"
+                  },
+                  "period": {
+                   "type": "object",
+                   "properties": {
+                    "start": {
+                     "type": "string",
+                     "example": "2022-07-12T11:00:35.000Z"
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "subject": {
+                "type": "object",
+                "properties": {
+                 "reference": {
+                  "type": "string",
+                  "example": "Patient/[patient_id]"
+                 }
+                }
+               },
+               "period": {
+                "type": "object",
+                "properties": {
+                 "start": {
+                  "type": "string",
+                  "example": "2021-11-23T00:00:00+01:00"
+                 },
+                 "end": {
+                  "type": "string",
+                  "example": "2022-10-24T00:00:00+02:00"
+                 }
+                }
+               },
+               "serviceProvider": {
+                "type": "object",
+                "properties": {
+                 "reference": {
+                  "type": "string",
+                  "example": "Organization/[structure_id]"
+                 }
+                }
+               }
+              }
+             },
+             "search": {
+              "type": "object",
+              "properties": {
+               "mode": {
+                "type": "string",
+                "example": "match"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of patient, date, identifier, service-provider._extension or status fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "At least one of patient, date, identifier, service-provider._extension or status fields must be filled"
+             },
+             "location": {
+              "type": "string",
+              "example": "allValueNull"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false
+   }
+  },
+  "/v3/Encounter/{id}": {
+   "get": {
+    "summary": "Access Encounter by id",
+    "description": "",
+    "operationId": "access-encounter-by-id",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/fhir+json"
+      }
+     },
+     {
+      "name": "id",
+      "in": "path",
+      "schema": {
+       "type": "string"
+      },
+      "required": true
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"Encounter\",\n    \"id\": \"[id]\",\n    \"meta\": {\n      \"versionId\": \"2\",\n        \"lastUpdated\": \"2022-10-04T09:41:57.000+00:00\",\n          \"tag\": [\n            {\n              \"system\": \"https://www.lifen.fr/default\",\n              \"code\": \"DEFAULT\",\n              \"display\": \"Default tag\"\n            }\n          ]\n    },\n    \"extension\": [\n        {\n          \"url\": \"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\",\n          \"valueString\": \"[db_ref]\"\n        }\n    ],\n    \"identifier\": [\n        {\n          \"use\": \"official\",\n          \"type\": {\n            \"coding\": [\n              {\n                \"system\": \"http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type\",\n                \"version\": \"3.0.1\",\n                \"code\": \"VN\",\n                \"display\": \"Visit Number\"\n              }\n            ]\n          },\n          \"system\": \"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\",\n          \"value\": \"[visit_number]\",\n          \"assigner\": {\n            \"reference\": \"Organization/[structure_id]\"\n          }\n        }\n    ],\n    \"status\": \"in-progress\",\n    \"statusHistory\": [\n        {\n          \"status\": \"in-progress\",\n          \"period\": {\n            \"start\": \"2022-07-12T11:00:35.000Z\"\n          }\n        }\n    ],\n    \"subject\": {\n        \"reference\": \"Patient/[patient_id]\"\n    },\n    \"period\": {\n        \"start\": \"2021-11-23T00:00:00+01:00\",\n        \"end\": \"2022-10-24T00:00:00+02:00\"\n    },\n    \"serviceProvider\": {\n        \"reference\": \"Organization/[structure_id]\"\n    }\n}\n"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Encounter"
+          },
+          "id": {
+           "type": "string",
+           "example": "[id]"
+          },
+          "meta": {
+           "type": "object",
+           "properties": {
+            "versionId": {
+             "type": "string",
+             "example": "2"
+            },
+            "lastUpdated": {
+             "type": "string",
+             "example": "2022-10-04T09:41:57.000+00:00"
+            },
+            "tag": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "system": {
+                "type": "string",
+                "example": "https://www.lifen.fr/default"
+               },
+               "code": {
+                "type": "string",
+                "example": "DEFAULT"
+               },
+               "display": {
+                "type": "string",
+                "example": "Default tag"
+               }
+              }
+             }
+            }
+           }
+          },
+          "extension": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "url": {
+              "type": "string",
+              "example": "http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference"
+             },
+             "valueString": {
+              "type": "string",
+              "example": "[db_ref]"
+             }
+            }
+           }
+          },
+          "identifier": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "use": {
+              "type": "string",
+              "example": "official"
+             },
+             "type": {
+              "type": "object",
+              "properties": {
+               "coding": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "system": {
+                   "type": "string",
+                   "example": "http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type"
+                  },
+                  "version": {
+                   "type": "string",
+                   "example": "3.0.1"
+                  },
+                  "code": {
+                   "type": "string",
+                   "example": "VN"
+                  },
+                  "display": {
+                   "type": "string",
+                   "example": "Visit Number"
+                  }
+                 }
+                }
+               }
+              }
+             },
+             "system": {
+              "type": "string",
+              "example": "urn:oid:1.2.250.1.71.4.2.2.[structure_id]"
+             },
+             "value": {
+              "type": "string",
+              "example": "[visit_number]"
+             },
+             "assigner": {
+              "type": "object",
+              "properties": {
+               "reference": {
+                "type": "string",
+                "example": "Organization/[structure_id]"
+               }
+              }
+             }
+            }
+           }
+          },
+          "status": {
+           "type": "string",
+           "example": "in-progress"
+          },
+          "statusHistory": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "status": {
+              "type": "string",
+              "example": "in-progress"
+             },
+             "period": {
+              "type": "object",
+              "properties": {
+               "start": {
+                "type": "string",
+                "example": "2022-07-12T11:00:35.000Z"
+               }
+              }
+             }
+            }
+           }
+          },
+          "subject": {
+           "type": "object",
+           "properties": {
+            "reference": {
+             "type": "string",
+             "example": "Patient/[patient_id]"
+            }
+           }
+          },
+          "period": {
+           "type": "object",
+           "properties": {
+            "start": {
+             "type": "string",
+             "example": "2021-11-23T00:00:00+01:00"
+            },
+            "end": {
+             "type": "string",
+             "example": "2022-10-24T00:00:00+02:00"
+            }
+           }
+          },
+          "serviceProvider": {
+           "type": "object",
+           "properties": {
+            "reference": {
+             "type": "string",
+             "example": "Organization/[structure_id]"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "404",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"NOTFOUND\",\n            \"diagnostics\": \"Unknown service (GET) : Encounter/[id]\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "NOTFOUND"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "Unknown service (GET) : Encounter/[id]"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "415": {
+      "description": "415",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"STRUCTURE\",\n            \"diagnostics\": \"Issue with media type\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "STRUCTURE"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "Issue with media type"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false
+   }
+  },
+  "/v3/CommunicationRequest/$send-to-ehr": {
+   "post": {
+    "summary": "Send document to the EHR",
+    "description": "",
+    "operationId": "communicationrequestsend-to-ehr-1",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/fhir+json"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "required": [
+         "resourceType",
+         "parameter"
+        ],
+        "properties": {
+         "resourceType": {
+          "type": "string",
+          "default": "Parameters"
+         },
+         "parameter": {
+          "type": "array",
+          "description": "The parameters : subject (valueReference), context (valueReference), content-type (valueCode - optional), document-type (valueCode - optional), document-title (valueString - optional), payload (valueString), sender-identifier (valueString - optional)",
+          "items": {
+           "properties": {
+            "name": {
+             "type": "string"
+            },
+            "valueReference": {
+             "type": "object",
+             "required": [
+              "reference"
+             ],
+             "properties": {
+              "reference": {
+               "type": "string"
+              }
+             }
+            },
+            "valueString": {
+             "type": "string"
+            },
+            "valueCode": {
+             "type": "string"
+            },
+            "part": {
+             "type": "array",
+             "items": {
+              "properties": {
+               "name": {
+                "type": "string"
+               },
+               "resource": {
+                "type": "object"
+               }
+              },
+              "required": [
+               "name",
+               "resource"
+              ],
+              "type": "object"
+             }
+            }
+           },
+           "required": [
+            "name"
+           ],
+           "type": "object"
+          }
+         }
+        }
+       },
+       "examples": {
+        "send-to-ehr-example": {
+         "value": {
+          "resourceType": "Parameters",
+          "parameter": [
+           {
+            "name": "subject",
+            "valueReference": {
+             "reference": "Patient/{{patientId}}"
+            }
+           },
+           {
+            "name": "context",
+            "valueReference": {
+             "reference": "Encounter/{{encounterId}}"
+            }
+           },
+           {
+            "name": "content-type",
+            "valueCode": "application/pdf"
+           },
+           {
+            "name": "document-type",
+            "valueCode": "11488-4"
+           },
+           {
+            "name": "document-title",
+            "valueString": "Compte rendu de t\u00e9l\u00e9m\u00e9decine"
+           },
+           {
+            "name": "payload",
+            "valueString": "{{base64}}"
+           }
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "201",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n\t\"resourceType\": \"Parameters\",\n\t\"parameter\": [\n\t\t{\n\t\t\t\"name\": \"tracking-url\",\n\t\t\t\"valueString\": \"https://api.post-prod.lifen.fr/fhir/v3/Communication?based-on=CommunicationRequest/[id_communication_request]&_elements=status,notDoneReason\"\n\t\t}\n\t]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Parameters"
+          },
+          "parameter": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "name": {
+              "type": "string",
+              "example": "tracking-url"
+             },
+             "valueString": {
+              "type": "string",
+              "example": "https://api.post-prod.lifen.fr/fhir/v3/Communication?based-on=CommunicationRequest/[id_communication_request]&_elements=status,notDoneReason"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "401",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n\t\"resourceType\": \"OperationOutcome\",\n\t\"issue\": [\n\t\t{\n\t\t\t\"severity\": \"error\",\n\t\t\t\"code\": \"processing\",\n\t\t\t\"diagnostics\": \"Invalid access token\"\n\t\t}\n\t]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "error"
+             },
+             "code": {
+              "type": "string",
+              "example": "processing"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "Invalid access token"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "403": {
+      "description": "403",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n\t\"resourceType\": \"OperationOutcome\",\n\t\"issue\": [\n\t\t{\n\t\t\t\"severity\": \"ERROR\",\n\t\t\t\"code\": \"FORBIDDEN\",\n\t\t\t\"diagnostics\": \"[error_diagnostic]\"\n\t\t}\n\t]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "FORBIDDEN"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "[error_diagnostic]"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"[error_diagnostic]\",\n            \"location\": \"[error_location]\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "[error_diagnostic]"
+             },
+             "location": {
+              "type": "string",
+              "example": "[error_location]"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false
+   }
+  },
+  "/v3/CommunicationRequest/$send-to-mss": {
+   "post": {
+    "summary": "Send document to Healthcare Professionals",
+    "description": "For more details, please refer to the \"Guides\" section",
+    "operationId": "send-document-to-the-hcp",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/fhir+json"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "required": [
+         "resourceType",
+         "parameter"
+        ],
+        "properties": {
+         "resourceType": {
+          "type": "string",
+          "default": "Parameters"
+         },
+         "parameter": {
+          "type": "array",
+          "items": {
+           "properties": {
+            "name": {
+             "type": "string"
+            },
+            "valueReference": {
+             "type": "object",
+             "required": [
+              "reference"
+             ],
+             "properties": {
+              "reference": {
+               "type": "string"
+              }
+             }
+            },
+            "valueString": {
+             "type": "string"
+            },
+            "valueCode": {
+             "type": "string"
+            },
+            "part": {
+             "type": "array",
+             "items": {
+              "properties": {
+               "name": {
+                "type": "string"
+               },
+               "resource": {
+                "type": "object"
+               }
+              },
+              "required": [
+               "name",
+               "resource"
+              ],
+              "type": "object"
+             }
+            }
+           },
+           "required": [
+            "name"
+           ],
+           "type": "object"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "201",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"Parameters\",\n    \"parameter\": [\n        {\n            \"name\": \"tracking-url\",\n            \"valueString\": \"https://api.lifen.fr/fhir/v3/CommunicationRequest/$tracking?transaction-id=ifad1343e-496f-11ed-b878-0242ac120002\"\n        },\n      \t{\n            \"name\": \"transaction-id\",\n            \"valueString\": \"ifad1343e-496f-11ed-b878-0242ac120002\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Parameters"
+          },
+          "parameter": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "name": {
+              "type": "string",
+              "example": "tracking-url"
+             },
+             "valueString": {
+              "type": "string",
+              "example": "https://api.lifen.fr/fhir/v3/CommunicationRequest/$tracking?transaction-id=ifad1343e-496f-11ed-b878-0242ac120002"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "412": {
+      "description": "412",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Mail support missing, please defined it in `https://portal.lifen.fr`\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "Mail support missing, please defined it in `https://portal.lifen.fr`"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"[error_diagnostic]\",\n            \"location\": \"[error_location]\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "[error_diagnostic]"
+             },
+             "location": {
+              "type": "string",
+              "example": "[error_location]"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false
+   }
+  },
+  "/v3/CommunicationRequest/$tracking?transaction-id={transaction-id}": {
+   "get": {
+    "summary": "Check sending status",
+    "description": "",
+    "operationId": "send-to-mss-check-sending-status",
+    "parameters": [
+     {
+      "name": "transaction-id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "ifad1343e-496f-11ed-b878-0242ac120002"
+      }
+     },
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "schema": {
+       "type": "string",
+       "default": "application/fhir+json"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n\t\"resourceType\": \"Bundle\",\n\t\"type\": \"collection\",\n\t\"total\": 1,\n\t\"entry\": [\n\t\t{\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Communication\",\n\t\t\t\t\"status\": \"completed\",\n        \"medium\": [\n          {\n            \"coding\": [\n              {\n                \"system\": \"http://lifen.fr/fhir/ValueSet/communication-medium\",\n                \"code\": \"MSSANTE\"\n              }\n            ],\n            \"text\": \"paulette.michue@test.lifen.mssante.fr\"\n          }\n        ]\n\t\t\t}\n\t\t}\n\t]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Bundle"
+          },
+          "type": {
+           "type": "string",
+           "example": "collection"
+          },
+          "total": {
+           "type": "integer",
+           "example": 1,
+           "default": 0
+          },
+          "entry": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "resource": {
+              "type": "object",
+              "properties": {
+               "resourceType": {
+                "type": "string",
+                "example": "Communication"
+               },
+               "status": {
+                "type": "string",
+                "example": "completed"
+               },
+               "medium": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "coding": {
+                   "type": "array",
+                   "items": {
+                    "type": "object",
+                    "properties": {
+                     "system": {
+                      "type": "string",
+                      "example": "http://lifen.fr/fhir/ValueSet/communication-medium"
+                     },
+                     "code": {
+                      "type": "string",
+                      "example": "MSSANTE"
+                     }
+                    }
+                   }
+                  },
+                  "text": {
+                   "type": "string",
+                   "example": "paulette.michue@test.lifen.mssante.fr"
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false
+   }
+  },
+  "/v3/Practitioner/$search-for-mss": {
+   "post": {
+    "summary": "Search healthcare professional",
+    "description": "",
+    "operationId": "search-healthcare-professional",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/x-www-form-urlencoded"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "name": {
+          "type": "string",
+          "description": "family or/and given"
+         },
+         "identifier": {
+          "type": "string",
+          "description": "RPPS of the healthcare professional"
+         },
+         "given": {
+          "type": "string",
+          "description": "firstname of the healthcare professional"
+         },
+         "family": {
+          "type": "string",
+          "description": "lastname of the healthcare professional"
+         },
+         "telecom": {
+          "type": "string",
+          "description": "address mssante of the healthcare professional"
+         },
+         "address": {
+          "type": "string",
+          "description": "postal address of the healthcare professional"
+         },
+         "_id": {
+          "type": "string",
+          "description": "multivalued supported"
+         },
+         "_count": {
+          "type": "string",
+          "description": "max: 100 (0 forbidden)"
+         },
+         "_sort": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n\t\"resourceType\": \"Bundle\",\n\t\"id\": \"aff6fcd5-76fb-40eb-bfb0-64fde9a0678c\",\n\t\"type\": \"searchset\",\n\t\"total\": 451247,\n\t\"entry\": [\n\t\t{\n\t\t\t\"fullUrl\": \"https://api.post-prod.lifen.fr/fhir/v3/Practitioner/[id]\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Practitioner\",\n\t\t\t\t\"id\": \"[id]\",\n\t\t\t\t\"identifier\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"system\": \"urn:oid:1.2.250.1.71.4.2.1\",\n\t\t\t\t\t\t\"value\": \"811111111111111\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"name\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"use\": \"official\",\n\t\t\t\t\t\t\"family\": \"Michue\",\n\t\t\t\t\t\t\"given\": [\n\t\t\t\t\t\t\t\"Paulette\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"prefix\": [\n\t\t\t\t\t\t\t\"DR\"\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"telecom\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"6673280\",\n\t\t\t\t\t\t\"system\": \"email\",\n\t\t\t\t\t\t\"value\": \"mail1@mssante.fr\",\n\t\t\t\t\t\t\"use\": \"work\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"6673280\",\n\t\t\t\t\t\t\"system\": \"email\",\n\t\t\t\t\t\t\"value\": \"mail2@mssante.fr\",\n\t\t\t\t\t\t\"use\": \"work\",\n\t\t\t\t\t\t\"rank\": 1 \n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"address\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"42941332\",\n\t\t\t\t\t\t\"use\": \"work\",\n\t\t\t\t\t\t\"line\": [\n\t\t\t\t\t\t\t\"CLINIQUE TEST\",\n\t\t\t\t\t\t\t\"71 RUE TEST\",\n\t\t\t\t\t\t\t\"12345 ST TEST CEDEX\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"city\": \"TEST\",\n\t\t\t\t\t\t\"postalCode\": \"12345\",\n\t\t\t\t\t\t\"country\": \"FRA\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t\"search\": {\n\t\t\t\t\"mode\": \"match\"\n\t\t\t}\n\t\t}\n]}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Bundle"
+          },
+          "id": {
+           "type": "string",
+           "example": "aff6fcd5-76fb-40eb-bfb0-64fde9a0678c"
+          },
+          "type": {
+           "type": "string",
+           "example": "searchset"
+          },
+          "total": {
+           "type": "integer",
+           "example": 451247,
+           "default": 0
+          },
+          "entry": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "fullUrl": {
+              "type": "string",
+              "example": "https://api.post-prod.lifen.fr/fhir/v3/Practitioner/[id]"
+             },
+             "resource": {
+              "type": "object",
+              "properties": {
+               "resourceType": {
+                "type": "string",
+                "example": "Practitioner"
+               },
+               "id": {
+                "type": "string",
+                "example": "[id]"
+               },
+               "identifier": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "system": {
+                   "type": "string",
+                   "example": "urn:oid:1.2.250.1.71.4.2.1"
+                  },
+                  "value": {
+                   "type": "string",
+                   "example": "811111111111111"
+                  }
+                 }
+                }
+               },
+               "name": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "use": {
+                   "type": "string",
+                   "example": "official"
+                  },
+                  "family": {
+                   "type": "string",
+                   "example": "Michue"
+                  },
+                  "given": {
+                   "type": "array",
+                   "items": {
+                    "type": "string",
+                    "example": "Paulette"
+                   }
+                  },
+                  "prefix": {
+                   "type": "array",
+                   "items": {
+                    "type": "string",
+                    "example": "DR"
+                   }
+                  }
+                 }
+                }
+               },
+               "telecom": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "6673280"
+                  },
+                  "system": {
+                   "type": "string",
+                   "example": "email"
+                  },
+                  "value": {
+                   "type": "string",
+                   "example": "mail1@mssante.fr"
+                  },
+                  "use": {
+                   "type": "string",
+                   "example": "work"
+                  }
+                 }
+                }
+               },
+               "address": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "42941332"
+                  },
+                  "use": {
+                   "type": "string",
+                   "example": "work"
+                  },
+                  "line": {
+                   "type": "array",
+                   "items": {
+                    "type": "string",
+                    "example": "CLINIQUE TEST"
+                   }
+                  },
+                  "city": {
+                   "type": "string",
+                   "example": "TEST"
+                  },
+                  "postalCode": {
+                   "type": "string",
+                   "example": "12345"
+                  },
+                  "country": {
+                   "type": "string",
+                   "example": "FRA"
+                  }
+                 }
+                }
+               }
+              }
+             },
+             "search": {
+              "type": "object",
+              "properties": {
+               "mode": {
+                "type": "string",
+                "example": "match"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of family, given, name, birthdate, phone or identifier fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "At least one of family, given, name, birthdate, phone or identifier fields must be filled"
+             },
+             "location": {
+              "type": "string",
+              "example": "allValueNull"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false,
+    "x-readme": {
+     "code-samples": [
+      {
+       "language": "curl",
+       "code": "curl --request POST \\\n  --url https://fhir-api.private.lifen.fr/fhir/v3/Practitioner/_search \\\n  --header 'Authorization: Bearer xxxxx' \\\n  --header 'Content-Type: application/x-www-form-urlencoded' \\\n  --data 'family=michue' \\\n  --data 'given=paulette'  "
+      }
+     ],
+     "samples-languages": [
+      "curl"
+     ]
+    }
+   }
+  },
+  "/v3/Organization/$search-for-mss": {
+   "post": {
+    "summary": "Search healthcare structure",
+    "description": "",
+    "operationId": "search-healthcare-structure",
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "default": "application/x-www-form-urlencoded"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "name": {
+          "type": "string",
+          "description": "name of the structure"
+         },
+         "identifier": {
+          "type": "string",
+          "description": "FINESS of the healthcare structure"
+         },
+         "telecom": {
+          "type": "string",
+          "description": "address mssante of the healthcare structure"
+         },
+         "address": {
+          "type": "string",
+          "description": "part of the address of the healthcare structure"
+         },
+         "part-of": {
+          "type": "string",
+          "description": "FHIR Reference of the organization of which this organization forms a part"
+         },
+         "_id": {
+          "type": "string",
+          "description": "multivalued supported"
+         },
+         "_count": {
+          "type": "string",
+          "description": "max: 100 (0 forbidden)"
+         },
+         "_sort": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "200",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n\t\"resourceType\": \"Bundle\",\n\t\"id\": \"aff6fcd5-76fb-40eb-bfb0-64fde9a0678c\",\n\t\"type\": \"searchset\",\n\t\"total\": 451247,\n\t\"entry\": [\n\t\t{\n\t\t\t\"fullUrl\": \"https://fhir-api.private.staging.lifen.fr/fhir/dstu3/Organization/[id]\",\n\t\t\t\"resource\": {\n        \"resourceType\": \"Organization\",\n        \"id\": \"996644\",\n        \"name\": \"CH TEST\",\n        \"telecom\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"6673280\",\n\t\t\t\t\t\t\"system\": \"email\",\n\t\t\t\t\t\t\"value\": \"mail1@mssante.fr\",\n\t\t\t\t\t\t\"use\": \"work\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"id\": \"6673280\",\n\t\t\t\t\t\t\"system\": \"email\",\n\t\t\t\t\t\t\"value\": \"mail2@mssante.fr\",\n\t\t\t\t\t\t\"use\": \"work\",\n\t\t\t\t\t\t\"rank\": 1 \n\t\t\t\t\t}\n\t\t\t\t],\n        \"address\": [\n          {\n            \"id\": \"3157415241441669992\",\n            \"line\": [\n              \"CH TEST\",\n              \"124 Rue TEST\",\n              \"75000 Paris\"\n            ],\n            \"city\": \"Paris\",\n            \"postalCode\": \"75000\"\n          }\n        ]\n      },\n\t\t\t\"search\": {\n\t\t\t\t\"mode\": \"match\"\n\t\t\t}\n\t\t}\n]}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "Bundle"
+          },
+          "id": {
+           "type": "string",
+           "example": "aff6fcd5-76fb-40eb-bfb0-64fde9a0678c"
+          },
+          "type": {
+           "type": "string",
+           "example": "searchset"
+          },
+          "total": {
+           "type": "integer",
+           "example": 451247,
+           "default": 0
+          },
+          "entry": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "fullUrl": {
+              "type": "string",
+              "example": "https://fhir-api.private.staging.lifen.fr/fhir/dstu3/Organization/[id]"
+             },
+             "resource": {
+              "type": "object",
+              "properties": {
+               "resourceType": {
+                "type": "string",
+                "example": "Organization"
+               },
+               "id": {
+                "type": "string",
+                "example": "996644"
+               },
+               "name": {
+                "type": "string",
+                "example": "CH TEST"
+               },
+               "telecom": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "6673280"
+                  },
+                  "system": {
+                   "type": "string",
+                   "example": "email"
+                  },
+                  "value": {
+                   "type": "string",
+                   "example": "mail1@mssante.fr"
+                  },
+                  "use": {
+                   "type": "string",
+                   "example": "work"
+                  }
+                 }
+                }
+               },
+               "address": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "3157415241441669992"
+                  },
+                  "line": {
+                   "type": "array",
+                   "items": {
+                    "type": "string",
+                    "example": "CH TEST"
+                   }
+                  },
+                  "city": {
+                   "type": "string",
+                   "example": "Paris"
+                  },
+                  "postalCode": {
+                   "type": "string",
+                   "example": "75000"
+                  }
+                 }
+                }
+               }
+              }
+             },
+             "search": {
+              "type": "object",
+              "properties": {
+               "mode": {
+                "type": "string",
+                "example": "match"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "422",
+      "content": {
+       "application/json": {
+        "examples": {
+         "Result": {
+          "value": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"At least one of family, given, name, birthdate, phone or identifier fields must be filled\",\n            \"location\": \"allValueNull\"\n        },\n        {\n            \"severity\": \"ERROR\",\n            \"code\": \"PROCESSING\",\n            \"diagnostics\": \"Invalid parameter XXXX\",\n            \"location\": \"XXXXX\"\n        }\n    ]\n}"
+         }
+        },
+        "schema": {
+         "type": "object",
+         "properties": {
+          "resourceType": {
+           "type": "string",
+           "example": "OperationOutcome"
+          },
+          "issue": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "severity": {
+              "type": "string",
+              "example": "ERROR"
+             },
+             "code": {
+              "type": "string",
+              "example": "PROCESSING"
+             },
+             "diagnostics": {
+              "type": "string",
+              "example": "At least one of family, given, name, birthdate, phone or identifier fields must be filled"
+             },
+             "location": {
+              "type": "string",
+              "example": "allValueNull"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "deprecated": false,
+    "x-readme": {
+     "code-samples": [
+      {
+       "language": "curl",
+       "code": "curl --request POST \\\n  --url https://fhir-api.private.lifen.fr/fhir/v3/Practitioner/_search \\\n  --header 'Authorization: Bearer xxxxx' \\\n  --header 'Content-Type: application/x-www-form-urlencoded' \\\n  --data 'name=CH Angers'  "
+      }
+     ],
+     "samples-languages": [
+      "curl"
+     ]
+    }
+   }
+  }
+ },
+ "x-readme": {
+  "headers": [],
+  "explorer-enabled": false,
+  "proxy-enabled": true
+ },
+ "x-readme-fauxas": true
+}

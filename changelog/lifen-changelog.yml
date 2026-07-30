@@ -1,0 +1,77 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/changelog
+url: https://developer.lifen.fr/changelog
+scheme: dated-entries
+language: fr
+current_version: v3
+entry_count_published: 8
+latest_entry_date: '2023-06-15'
+note: >-
+  Lifen's public developer changelog covers the v3 platform and has not been added to since
+  June 2023; the documentation branch itself was last re-published 2025-06-11 and the ReadMe branch
+  metadata shows an update on 2026-07-03.
+entries:
+- date: '2023-06-15'
+  title: V3 - Mises à jour et nouveautés juin 2023
+  url: https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-juin-2023
+  breaking: false
+  additions:
+  - Webhooks are now available — subscribe to patient and encounter (séjour) events to receive
+    real-time notifications and build workflows.
+  highlights:
+  - Event payload example published.
+  - Webhook configuration walkthrough for Lifen Platform.
+- date: '2023-05-02'
+  title: V3 - Mises à jour et nouveautés Avril 2023
+  url: https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-avril-2023
+  breaking: false
+  areas:
+  - Identity & Encounter API
+  - Send documents to EHR API
+  - Send documents via MSSanté API
+- date: '2023-03-09'
+  title: V3 - Mises à jour et nouveautés - Février 2023
+  url: https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-février-2023
+  breaking: true
+  highlights:
+  - Section explicitly titled "Changements qui peuvent impacter votre application" (changes that may
+    impact your application).
+  areas:
+  - Identity & Encounter API — RGDS domain
+  - Send document to EHR API
+  - Send documents via MSSanté API
+- date: '2023-02-08'
+  title: '[V3] Mises à jour et nouveautés Janvier 2023'
+  url: https://developer.lifen.fr/changelog/v3-mises-à-jour-et-nouveautés-janvier-2023
+  breaking: false
+  areas:
+  - API basics
+  - Patient Identity & Encounter API
+  - Send documents to EHR API
+- date: '2022-12-05'
+  title: '[v3] API "envoi de documents via la MSSanté"'
+  url: https://developer.lifen.fr/changelog/v3-api-envoi-de-documents-via-la-mssanté
+  breaking: false
+  additions:
+  - Launch of the MSSanté document-sending API service.
+- date: '2022-10-26'
+  title: '[v3] Meilleure recherche par date de séjour'
+  url: https://developer.lifen.fr/changelog/meilleure-recherche-par-date-de-séjour
+  breaking: false
+  additions:
+  - Encounter (séjour) search can now be run over a date range rather than a single date.
+- date: '2022-10-26'
+  title: "[v3] Exposer le nom de l'application émettrice d'un document dans le DPI"
+  url: https://developer.lifen.fr/changelog/exposer-le-nom-de-lapplication-émettrice-dun-document-dans-le-dpi
+  breaking: false
+  additions:
+  - The sending application's name now appears in the MSH-3 segment of the HL7 ORU message
+    delivered to the EHR, for traceability.
+- date: '2022-10-26'
+  title: "[v3] Ne plus exposer le matricule INS si il n'est pas qualifié"
+  url: https://developer.lifen.fr/changelog/ne-plus-exposer-le-matricule-ins-si-il-nest-pas-qualifié
+  breaking: true
+  changes:
+  - Patient resources now expose the INS/NIA matricule only when the patient has a QUALIFIED INS;
+    the IPP is always exposed.

@@ -1,0 +1,198 @@
+{
+  "info": {
+    "_postman_id": "d137b8c5-01ed-4cf6-be0d-42a5812aebb9",
+    "name": "lifen-authentication-api CommunicationRequest Coverage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:38.000Z",
+    "updatedAt": "2026-07-28T02:06:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d137b8c5-01ed-4cf6-be0d-42a5812aebb9"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "Coverage",
+          "item": [
+            {
+              "name": "_search",
+              "item": [
+                {
+                  "name": "Access Coverage Patient information",
+                  "id": "cf147438-bbd9-4c47-96eb-e19cc33cffc7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"beneficiary\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/Coverage/_search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "Coverage",
+                        "_search"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b60c948a-a3af-431c-b577-a5a28afb2609",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"beneficiary\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Coverage/_search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Coverage",
+                            "_search"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"meta\": {\n    \"lastUpdated\": \"<string>\"\n  },\n  \"type\": \"<string>\",\n  \"total\": 0,\n  \"entry\": [\n    {\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"identifier\": [\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"beneficiary\": {\n          \"reference\": \"<string>\"\n        },\n        \"payor\": [\n          {\n            \"reference\": \"<string>\"\n          },\n          {\n            \"reference\": \"<string>\"\n          }\n        ]\n      },\n      \"search\": {\n        \"mode\": \"<string>\"\n      }\n    },\n    {\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"identifier\": [\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"code\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"beneficiary\": {\n          \"reference\": \"<string>\"\n        },\n        \"payor\": [\n          {\n            \"reference\": \"<string>\"\n          },\n          {\n            \"reference\": \"<string>\"\n          }\n        ]\n      },\n      \"search\": {\n        \"mode\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:39.000Z",
+                      "updatedAt": "2026-07-28T02:06:39.000Z",
+                      "uid": "35240-b60c948a-a3af-431c-b577-a5a28afb2609"
+                    },
+                    {
+                      "id": "44cdbff0-6e32-4ca6-9ee0-25e738a450bc",
+                      "name": "422",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"beneficiary\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Coverage/_search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Coverage",
+                            "_search"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:39.000Z",
+                      "updatedAt": "2026-07-28T02:06:39.000Z",
+                      "uid": "35240-44cdbff0-6e32-4ca6-9ee0-25e738a450bc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:39.000Z",
+                  "updatedAt": "2026-07-28T02:06:39.000Z",
+                  "uid": "35240-cf147438-bbd9-4c47-96eb-e19cc33cffc7"
+                }
+              ],
+              "id": "78b972dc-6750-43dd-9f89-1067dc3d1506",
+              "createdAt": "2026-07-28T02:06:39.000Z",
+              "updatedAt": "2026-07-28T02:06:39.000Z",
+              "uid": "35240-78b972dc-6750-43dd-9f89-1067dc3d1506"
+            }
+          ],
+          "id": "a91a7aaa-ea04-492e-8561-509bafe368ef",
+          "createdAt": "2026-07-28T02:06:39.000Z",
+          "updatedAt": "2026-07-28T02:06:39.000Z",
+          "uid": "35240-a91a7aaa-ea04-492e-8561-509bafe368ef"
+        }
+      ],
+      "id": "e557a5cf-e2ae-4781-a314-78d4db33286a",
+      "createdAt": "2026-07-28T02:06:39.000Z",
+      "updatedAt": "2026-07-28T02:06:39.000Z",
+      "uid": "35240-e557a5cf-e2ae-4781-a314-78d4db33286a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authentication.lifen.fr/"
+    }
+  ]
+}

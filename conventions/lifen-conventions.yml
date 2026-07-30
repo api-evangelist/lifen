@@ -1,0 +1,113 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/api-basics
+docs: https://developer.lifen.fr/docs/api-basics
+api_style:
+  protocol: REST over HTTPS
+  data_model: HL7 FHIR
+  fhir_version: R4
+  fhir_version_note: >-
+    The platform documentation states FHIR R4 as the data model; several error and search references
+    still link to the HL7 STU3 specification pages, and some example fullUrls use a /fhir/dstu3/
+    path.
+  media_types:
+  - application/json
+  - application/x-www-form-urlencoded
+  http_methods:
+  - method: GET
+    use: Read a resource.
+  - method: POST
+    use: Create a resource, or run a FHIR search via the _search form.
+  - method: DELETE
+    use: Not offered. Deletion is not exposed for security reasons; some resources can be archived
+      by updating them instead.
+authentication:
+  style: OAuth 2.0 client credentials, bearer token in the Authorization header
+  tenancy: Every token is bound to one healthcare organisation via the `database_reference` request
+    parameter.
+  artifact: authentication/lifen-authentication.yml
+idempotency:
+  supported: false
+  evidence: >-
+    Lifen publishes no idempotency-key header or parameter, and the OpenAPI declares none. Write
+    operations ($send-to-ehr, $send-to-mss) instead return a tracking URL keyed by transaction-id
+    that a client polls to determine outcome, which is the platform's stated de-duplication and
+    retry-safety mechanism on the read side.
+  retry_model:
+    tracking_operation: send-to-mss-check-sending-status
+    tracking_url: https://api.lifen.fr/fhir/v3/CommunicationRequest/$tracking?transaction-id={id}
+    docs: https://developer.lifen.fr/docs/send-a-document-to-the-ehr
+pagination:
+  style: cursor
+  applies_to: All endpoints returning a resource list (returned as a FHIR searchset Bundle).
+  request_params:
+  - name: _count
+    description: Page size. Default 10 (100 for Organization and Practitioner). Maximum 100. The
+      FHIR-standard _count=0 total-only form is NOT supported.
+  - name: _index
+    description: Page index, echoed from the previous page's link.
+  - name: _searchAfter
+    description: Forward cursor, taken from the `next` link.
+  - name: _searchBefore
+    description: Backward cursor, taken from the `previous` link.
+  response_fields:
+  - name: total
+    description: Total number of matching results across all pages.
+  - name: link
+    description: Array of relation/url pairs — self, previous, next. Follow `next` with GET.
+  - name: entry
+    description: Array of fullUrl + resource pairs.
+  unsupported_on:
+  - Ramsay
+  - Vivalto
+  note: Search on the Patient and Encounter services is additionally capped at 10 results per
+    search request.
+sorting:
+  param: _sort
+  default: _lastUpdated
+search:
+  style: FHIR _search
+  form: POST {base}/{ResourceType}/_search with application/x-www-form-urlencoded parameters
+  docs: https://www.hl7.org/fhir/http.html#search
+  date_prefixes:
+  - gt
+  - lt
+  - ge
+  - le
+  date_prefix_docs: https://hl7.org/fhir/stu3/search.html#date
+  indexing: >-
+    Indexing is asynchronous — a created or updated resource may not appear in search results for a
+    few seconds (rarely minutes).
+error_envelope:
+  format: FHIR OperationOutcome
+  media_type: application/json
+  fields:
+  - severity — fatal | error | warning | information
+  - code — FHIR issue-type code
+  - diagnostics — optional human-readable message
+  spec: https://www.hl7.org/fhir/STU3/operationoutcome.html#resource
+  artifact: errors/lifen-problem-types.yml
+rate_limiting:
+  global: 10 requests per second
+  signalling: HTTP 429 Too Many Requests
+  retry_after: >-
+    Lifen honours a Retry-After header sent BY the consumer on webhook delivery; the docs do not
+    document a Retry-After header on API 429 responses.
+  artifact: rate-limits/lifen-rate-limits.yml
+payload_limits:
+- scope: send-to-ehr Binary
+  limit: 15 MB
+  note: The receiving EHR (DPI) may impose a lower limit.
+versioning:
+  scheme: uri-path
+  current: v3
+  previous: v2 (documentation branch marked deprecated)
+  artifact: lifecycle/lifen-lifecycle.yml
+tracing:
+  request_id_header: null
+  note: No request-correlation header is documented for API calls. Webhook notifications carry
+    notification-uuid and event-uuid for de-duplication.
+webhooks:
+  artifact: asyncapi/lifen-platform-webhooks.yml
+environments:
+  artifact: sandbox/lifen-sandbox.yml

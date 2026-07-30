@@ -1,0 +1,379 @@
+{
+  "info": {
+    "_postman_id": "82bf685a-bbb7-4d3e-8d94-21462270c07f",
+    "name": "lifen-authentication-api CommunicationRequest Patient API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:43.000Z",
+    "updatedAt": "2026-07-28T02:06:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-82bf685a-bbb7-4d3e-8d94-21462270c07f"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "Patient",
+          "item": [
+            {
+              "name": "_search",
+              "item": [
+                {
+                  "name": "Access Patient Information",
+                  "id": "f061cde9-38a7-4ca9-bab5-512127970484",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"given\": \"<string>\",\n  \"name\": \"<string>\",\n  \"family\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"identifier\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/Patient/_search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "Patient",
+                        "_search"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f298934c-9fa4-46bc-a7fa-f6270f606064",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"given\": \"<string>\",\n  \"name\": \"<string>\",\n  \"family\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"identifier\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Patient/_search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Patient",
+                            "_search"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"lastUpdated\": \"<string>\"\n  },\n  \"type\": \"<string>\",\n  \"total\": 0,\n  \"link\": [\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<string>\",\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"id\": \"<string>\",\n        \"meta\": {\n          \"versionId\": \"<string>\",\n          \"lastUpdated\": \"<string>\",\n          \"tag\": [\n            {\n              \"system\": \"<string>\",\n              \"code\": \"<string>\",\n              \"display\": \"<string>\"\n            },\n            {\n              \"system\": \"<string>\",\n              \"code\": \"<string>\",\n              \"display\": \"<string>\"\n            }\n          ]\n        },\n        \"extension\": [\n          {\n            \"url\": \"<string>\",\n            \"valueAddress\": {\n              \"city\": \"<string>\",\n              \"district\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"country\": \"<string>\"\n            }\n          },\n          {\n            \"url\": \"<string>\",\n            \"valueAddress\": {\n              \"city\": \"<string>\",\n              \"district\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"country\": \"<string>\"\n            }\n          }\n        ],\n        \"identifier\": [\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"name\": [\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"gender\": \"<string>\",\n        \"birthDate\": \"<string>\",\n        \"multipleBirthInteger\": 0,\n        \"deceasedDateTime\": \"<string>\",\n        \"managingOrganization\": {\n          \"reference\": \"<string>\"\n        }\n      },\n      \"search\": {\n        \"mode\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<string>\",\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"id\": \"<string>\",\n        \"meta\": {\n          \"versionId\": \"<string>\",\n          \"lastUpdated\": \"<string>\",\n          \"tag\": [\n            {\n              \"system\": \"<string>\",\n              \"code\": \"<string>\",\n              \"display\": \"<string>\"\n            },\n            {\n              \"system\": \"<string>\",\n              \"code\": \"<string>\",\n              \"display\": \"<string>\"\n            }\n          ]\n        },\n        \"extension\": [\n          {\n            \"url\": \"<string>\",\n            \"valueAddress\": {\n              \"city\": \"<string>\",\n              \"district\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"country\": \"<string>\"\n            }\n          },\n          {\n            \"url\": \"<string>\",\n            \"valueAddress\": {\n              \"city\": \"<string>\",\n              \"district\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"country\": \"<string>\"\n            }\n          }\n        ],\n        \"identifier\": [\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"use\": \"<string>\",\n            \"type\": {\n              \"coding\": [\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                },\n                {\n                  \"system\": \"<string>\",\n                  \"version\": \"<string>\",\n                  \"code\": \"<string>\",\n                  \"display\": \"<string>\"\n                }\n              ]\n            },\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"name\": [\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"gender\": \"<string>\",\n        \"birthDate\": \"<string>\",\n        \"multipleBirthInteger\": 0,\n        \"deceasedDateTime\": \"<string>\",\n        \"managingOrganization\": {\n          \"reference\": \"<string>\"\n        }\n      },\n      \"search\": {\n        \"mode\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:44.000Z",
+                      "updatedAt": "2026-07-28T02:06:44.000Z",
+                      "uid": "35240-f298934c-9fa4-46bc-a7fa-f6270f606064"
+                    },
+                    {
+                      "id": "a8246219-0e0f-45c2-9751-89a3b7667f74",
+                      "name": "422",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"given\": \"<string>\",\n  \"name\": \"<string>\",\n  \"family\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"identifier\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Patient/_search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Patient",
+                            "_search"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:44.000Z",
+                      "updatedAt": "2026-07-28T02:06:44.000Z",
+                      "uid": "35240-a8246219-0e0f-45c2-9751-89a3b7667f74"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:43.000Z",
+                  "updatedAt": "2026-07-28T02:06:43.000Z",
+                  "uid": "35240-f061cde9-38a7-4ca9-bab5-512127970484"
+                }
+              ],
+              "id": "63b88052-4231-4421-8eb8-991e21415e28",
+              "createdAt": "2026-07-28T02:06:43.000Z",
+              "updatedAt": "2026-07-28T02:06:43.000Z",
+              "uid": "35240-63b88052-4231-4421-8eb8-991e21415e28"
+            },
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Access Patient by id",
+                  "id": "3205ff20-c7a9-49cb-8d49-08f766462485",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/Patient/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "Patient",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4f89e352-33a0-4930-9e4a-dcbc421dd633",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3b8054bf-92ba-4ada-baee-f2d719913c6c",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Patient/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Patient",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"<string>\",\n    \"lastUpdated\": \"<string>\",\n    \"tag\": [\n      {\n        \"system\": \"<string>\",\n        \"code\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"system\": \"<string>\",\n        \"code\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"<string>\",\n      \"valueAddress\": {\n        \"city\": \"<string>\",\n        \"district\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    },\n    {\n      \"url\": \"<string>\",\n      \"valueAddress\": {\n        \"city\": \"<string>\",\n        \"district\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    }\n  ],\n  \"identifier\": [\n    {\n      \"use\": \"<string>\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"<string>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\"\n          },\n          {\n            \"system\": \"<string>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\"\n          }\n        ]\n      },\n      \"system\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"use\": \"<string>\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"<string>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\"\n          },\n          {\n            \"system\": \"<string>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\"\n          }\n        ]\n      },\n      \"system\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"name\": [\n    {\n      \"use\": \"<string>\",\n      \"family\": \"<string>\",\n      \"given\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"use\": \"<string>\",\n      \"family\": \"<string>\",\n      \"given\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<string>\",\n  \"multipleBirthInteger\": 0,\n  \"deceasedDateTime\": \"<string>\",\n  \"managingOrganization\": {\n    \"reference\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:06:44.000Z",
+                      "updatedAt": "2026-07-28T02:06:44.000Z",
+                      "uid": "35240-3b8054bf-92ba-4ada-baee-f2d719913c6c"
+                    },
+                    {
+                      "id": "238acc3e-1b6b-443a-8dcb-f561bc53ad47",
+                      "name": "404",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Patient/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Patient",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:44.000Z",
+                      "updatedAt": "2026-07-28T02:06:44.000Z",
+                      "uid": "35240-238acc3e-1b6b-443a-8dcb-f561bc53ad47"
+                    },
+                    {
+                      "id": "7234fe6a-31ef-4a59-8f66-f8ae7244b398",
+                      "name": "415",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Patient/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Patient",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:44.000Z",
+                      "updatedAt": "2026-07-28T02:06:44.000Z",
+                      "uid": "35240-7234fe6a-31ef-4a59-8f66-f8ae7244b398"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:43.000Z",
+                  "updatedAt": "2026-07-28T02:06:43.000Z",
+                  "uid": "35240-3205ff20-c7a9-49cb-8d49-08f766462485"
+                }
+              ],
+              "id": "88770133-89d9-4320-b6ae-e14d0dc1f1eb",
+              "createdAt": "2026-07-28T02:06:43.000Z",
+              "updatedAt": "2026-07-28T02:06:43.000Z",
+              "uid": "35240-88770133-89d9-4320-b6ae-e14d0dc1f1eb"
+            }
+          ],
+          "id": "51a57ce4-06b0-4c59-be5a-1f7f75d6ad37",
+          "createdAt": "2026-07-28T02:06:43.000Z",
+          "updatedAt": "2026-07-28T02:06:43.000Z",
+          "uid": "35240-51a57ce4-06b0-4c59-be5a-1f7f75d6ad37"
+        }
+      ],
+      "id": "51320358-76be-48c9-8bca-e72ce5ce8adb",
+      "createdAt": "2026-07-28T02:06:43.000Z",
+      "updatedAt": "2026-07-28T02:06:43.000Z",
+      "uid": "35240-51320358-76be-48c9-8bca-e72ce5ce8adb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authentication.lifen.fr/"
+    }
+  ]
+}

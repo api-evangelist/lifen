@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+source: live probe of Lifen hosts
+hosts:
+- host: https://authentication.lifen.fr
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: lifen-oauth-authorization-server.json
+    standard: RFC 8414
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/jwks.json
+    status: referenced
+    note: Advertised as jwks_uri by the oauth-authorization-server document.
+- host: https://api.lifen.fr
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /sso/v1/.well-known/openid-configuration
+    status: 404
+    note: Documented at https://developer.lifen.fr/docs/sso-api as the SSO OIDC discovery URL but
+      returns 404 as of this probe.
+- host: https://www.lifen.fr
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://developer.lifen.fr
+  documents:
+  - path: /llms.txt
+    status: 200
+    file: ../llms/lifen-llms.txt
+    standard: llms.txt

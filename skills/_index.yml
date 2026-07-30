@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/lifen-fhir-api-openapi.json + https://developer.lifen.fr/docs/
+search_note: >-
+  No provider-published Agent Skills, AGENTS.md or skill files were found on developer.lifen.fr or
+  in the honestica GitHub organisation. These skills are generated from the published OpenAPI and
+  documentation; every operationId referenced exists verbatim in
+  openapi/lifen-fhir-api-openapi.json (or, for authenticate-application, in
+  openapi/lifen-authentication-api-openapi.json).
+skills:
+- file: lifen-find-patient-and-encounter.md
+  name: Find a patient and their hospital stay in Lifen
+  api: openapi/lifen-fhir-api-openapi.json
+  scope: PATIENT_GAM_SEARCH
+  read_only: true
+  operations:
+  - authenticate-application
+  - patient
+  - access-patient-by-id
+  - encounter_search
+  - access-encounter-by-id
+  - access-coverage-patient-information
+- file: lifen-send-document-to-mssante.md
+  name: Send a medical document to a healthcare professional over MSSanté
+  api: openapi/lifen-fhir-api-openapi.json
+  scope: SEND_TO_MSS
+  read_only: false
+  human_in_the_loop: required
+  operations:
+  - authenticate-application
+  - search-healthcare-professional
+  - search-healthcare-structure
+  - send-document-to-the-hcp
+  - send-to-mss-check-sending-status
+- file: lifen-send-document-to-ehr.md
+  name: Send a medical document into a hospital EHR with Lifen
+  api: openapi/lifen-fhir-api-openapi.json
+  scope: SEND_TO_EHR
+  read_only: false
+  human_in_the_loop: required
+  operations:
+  - authenticate-application
+  - patient
+  - encounter_search
+  - communicationrequestsend-to-ehr-1
+  - send-to-mss-check-sending-status

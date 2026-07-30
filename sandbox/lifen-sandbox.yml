@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/api-basics
+docs:
+- https://developer.lifen.fr/docs/quickstart
+- https://developer.lifen.fr/docs/api-basics
+- https://developer.lifen.fr/docs/webhook
+model: separate-environment
+credentials:
+  self_service: false
+  how_to_obtain: >-
+    Test credentials (client_id, client_secret, database_reference) are issued by a Lifen account
+    manager. There is no public self-service sandbox signup.
+  contact: https://www.lifen.fr/care/lifen-integration
+environments:
+- name: test
+  aliases:
+  - post-prod
+  authentication_host: https://authentication.post-prod.lifen.fr
+  token_endpoint: https://authentication.post-prod.lifen.fr/v1/token
+  audience: https://post-prod.platform-apis/
+  api_base: https://api.post-prod.lifen.fr/fhir/v3
+  tenant_variants:
+  - name: Ramsay hospitals
+    api_base: https://api-ramsay.post-prod.lifen.fr/fhir/v3
+  webhook_source_ips:
+  - 15.236.169.32
+- name: production
+  authentication_host: https://authentication.lifen.fr
+  token_endpoint: https://authentication.lifen.fr/v1/token
+  audience: https://production.platform-apis/
+  api_base: https://api.lifen.fr/fhir/v3
+  tenant_variants:
+  - name: Ramsay hospitals
+    api_base: https://api.ramsay.lifen.fr/fhir/v3
+  webhook_source_ips:
+  - 15.236.169.164
+  - 35.180.249.12
+environment_selection:
+  mechanism: The `audience` parameter on the token request plus the API host select the
+    environment; there is no test/live key prefix.
+test_data:
+  magic_values: []
+  note: >-
+    Lifen publishes no magic/synthetic identifiers, test cards or fixture triggers. Test data is
+    whatever the account manager provisions in the post-prod tenant for the healthcare organisation
+    bound to the database_reference.
+tooling:
+  postman:
+    available: true
+    description: A public Postman collection with a "Getting Started" scenario and an "Environnement
+      Client" environment holding client_id, client_secret and database_reference variables.
+    run_in_postman: https://developer.lifen.fr/docs/quickstart
+  webhook_testing:
+    description: Register a webhook.site URL as the callback in the developer portal, then press the
+      test button to fire a synthetic event and verify signature, headers and payload shape.
+    docs: https://developer.lifen.fr/docs/webhook
+  time_simulation: false
+  fixture_triggers: false

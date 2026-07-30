@@ -1,0 +1,118 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Lifen FHIR API
+  version: 1.0.0
+extends: openapi/lifen-fhir-api-openapi.json
+x-generated: '2026-07-19'
+x-method: generated
+x-source: >-
+  Enhancements derived from https://developer.lifen.fr/docs/api-basics and the per-service
+  documentation pages; the harvested spec itself is left untouched.
+actions:
+- target: $.info
+  update:
+    description: >-
+      The Lifen Platform FHIR API (v3). HL7 FHIR R4 resources for accessing patient identity,
+      coverage, encounter and appointment data inside a French hospital information system, and for
+      sending medical documents to hospital EHRs and to healthcare professionals over the MSSanté
+      network. Machine-to-machine access uses an OAuth 2.0 client-credentials bearer token bound to
+      one healthcare organisation via database_reference.
+    contact:
+      name: Lifen developer support
+      url: https://developer.lifen.fr/
+    x-apievangelist-enriched: '2026-07-19'
+    x-apievangelist-artifacts:
+      conventions: conventions/lifen-conventions.yml
+      errors: errors/lifen-problem-types.yml
+      scopes: scopes/lifen-scopes.yml
+      authentication: authentication/lifen-authentication.yml
+      rate_limits: rate-limits/lifen-rate-limits.yml
+      webhooks: asyncapi/lifen-platform-webhooks.yml
+      data_model: data-model/lifen-data-model.yml
+- target: $
+  update:
+    servers:
+    - url: https://api.lifen.fr/fhir
+      description: Production
+    - url: https://api.post-prod.lifen.fr/fhir
+      description: Test (post-prod)
+    - url: https://api.ramsay.lifen.fr/fhir
+      description: Production, Ramsay hospitals
+    - url: https://api-ramsay.post-prod.lifen.fr/fhir
+      description: Test (post-prod), Ramsay hospitals
+    tags:
+    - name: Patient
+      description: Patient identity and coverage.
+    - name: Encounter
+      description: Patient stays (séjours).
+    - name: Documents
+      description: Sending medical documents to EHRs and over MSSanté.
+    - name: Directory
+      description: MSSanté practitioner and structure lookup.
+    x-rate-limit:
+      requests: 10
+      interval: second
+      status_on_exceed: 429
+- target: $.components.securitySchemes
+  update:
+    lifenOAuth2:
+      type: oauth2
+      description: >-
+        OAuth 2.0 client credentials. Exchange client_id, client_secret, audience and
+        database_reference at the token endpoint for a Bearer access token (172800s lifetime).
+      flows:
+        clientCredentials:
+          tokenUrl: https://authentication.lifen.fr/v1/token
+          scopes:
+            PATIENT_GAM_SEARCH: Patient, coverage and encounter access within a hospital.
+            APPOINTMENT_GAM_SEARCH: Appointment access within a hospital.
+            SEND_TO_EHR: Send a medical document to a hospital EHR.
+            SEND_TO_MSS: Send a medical document over MSSanté.
+- target: $.paths['/v3/Patient/_search'].post
+  update:
+    tags:
+    - Patient
+    x-required-scope: PATIENT_GAM_SEARCH
+    x-result-cap: 10
+- target: $.paths['/v3/Patient/{id}'].get
+  update:
+    tags:
+    - Patient
+    x-required-scope: PATIENT_GAM_SEARCH
+- target: $.paths['/v3/Coverage/_search'].post
+  update:
+    tags:
+    - Patient
+    x-required-scope: PATIENT_GAM_SEARCH
+- target: $.paths['/v3/Encounter/_search'].post
+  update:
+    tags:
+    - Encounter
+    x-required-scope: PATIENT_GAM_SEARCH
+    x-result-cap: 10
+- target: $.paths['/v3/Encounter/{id}'].get
+  update:
+    tags:
+    - Encounter
+    x-required-scope: PATIENT_GAM_SEARCH
+- target: $.paths['/v3/CommunicationRequest/$send-to-ehr'].post
+  update:
+    tags:
+    - Documents
+    x-required-scope: SEND_TO_EHR
+    x-max-payload-mb: 15
+- target: $.paths['/v3/CommunicationRequest/$send-to-mss'].post
+  update:
+    tags:
+    - Documents
+    x-required-scope: SEND_TO_MSS
+- target: $.paths['/v3/Practitioner/$search-for-mss'].post
+  update:
+    tags:
+    - Directory
+    x-required-scope: SEND_TO_MSS
+- target: $.paths['/v3/Organization/$search-for-mss'].post
+  update:
+    tags:
+    - Directory
+    x-required-scope: SEND_TO_MSS

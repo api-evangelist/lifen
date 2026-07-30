@@ -1,0 +1,98 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/api-basics
+docs: https://developer.lifen.fr/docs/api-basics
+format: fhir-operationoutcome
+format_note: >-
+  Lifen does not use RFC 9457 application/problem+json. The error body is a FHIR OperationOutcome
+  resource returned as application/json, with an `issue[]` array.
+envelope:
+  resource_type: OperationOutcome
+  media_type: application/json
+  spec: https://www.hl7.org/fhir/STU3/operationoutcome.html#resource
+  fields:
+  - name: severity
+    values:
+    - fatal
+    - error
+    - warning
+    - information
+  - name: code
+    description: FHIR issue-type code.
+    value_set: https://www.hl7.org/fhir/STU3/codesystem-issue-type.html
+  - name: diagnostics
+    description: Optional human-readable error message.
+    required: false
+  example: |
+    {
+      "resourceType": "OperationOutcome",
+      "issue": [
+        {
+          "severity": "error",
+          "code": "processing",
+          "diagnostics": "Operation forbidden (insufficient scope)"
+        }
+      ]
+    }
+problems:
+- status: 400
+  title: Bad Request
+  detail: The request is malformed. Check the parameters or the syntax.
+  remediation: Validate the request body and search parameter syntax against the service
+    documentation.
+- status: 401
+  title: Unauthorized
+  detail: Could not authenticate the request.
+  remediation: >-
+    Obtain a fresh access token from https://authentication.lifen.fr/v1/token and send it as
+    "Authorization: Bearer {token}".
+  source_operation: openapi/lifen-fhir-api-openapi.json#communicationrequestsend-to-ehr-1
+- status: 403
+  title: Forbidden
+  detail: The request is not allowed — typically an insufficient scope on the access token.
+  remediation: Ask the Lifen account manager to grant the functional scope for the service
+    (PATIENT_GAM_SEARCH, APPOINTMENT_GAM_SEARCH, SEND_TO_EHR, SEND_TO_MSS).
+  source_operation: openapi/lifen-fhir-api-openapi.json#communicationrequestsend-to-ehr-1
+- status: 404
+  title: Not found
+  detail: The resource is not found.
+  source_operation: openapi/lifen-fhir-api-openapi.json#access-patient-by-id
+- status: 409
+  title: Conflict
+  detail: The request cannot be completed due to conflict — two clients creating the same resource,
+    concurrent conflicting updates, or the wrong resource version.
+- status: 410
+  title: Gone
+  detail: The resource does not exist any longer.
+- status: 412
+  title: Precondition Failed
+  detail: Returned for conditional requests or an invalid search parameter value (for example an
+    invalid date).
+  source_operation: openapi/lifen-fhir-api-openapi.json#send-document-to-the-hcp
+- status: 413
+  title: Payload Too Large
+  detail: The request is too long to be processed. Binary payloads on $send-to-ehr must be under
+    15 MB.
+- status: 415
+  title: Unsupported Media Type
+  detail: Returned on read operations when the requested representation is not supported.
+  source_operation: openapi/lifen-fhir-api-openapi.json#access-patient-by-id
+- status: 422
+  title: Unprocessable Entity
+  detail: The proposed resource violated applicable FHIR profiles or server business rules.
+  remediation: Read the OperationOutcome issue[].diagnostics for the failing profile or rule.
+  source_operation: openapi/lifen-fhir-api-openapi.json#patient
+- status: 429
+  title: Too many requests
+  detail: Too many requests hit the API too quickly. The documented global limit is 10 calls per
+    second.
+  remediation: Throttle to 10 requests/second and retry with backoff.
+- status: 500
+  title: Internal Server Error
+  detail: Something went wrong on Lifen's side.
+- status: 501
+  title: Not Implemented
+  detail: Lifen cannot fulfill the request.
+- status: 503
+  title: Service Unavailable
+  detail: The Lifen service is temporarily unavailable. Check https://status.lifen.fr/793930656.

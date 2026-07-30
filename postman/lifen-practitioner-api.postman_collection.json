@@ -1,0 +1,198 @@
+{
+  "info": {
+    "_postman_id": "3c5f24bf-9c52-4c51-9edf-678bee1828ed",
+    "name": "lifen-authentication-api CommunicationRequest Practitioner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:46.000Z",
+    "updatedAt": "2026-07-28T02:06:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c5f24bf-9c52-4c51-9edf-678bee1828ed"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "Practitioner",
+          "item": [
+            {
+              "name": "$search-for-mss",
+              "item": [
+                {
+                  "name": "Search healthcare professional",
+                  "id": "ccd6202f-a998-4e02-9a7b-5ae8600e5e64",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"given\": \"<string>\",\n  \"family\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v3/Practitioner/$search-for-mss",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v3",
+                        "Practitioner",
+                        "$search-for-mss"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b86db707-181a-4290-a04b-6c3f3d1a4595",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"given\": \"<string>\",\n  \"family\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Practitioner/$search-for-mss",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Practitioner",
+                            "$search-for-mss"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"total\": 0,\n  \"entry\": [\n    {\n      \"fullUrl\": \"<string>\",\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"id\": \"<string>\",\n        \"identifier\": [\n          {\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"name\": [\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"prefix\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"prefix\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"telecom\": [\n          {\n            \"id\": \"<string>\",\n            \"system\": \"<string>\",\n            \"value\": \"<string>\",\n            \"use\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"system\": \"<string>\",\n            \"value\": \"<string>\",\n            \"use\": \"<string>\"\n          }\n        ],\n        \"address\": [\n          {\n            \"id\": \"<string>\",\n            \"use\": \"<string>\",\n            \"line\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"city\": \"<string>\",\n            \"postalCode\": \"<string>\",\n            \"country\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"use\": \"<string>\",\n            \"line\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"city\": \"<string>\",\n            \"postalCode\": \"<string>\",\n            \"country\": \"<string>\"\n          }\n        ]\n      },\n      \"search\": {\n        \"mode\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<string>\",\n      \"resource\": {\n        \"resourceType\": \"<string>\",\n        \"id\": \"<string>\",\n        \"identifier\": [\n          {\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"system\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"name\": [\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"prefix\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"use\": \"<string>\",\n            \"family\": \"<string>\",\n            \"given\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"prefix\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"telecom\": [\n          {\n            \"id\": \"<string>\",\n            \"system\": \"<string>\",\n            \"value\": \"<string>\",\n            \"use\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"system\": \"<string>\",\n            \"value\": \"<string>\",\n            \"use\": \"<string>\"\n          }\n        ],\n        \"address\": [\n          {\n            \"id\": \"<string>\",\n            \"use\": \"<string>\",\n            \"line\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"city\": \"<string>\",\n            \"postalCode\": \"<string>\",\n            \"country\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"use\": \"<string>\",\n            \"line\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"city\": \"<string>\",\n            \"postalCode\": \"<string>\",\n            \"country\": \"<string>\"\n          }\n        ]\n      },\n      \"search\": {\n        \"mode\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:46.000Z",
+                      "updatedAt": "2026-07-28T02:06:46.000Z",
+                      "uid": "35240-b86db707-181a-4290-a04b-6c3f3d1a4595"
+                    },
+                    {
+                      "id": "f5bdbab2-1f79-4b82-a2e0-bd5bf32e59c7",
+                      "name": "422",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"given\": \"<string>\",\n  \"family\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/Practitioner/$search-for-mss",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "Practitioner",
+                            "$search-for-mss"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceType\": \"<string>\",\n  \"issue\": [\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"code\": \"<string>\",\n      \"diagnostics\": \"<string>\",\n      \"location\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:06:46.000Z",
+                      "updatedAt": "2026-07-28T02:06:46.000Z",
+                      "uid": "35240-f5bdbab2-1f79-4b82-a2e0-bd5bf32e59c7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:06:46.000Z",
+                  "updatedAt": "2026-07-28T02:06:46.000Z",
+                  "uid": "35240-ccd6202f-a998-4e02-9a7b-5ae8600e5e64"
+                }
+              ],
+              "id": "7383a8aa-ea90-4198-bee6-6aa382222930",
+              "createdAt": "2026-07-28T02:06:46.000Z",
+              "updatedAt": "2026-07-28T02:06:46.000Z",
+              "uid": "35240-7383a8aa-ea90-4198-bee6-6aa382222930"
+            }
+          ],
+          "id": "fd820a3c-9fb3-4b46-bac8-3ef5b911c34e",
+          "createdAt": "2026-07-28T02:06:46.000Z",
+          "updatedAt": "2026-07-28T02:06:46.000Z",
+          "uid": "35240-fd820a3c-9fb3-4b46-bac8-3ef5b911c34e"
+        }
+      ],
+      "id": "a41aacb5-8252-4f0d-b053-48075c1b56c6",
+      "createdAt": "2026-07-28T02:06:46.000Z",
+      "updatedAt": "2026-07-28T02:06:46.000Z",
+      "uid": "35240-a41aacb5-8252-4f0d-b053-48075c1b56c6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authentication.lifen.fr/"
+    }
+  ]
+}

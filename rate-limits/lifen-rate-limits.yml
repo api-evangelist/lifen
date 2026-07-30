@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.lifen.fr/docs/api-basics
+docs: https://developer.lifen.fr/docs/api-basics
+signalling:
+  status_code: 429
+  headers: []
+  note: No X-RateLimit-* headers are documented on API responses.
+rate_limits:
+- name: Global API rate limit
+  scope: all Lifen Platform FHIR API endpoints
+  limit_count: 10
+  interval: second
+  unit: requests
+- name: Patient search result cap
+  scope: POST /v3/Patient/_search
+  limit_count: 10
+  interval: request
+  unit: results
+  note: Search requests on the Access Patient Information API return at most 10 results.
+- name: Encounter search result cap
+  scope: POST /v3/Encounter/_search
+  limit_count: 10
+  interval: request
+  unit: results
+  note: Search requests on the Access Encounter Information API return at most 10 results.
+- name: Page size maximum
+  scope: all list endpoints (_count parameter)
+  limit_count: 100
+  interval: request
+  unit: results
+  note: Default page size is 10 (100 for Organization and Practitioner). _count=0 is not supported.
+- name: Document payload size
+  scope: POST /v3/CommunicationRequest/$send-to-ehr Binary
+  limit_count: 15
+  interval: request
+  unit: megabytes
+  note: The receiving EHR may enforce a lower limit.
+- name: Consumer webhook endpoint throughput
+  scope: subscriber callback URL
+  limit_count: 10
+  interval: second
+  unit: requests
+  note: Lifen requires the subscriber's webhook endpoint to sustain at least 10 calls per second.

@@ -1,9 +1,31 @@
 aid: lifen
 name: Lifen
-description: 'Lifen is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Healthcare. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: 'Lifen (Honestica SAS, Paris) is a French digital-health company whose Lifen Platform
+  exposes FHIR R4 APIs that let e-health applications exchange health data with French hospital
+  information systems and with healthcare professionals over the national MSSanté secure-messaging
+  network. The platform is organised as API Services: Hospital API Services (an Identity & Encounter
+  service giving secure access to patient administrative, coverage, encounter and appointment data
+  inside a given hospital, and a Send-documents-to-EHR service that pushes medical documents into
+  hospital Electronic Health Records), and National API Services (the MSS service for sending medical
+  documents to healthcare professionals via MSSanté). Access is machine-to-machine over OAuth 2.0
+  client credentials, scoped by functional scopes and bound to a healthcare organisation through a
+  database_reference. Lifen also ships an SSO/OIDC API and a signed webhook surface for patient and
+  encounter events. The company is ISO 27001 certified and an HDS (Hebergeur de Donnees de Sante)
+  certified health-data host.'
 url: https://raw.githubusercontent.com/api-evangelist/lifen/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://files.readme.io/ea56e58-small-Logo_couleur.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,16 +34,209 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Healthcare
-apis: []
+- FHIR
+- Interoperability
+- Health Data
+- Electronic Health Records
+- Medical Documents
+- Secure Messaging
+- France
+- HL7
+apis:
+- aid: lifen:lifen-communicationrequest-api
+  name: Lifen CommunicationRequest API
+  description: The CommunicationRequest API from Lifen — 3 operation(s) for communicationrequest.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - CommunicationRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-communicationrequest-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
+- aid: lifen:lifen-coverage-api
+  name: Lifen Coverage API
+  description: The Coverage API from Lifen — 1 operation(s) for coverage.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - Coverage
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-coverage-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
+- aid: lifen:lifen-encounter-api
+  name: Lifen Encounter API
+  description: The Encounter API from Lifen — 2 operation(s) for encounter.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - Encounter
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-encounter-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
+- aid: lifen:lifen-organization-api
+  name: Lifen Organization API
+  description: The Organization API from Lifen — 1 operation(s) for organization.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-organization-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
+- aid: lifen:lifen-patient-api
+  name: Lifen Patient API
+  description: The Patient API from Lifen — 2 operation(s) for patient.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - Patient
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-patient-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
+- aid: lifen:lifen-practitioner-api
+  name: Lifen Practitioner API
+  description: The Practitioner API from Lifen — 1 operation(s) for practitioner.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - Practitioner
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-practitioner-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
+- aid: lifen:lifen-token-api
+  name: Lifen Token API
+  description: The Token API from Lifen — 1 operation(s) for token.
+  humanURL: https://developer.lifen.fr/reference/patient
+  baseURL: https://api.lifen.fr/fhir/v3
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/lifen-token-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/platform-services-documentation
+  - type: APIReference
+    url: https://developer.lifen.fr/reference/patient
+  - type: Documentation
+    url: https://developer.lifen.fr/docs/machine-to-machine-communications
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/lifen/overview
+- type: DomainSecurity
+  url: security/lifen-domain-security.yml
 - type: Website
   url: https://www.lifen.fr/
+- type: DeveloperPortal
+  url: https://developer.lifen.fr/
+- type: Documentation
+  url: https://developer.lifen.fr/docs/platform-services-documentation
+- type: APIReference
+  url: https://developer.lifen.fr/reference/patient
+- type: GettingStarted
+  url: https://developer.lifen.fr/docs/quickstart
+- type: Support
+  url: https://www.lifen.fr/contact
+- type: Blog
+  url: https://www.lifen.fr/ressources/blog
+- type: GitHubOrganization
+  url: https://github.com/honestica
+- type: SignUp
+  url: https://www.lifen.fr/sign-up
+- type: Login
+  url: https://www.lifen.fr/log-in
+- type: TermsOfService
+  url: https://www.lifen.fr/cgu
+- type: PrivacyPolicy
+  url: https://www.lifen.fr/donnees-personnelles
+- type: LegalNotice
+  url: https://www.lifen.fr/mentions-legales
+- type: Postman
+  url: https://developer.lifen.fr/docs/quickstart
+- type: StatusPage
+  url: https://status.lifen.fr/793930656
+- type: ChangeLog
+  url: https://developer.lifen.fr/changelog
+- type: Compliance
+  url: https://www.lifen.fr/nos-expertises/securite-des-donnees-de-sante
+- type: LLMsTxt
+  url: llms/lifen-llms.txt
+- type: WellKnown
+  url: well-known/lifen-well-known.yml
+- type: Authentication
+  url: authentication/lifen-authentication.yml
+- type: OAuthScopes
+  url: scopes/lifen-scopes.yml
+- type: Conventions
+  url: conventions/lifen-conventions.yml
+- type: ErrorCatalog
+  url: errors/lifen-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/lifen-lifecycle.yml
+- type: ChangeLog
+  url: changelog/lifen-changelog.yml
+- type: Conformance
+  url: conformance/lifen-conformance.yml
+- type: Webhooks
+  url: asyncapi/lifen-platform-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/lifen-mcp.yml
+- type: Overlay
+  url: overlays/lifen-fhir-api-overlay.yaml
+- type: Sandbox
+  url: sandbox/lifen-sandbox.yml
+- type: DataModel
+  url: data-model/lifen-data-model.yml
+- type: RateLimits
+  url: rate-limits/lifen-rate-limits.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

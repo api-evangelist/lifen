@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "lifen-authentication-api CommunicationRequest Token API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authentication.lifen.fr/v1/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accessing Lifen's APIs in Machine To Machine involves obtaining an Access Token with the Client credentials grant flow of OAuth 2.0 from a back-end server.\n\nGet a token : \nA request to Lifen must be perfomed to generate an access token. In the request, the client has to provide his credentials and some configuration.\n\nPerform an API call :\nThe Access Token allows you to make requests to the API on the behalf of the client. Each request must include the Access Token in the Authorization header us"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

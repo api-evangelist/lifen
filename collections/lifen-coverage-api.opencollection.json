@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "lifen-authentication-api CommunicationRequest Coverage API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coverage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Access Coverage Patient information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authentication.lifen.fr/v3/Coverage/_search",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Access Coverage Patient information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "52105e75-69e0-4c7f-88d4-3ecd993c6eb1",
+      "name": "Coverage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7cf9535e-2bf6-4eda-832a-295f1596579a",
+          "name": "Access Coverage Patient information",
+          "request": {
+            "name": "Access Coverage Patient information",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Coverage",
+                "_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"beneficiary\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8353f7fc-fcb4-4c41-a9cf-8c1461025113",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Coverage",
+                    "_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"beneficiary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"Bundle\\\",\\n    \\\"meta\\\": {\\n        \\\"lastUpdated\\\": \\\"2023-01-23T16:37:18.692+00:00\\\"\\n    },\\n    \\\"type\\\": \\\"searchset\\\",\\n    \\\"total\\\": 1,\\n    \\\"entry\\\": [\\n        {\\n            \\\"resource\\\": {\\n                \\\"resourceType\\\": \\\"Coverage\\\",\\n                \\\"identifier\\\": [\\n                    {\\n                        \\\"use\\\": \\\"official\\\",\\n                        \\\"type\\\": {\\n                            \\\"coding\\\": [\\n                                {\\n                                    \\\"system\\\": \\\"http://terminology.hl7.org/CodeSystem/v2-0203\\\",\\n                                    \\\"code\\\": \\\"NH\\\"\\n                                }\\n                            ]\\n                        },\\n                        \\\"system\\\": \\\"urn:oid:1.2.250.1.213.1.4.8\\\",\\n                        \\\"value\\\": \\\"[NIR-OD/NIR-NIA]\\\"\\n                    }\\n                ],\\n                \\\"status\\\": \\\"active\\\",\\n                \\\"beneficiary\\\": {\\n                    \\\"reference\\\": \\\"Patient/[id]\\\"\\n                },\\n                \\\"payor\\\": [\\n                    {\\n                        \\\"reference\\\": \\\"Organization/21793798\\\"\\n                    }\\n                ]\\n            },\\n            \\\"search\\\": {\\n                \\\"mode\\\": \\\"match\\\"\\n            }\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8da5c799-acf9-41f4-8313-a93f4e56fcf8",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Coverage",
+                    "_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"beneficiary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"must not be empty\\\",\\n            \\\"location\\\": \\\"patient\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authentication.lifen.fr/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "9103ce07-a67e-4f71-9ba0-8279ab615248",
+    "name": "lifen-authentication-api CommunicationRequest Coverage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

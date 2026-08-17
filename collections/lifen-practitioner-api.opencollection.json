@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "lifen-authentication-api CommunicationRequest Practitioner API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Practitioner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search healthcare professional",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authentication.lifen.fr/v3/Practitioner/$search-for-mss",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search healthcare professional"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

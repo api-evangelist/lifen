@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "a7d2b495-319a-43d3-90d9-1a8d3ce68db0",
+      "name": "Encounter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5c55ad4-de9e-4290-8116-a7e71fd3ef70",
+          "name": "Access Encounter Information",
+          "request": {
+            "name": "Access Encounter Information",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Encounter",
+                "_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient\": \"Patient/\",\n  \"date\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"status\": \"<string>\",\n  \"service-provider\": {\n    \"_extension\": \"<string>\"\n  },\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf383420-5a42-4e7a-be02-b6b73df80226",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Encounter",
+                    "_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patient\": \"Patient/\",\n  \"date\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"status\": \"<string>\",\n  \"service-provider\": {\n    \"_extension\": \"<string>\"\n  },\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"Bundle\\\",\\n    \\\"id\\\": \\\"[uuid]\\\",\\n    \\\"meta\\\": {\\n        \\\"lastUpdated\\\": \\\"2022-10-05T15:39:43.152+00:00\\\"\\n    },\\n    \\\"type\\\": \\\"searchset\\\",\\n    \\\"total\\\": 1,\\n    \\\"link\\\": [\\n        {\\n            \\\"relation\\\": \\\"self\\\",\\n            \\\"url\\\": \\\"https://api.post-prod.lifen.fr/fhir/v3/Encounter?identifier=[identifier]\\\"\\n        }\\n    ],\\n    \\\"entry\\\": [\\n        {\\n            \\\"fullUrl\\\": \\\"https://api.post-prod.lifen.fr/fhir/v3/Encounter/[id]\\\",\\n            \\\"resource\\\": {\\n                \\\"resourceType\\\": \\\"Encounter\\\",\\n                \\\"id\\\": \\\"[id]\\\",\\n                \\\"meta\\\": {\\n                    \\\"versionId\\\": \\\"2\\\",\\n                    \\\"lastUpdated\\\": \\\"2022-10-04T09:41:57.000+00:00\\\",\\n                    \\\"tag\\\": [\\n                        {\\n                            \\\"system\\\": \\\"https://www.lifen.fr/default\\\",\\n                            \\\"code\\\": \\\"DEFAULT\\\",\\n                            \\\"display\\\": \\\"Default tag\\\"\\n                        }\\n                    ]\\n                },\\n                \\\"extension\\\": [\\n                    {\\n                        \\\"url\\\": \\\"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\\\",\\n                        \\\"valueString\\\": \\\"[db_ref]\\\"\\n                    }\\n                ],\\n                \\\"identifier\\\": [\\n                    {\\n                        \\\"use\\\": \\\"official\\\",\\n                        \\\"type\\\": {\\n                            \\\"coding\\\": [\\n                                {\\n                                    \\\"system\\\": \\\"http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type\\\",\\n                                    \\\"version\\\": \\\"3.0.1\\\",\\n                                    \\\"code\\\": \\\"VN\\\",\\n                                    \\\"display\\\": \\\"Visit Number\\\"\\n                                }\\n                            ]\\n                        },\\n                        \\\"system\\\": \\\"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\\\",\\n                        \\\"value\\\": \\\"[visit_number]\\\",\\n                        \\\"assigner\\\": {\\n                            \\\"reference\\\": \\\"Organization/[structure_id]\\\"\\n                        }\\n                    }\\n                ],\\n                \\\"status\\\": \\\"in-progress\\\",\\n                \\\"statusHistory\\\": [\\n                    {\\n                        \\\"status\\\": \\\"in-progress\\\",\\n                        \\\"period\\\": {\\n                            \\\"start\\\": \\\"2022-07-12T11:00:35.000Z\\\"\\n                        }\\n                    }\\n                ],\\n                \\\"subject\\\": {\\n                    \\\"reference\\\": \\\"Patient/[patient_id]\\\"\\n                },\\n                \\\"period\\\": {\\n                    \\\"start\\\": \\\"2021-11-23T00:00:00+01:00\\\",\\n                    \\\"end\\\": \\\"2022-10-24T00:00:00+02:00\\\"\\n                },\\n                \\\"serviceProvider\\\": {\\n                    \\\"reference\\\": \\\"Organization/[structure_id]\\\"\\n                }\\n            },\\n            \\\"search\\\": {\\n                \\\"mode\\\": \\\"match\\\"\\n            }\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c738f8a-1d33-4d9e-9c15-d2236ee61513",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Encounter",
+                    "_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patient\": \"Patient/\",\n  \"date\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"status\": \"<string>\",\n  \"service-provider\": {\n    \"_extension\": \"<string>\"\n  },\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"At least one of patient, date, identifier, service-provider._extension or status fields must be filled\\\",\\n            \\\"location\\\": \\\"allValueNull\\\"\\n        },\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"Invalid parameter XXXXX\\\",\\n            \\\"location\\\": \\\"XXXXX\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6715fa9-ce23-4692-af8e-df30c83a373e",
+          "name": "Access Encounter by id",
+          "request": {
+            "name": "Access Encounter by id",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Encounter",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9463fce3-933a-458e-b4ca-e45e2917d077",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Encounter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"Encounter\\\",\\n    \\\"id\\\": \\\"[id]\\\",\\n    \\\"meta\\\": {\\n      \\\"versionId\\\": \\\"2\\\",\\n        \\\"lastUpdated\\\": \\\"2022-10-04T09:41:57.000+00:00\\\",\\n          \\\"tag\\\": [\\n            {\\n              \\\"system\\\": \\\"https://www.lifen.fr/default\\\",\\n              \\\"code\\\": \\\"DEFAULT\\\",\\n              \\\"display\\\": \\\"Default tag\\\"\\n            }\\n          ]\\n    },\\n    \\\"extension\\\": [\\n        {\\n          \\\"url\\\": \\\"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\\\",\\n          \\\"valueString\\\": \\\"[db_ref]\\\"\\n        }\\n    ],\\n    \\\"identifier\\\": [\\n        {\\n          \\\"use\\\": \\\"official\\\",\\n          \\\"type\\\": {\\n            \\\"coding\\\": [\\n              {\\n                \\\"system\\\": \\\"http://www.interopsante.org/fhir/valueset/fr-encounter-identifier-type\\\",\\n                \\\"version\\\": \\\"3.0.1\\\",\\n                \\\"code\\\": \\\"VN\\\",\\n                \\\"display\\\": \\\"Visit Number\\\"\\n              }\\n            ]\\n          },\\n          \\\"system\\\": \\\"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\\\",\\n          \\\"value\\\": \\\"[visit_number]\\\",\\n          \\\"assigner\\\": {\\n            \\\"reference\\\": \\\"Organization/[structure_id]\\\"\\n          }\\n        }\\n    ],\\n    \\\"status\\\": \\\"in-progress\\\",\\n    \\\"statusHistory\\\": [\\n        {\\n          \\\"status\\\": \\\"in-progress\\\",\\n          \\\"period\\\": {\\n            \\\"start\\\": \\\"2022-07-12T11:00:35.000Z\\\"\\n          }\\n        }\\n    ],\\n    \\\"subject\\\": {\\n        \\\"reference\\\": \\\"Patient/[patient_id]\\\"\\n    },\\n    \\\"period\\\": {\\n        \\\"start\\\": \\\"2021-11-23T00:00:00+01:00\\\",\\n        \\\"end\\\": \\\"2022-10-24T00:00:00+02:00\\\"\\n    },\\n    \\\"serviceProvider\\\": {\\n        \\\"reference\\\": \\\"Organization/[structure_id]\\\"\\n    }\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c2622dc-c2e9-43a9-a3f9-7a706c1b78d9",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Encounter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"NOTFOUND\\\",\\n            \\\"diagnostics\\\": \\\"Unknown service (GET) : Encounter/[id]\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebed07f6-9b09-4acf-af79-4d35542ee5a0",
+              "name": "415",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Encounter",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"STRUCTURE\\\",\\n            \\\"diagnostics\\\": \\\"Issue with media type\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authentication.lifen.fr/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "810ccc4a-7280-4248-9df5-8ff02b250494",
+    "name": "lifen-authentication-api CommunicationRequest Encounter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

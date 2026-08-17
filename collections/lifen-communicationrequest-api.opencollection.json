@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "lifen-authentication-api CommunicationRequest API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CommunicationRequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send document to the EHR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authentication.lifen.fr/v3/CommunicationRequest/$send-to-ehr",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send document to the EHR"
+        },
+        {
+          "info": {
+            "name": "Send document to Healthcare Professionals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authentication.lifen.fr/v3/CommunicationRequest/$send-to-mss",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "For more details, please refer to the \"Guides\" section"
+        },
+        {
+          "info": {
+            "name": "Check sending status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authentication.lifen.fr/v3/CommunicationRequest/$tracking?transaction-id=:transaction-id",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "transaction-id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Check sending status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

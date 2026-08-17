@@ -1,0 +1,588 @@
+{
+  "item": [
+    {
+      "id": "32fb8cc3-9d0f-4294-ae22-c64c2a14c97d",
+      "name": "CommunicationRequest",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3cd957a3-edba-4d25-9c1b-118a4e411480",
+          "name": "Send document to the EHR",
+          "request": {
+            "name": "Send document to the EHR",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "CommunicationRequest",
+                "$send-to-ehr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "473c4364-99e8-40bb-a07e-449f79d6d2cc",
+              "name": "201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-ehr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueReference\": {\n        \"reference\": \"Patient/{{patientId}}\"\n      }\n    },\n    {\n      \"name\": \"context\",\n      \"valueReference\": {\n        \"reference\": \"Encounter/{{encounterId}}\"\n      }\n    },\n    {\n      \"name\": \"content-type\",\n      \"valueCode\": \"application/pdf\"\n    },\n    {\n      \"name\": \"document-type\",\n      \"valueCode\": \"11488-4\"\n    },\n    {\n      \"name\": \"document-title\",\n      \"valueString\": \"Compte rendu de télémédecine\"\n    },\n    {\n      \"name\": \"payload\",\n      \"valueString\": \"{{base64}}\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"resourceType\\\": \\\"Parameters\\\",\\n\\t\\\"parameter\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"name\\\": \\\"tracking-url\\\",\\n\\t\\t\\t\\\"valueString\\\": \\\"https://api.post-prod.lifen.fr/fhir/v3/Communication?based-on=CommunicationRequest/[id_communication_request]&_elements=status,notDoneReason\\\"\\n\\t\\t}\\n\\t]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c159bed3-2e3b-4225-9dd9-5299eab6c112",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-ehr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueReference\": {\n        \"reference\": \"Patient/{{patientId}}\"\n      }\n    },\n    {\n      \"name\": \"context\",\n      \"valueReference\": {\n        \"reference\": \"Encounter/{{encounterId}}\"\n      }\n    },\n    {\n      \"name\": \"content-type\",\n      \"valueCode\": \"application/pdf\"\n    },\n    {\n      \"name\": \"document-type\",\n      \"valueCode\": \"11488-4\"\n    },\n    {\n      \"name\": \"document-title\",\n      \"valueString\": \"Compte rendu de télémédecine\"\n    },\n    {\n      \"name\": \"payload\",\n      \"valueString\": \"{{base64}}\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"resourceType\\\": \\\"OperationOutcome\\\",\\n\\t\\\"issue\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"severity\\\": \\\"error\\\",\\n\\t\\t\\t\\\"code\\\": \\\"processing\\\",\\n\\t\\t\\t\\\"diagnostics\\\": \\\"Invalid access token\\\"\\n\\t\\t}\\n\\t]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4d4467c-c3da-4506-9327-bfc365d58333",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-ehr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueReference\": {\n        \"reference\": \"Patient/{{patientId}}\"\n      }\n    },\n    {\n      \"name\": \"context\",\n      \"valueReference\": {\n        \"reference\": \"Encounter/{{encounterId}}\"\n      }\n    },\n    {\n      \"name\": \"content-type\",\n      \"valueCode\": \"application/pdf\"\n    },\n    {\n      \"name\": \"document-type\",\n      \"valueCode\": \"11488-4\"\n    },\n    {\n      \"name\": \"document-title\",\n      \"valueString\": \"Compte rendu de télémédecine\"\n    },\n    {\n      \"name\": \"payload\",\n      \"valueString\": \"{{base64}}\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"resourceType\\\": \\\"OperationOutcome\\\",\\n\\t\\\"issue\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"severity\\\": \\\"ERROR\\\",\\n\\t\\t\\t\\\"code\\\": \\\"FORBIDDEN\\\",\\n\\t\\t\\t\\\"diagnostics\\\": \\\"[error_diagnostic]\\\"\\n\\t\\t}\\n\\t]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4ce91d5-0d9f-4c10-b809-ea162baf65c1",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-ehr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueReference\": {\n        \"reference\": \"Patient/{{patientId}}\"\n      }\n    },\n    {\n      \"name\": \"context\",\n      \"valueReference\": {\n        \"reference\": \"Encounter/{{encounterId}}\"\n      }\n    },\n    {\n      \"name\": \"content-type\",\n      \"valueCode\": \"application/pdf\"\n    },\n    {\n      \"name\": \"document-type\",\n      \"valueCode\": \"11488-4\"\n    },\n    {\n      \"name\": \"document-title\",\n      \"valueString\": \"Compte rendu de télémédecine\"\n    },\n    {\n      \"name\": \"payload\",\n      \"valueString\": \"{{base64}}\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"[error_diagnostic]\\\",\\n            \\\"location\\\": \\\"[error_location]\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "771812cb-b2a2-462a-bb46-15758728e5cc",
+          "name": "Send document to Healthcare Professionals",
+          "request": {
+            "name": "Send document to Healthcare Professionals",
+            "description": {
+              "content": "For more details, please refer to the \"Guides\" section",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "CommunicationRequest",
+                "$send-to-mss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15379ab4-965d-4f58-a772-55260ca95275",
+              "name": "201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"Parameters\\\",\\n    \\\"parameter\\\": [\\n        {\\n            \\\"name\\\": \\\"tracking-url\\\",\\n            \\\"valueString\\\": \\\"https://api.lifen.fr/fhir/v3/CommunicationRequest/$tracking?transaction-id=ifad1343e-496f-11ed-b878-0242ac120002\\\"\\n        },\\n      \\t{\\n            \\\"name\\\": \\\"transaction-id\\\",\\n            \\\"valueString\\\": \\\"ifad1343e-496f-11ed-b878-0242ac120002\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "987ca016-9731-407a-a94f-e94c841c7fcf",
+              "name": "412",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"Mail support missing, please defined it in `https://portal.lifen.fr`\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55ba6188-67a4-43c3-b26a-cc156ea22bb9",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$send-to-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"valueReference\": {\n        \"reference\": \"<string>\"\n      },\n      \"valueString\": \"<string>\",\n      \"valueCode\": \"<string>\",\n      \"part\": [\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"resource\": \"<object>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"[error_diagnostic]\\\",\\n            \\\"location\\\": \\\"[error_location]\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71ef30e3-8088-4b56-93f3-070bec5d563a",
+          "name": "Check sending status",
+          "request": {
+            "name": "Check sending status",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "CommunicationRequest",
+                "$tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "transaction-id",
+                  "value": "{{transaction-id}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "transaction-id",
+                  "value": "ifad1343e-496f-11ed-b878-0242ac120002",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3dc3eff-e2b1-48f2-9e54-361a4a3f74f8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "CommunicationRequest",
+                    "$tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction-id",
+                      "value": "ifad1343e-496f-11ed-b878-0242ac120002"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/fhir+json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"resourceType\\\": \\\"Bundle\\\",\\n\\t\\\"type\\\": \\\"collection\\\",\\n\\t\\\"total\\\": 1,\\n\\t\\\"entry\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"resource\\\": {\\n\\t\\t\\t\\t\\\"resourceType\\\": \\\"Communication\\\",\\n\\t\\t\\t\\t\\\"status\\\": \\\"completed\\\",\\n        \\\"medium\\\": [\\n          {\\n            \\\"coding\\\": [\\n              {\\n                \\\"system\\\": \\\"http://lifen.fr/fhir/ValueSet/communication-medium\\\",\\n                \\\"code\\\": \\\"MSSANTE\\\"\\n              }\\n            ],\\n            \\\"text\\\": \\\"paulette.michue@test.lifen.mssante.fr\\\"\\n          }\\n        ]\\n\\t\\t\\t}\\n\\t\\t}\\n\\t]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authentication.lifen.fr/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "d4fc05b0-1e5b-4432-b86b-e5819c7ffd9d",
+    "name": "lifen-authentication-api CommunicationRequest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

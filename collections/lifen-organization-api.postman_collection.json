@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "928429ec-b7b5-400f-9eb7-b806ca713c86",
+      "name": "Organization",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1eae8903-19a8-4744-ac47-6a2b1c03882c",
+          "name": "Search healthcare structure",
+          "request": {
+            "name": "Search healthcare structure",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Organization",
+                "$search-for-mss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"part-of\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2965eac9-0097-433e-af73-837e7e525d2f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Organization",
+                    "$search-for-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"part-of\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"resourceType\\\": \\\"Bundle\\\",\\n\\t\\\"id\\\": \\\"aff6fcd5-76fb-40eb-bfb0-64fde9a0678c\\\",\\n\\t\\\"type\\\": \\\"searchset\\\",\\n\\t\\\"total\\\": 451247,\\n\\t\\\"entry\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"fullUrl\\\": \\\"https://fhir-api.private.staging.lifen.fr/fhir/dstu3/Organization/[id]\\\",\\n\\t\\t\\t\\\"resource\\\": {\\n        \\\"resourceType\\\": \\\"Organization\\\",\\n        \\\"id\\\": \\\"996644\\\",\\n        \\\"name\\\": \\\"CH TEST\\\",\\n        \\\"telecom\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6673280\\\",\\n\\t\\t\\t\\t\\t\\t\\\"system\\\": \\\"email\\\",\\n\\t\\t\\t\\t\\t\\t\\\"value\\\": \\\"mail1@mssante.fr\\\",\\n\\t\\t\\t\\t\\t\\t\\\"use\\\": \\\"work\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6673280\\\",\\n\\t\\t\\t\\t\\t\\t\\\"system\\\": \\\"email\\\",\\n\\t\\t\\t\\t\\t\\t\\\"value\\\": \\\"mail2@mssante.fr\\\",\\n\\t\\t\\t\\t\\t\\t\\\"use\\\": \\\"work\\\",\\n\\t\\t\\t\\t\\t\\t\\\"rank\\\": 1 \\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n        \\\"address\\\": [\\n          {\\n            \\\"id\\\": \\\"3157415241441669992\\\",\\n            \\\"line\\\": [\\n              \\\"CH TEST\\\",\\n              \\\"124 Rue TEST\\\",\\n              \\\"75000 Paris\\\"\\n            ],\\n            \\\"city\\\": \\\"Paris\\\",\\n            \\\"postalCode\\\": \\\"75000\\\"\\n          }\\n        ]\\n      },\\n\\t\\t\\t\\\"search\\\": {\\n\\t\\t\\t\\t\\\"mode\\\": \\\"match\\\"\\n\\t\\t\\t}\\n\\t\\t}\\n]}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e995962c-ad44-450b-9a11-975186d89c35",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Organization",
+                    "$search-for-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"part-of\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"At least one of family, given, name, birthdate, phone or identifier fields must be filled\\\",\\n            \\\"location\\\": \\\"allValueNull\\\"\\n        },\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"Invalid parameter XXXX\\\",\\n            \\\"location\\\": \\\"XXXXX\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authentication.lifen.fr/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "ec2cdb31-4841-404a-9172-4550c48f411e",
+    "name": "lifen-authentication-api CommunicationRequest Organization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

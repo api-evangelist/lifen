@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "226b9429-9a1c-466a-9659-3927884b2b68",
+      "name": "Patient",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb41e60e-38e6-4345-8fef-f402ff7047d9",
+          "name": "Access Patient Information",
+          "request": {
+            "name": "Access Patient Information",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Patient",
+                "_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"given\": \"<string>\",\n  \"name\": \"<string>\",\n  \"family\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"identifier\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12057a1d-c0dc-4d37-a371-d53c57afc7da",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Patient",
+                    "_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"given\": \"<string>\",\n  \"name\": \"<string>\",\n  \"family\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"identifier\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"Bundle\\\",\\n    \\\"id\\\": \\\"[uuid]\\\",\\n    \\\"meta\\\": {\\n        \\\"lastUpdated\\\": \\\"2022-10-05T15:39:27.759+00:00\\\"\\n    },\\n    \\\"type\\\": \\\"searchset\\\",\\n    \\\"total\\\": 1,\\n    \\\"link\\\": [\\n        {\\n            \\\"relation\\\": \\\"self\\\",\\n            \\\"url\\\": \\\"https://api.post-prod.lifen.fr/fhir/v3/Patient?name=LY&_sort=-_lastUpdated\\\"\\n        }\\n    ],\\n    \\\"entry\\\": [\\n        {\\n            \\\"fullUrl\\\": \\\"https://api.post-prod.lifen.fr/fhir/v3/Patient/[id]\\\",\\n            \\\"resource\\\": {\\n                \\\"resourceType\\\": \\\"Patient\\\",\\n                \\\"id\\\": \\\"[id]\\\",\\n                \\\"meta\\\": {\\n                    \\\"versionId\\\": \\\"2\\\",\\n                    \\\"lastUpdated\\\": \\\"2022-10-04T09:34:43.000+00:00\\\",\\n                    \\\"tag\\\": [\\n                        {\\n                            \\\"system\\\": \\\"https://www.lifen.fr/default\\\",\\n                            \\\"code\\\": \\\"DEFAULT\\\",\\n                            \\\"display\\\": \\\"Default tag\\\"\\n                        }\\n                    ]\\n                },\\n                \\\"extension\\\": [\\n                    {\\n                        \\\"url\\\": \\\"http://hl7.org/fhir/StructureDefinition/birthPlace\\\",\\n                        \\\"valueAddress\\\": {\\n                            \\\"city\\\": \\\"[city]\\\",\\n                            \\\"district\\\": \\\"77487\\\",\\n                            \\\"postalCode\\\": \\\"77000\\\",\\n                            \\\"country\\\": \\\"FRA\\\"\\n                        }\\n                    },\\n                    {\\n                        \\\"url\\\": \\\"http://lifen.fr/fhir/StructureDefinition/Patient/Extension/ReliabilityINS\\\",\\n                        \\\"valueCode\\\": \\\"QUALI\\\"\\n                    },\\n                    {\\n                        \\\"url\\\": \\\"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\\\",\\n                        \\\"valueString\\\": \\\"[databse_reference]\\\"\\n                    }\\n                ],\\n                \\\"identifier\\\": [\\n                    {\\n                        \\\"use\\\": \\\"official\\\",\\n                        \\\"type\\\": {\\n                            \\\"coding\\\": [\\n                                {\\n                                    \\\"system\\\": \\\"http://interopsante.org/fhir/valueset/fr-patient-identifier-type\\\",\\n                                    \\\"version\\\": \\\"1.0\\\",\\n                                    \\\"code\\\": \\\"PI\\\",\\n                                    \\\"display\\\": \\\"PI\\\"\\n                                }\\n                            ]\\n                        },\\n                        \\\"system\\\": \\\"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\\\",\\n                        \\\"value\\\": \\\"[ipp_value]\\\"\\n                    }\\n                ],\\n                \\\"name\\\": [\\n                    {\\n                        \\\"use\\\": \\\"maiden\\\",\\n                        \\\"family\\\": \\\"MICHUE\\\",\\n                        \\\"given\\\": [\\n                            \\\"PAULETTE\\\"\\n                        ]\\n                    },\\n                    {\\n                        \\\"use\\\": \\\"usual\\\",\\n                        \\\"family\\\": \\\"MICHUE\\\",\\n                        \\\"given\\\": [\\n                            \\\"PAULETTE\\\"\\n                        ]\\n                    },\\n                    {\\n                        \\\"use\\\": \\\"official\\\",\\n                        \\\"family\\\": \\\"MICHUE\\\",\\n                        \\\"given\\\": [\\n                            \\\"PAULETTE\\\"\\n                        ]\\n                    }\\n                ],\\n                \\\"gender\\\": \\\"female\\\",\\n                \\\"birthDate\\\": \\\"1940-11-10\\\",\\n                \\\"multipleBirthInteger\\\": 1,\\n              \\t\\\"deceasedDateTime\\\": \\\"2022-01-31T00:00:00+01:00\\\",\\n                \\\"managingOrganization\\\": {\\n                    \\\"reference\\\": \\\"Organization/[structure_id]\\\"\\n                }\\n            },\\n            \\\"search\\\": {\\n                \\\"mode\\\": \\\"match\\\"\\n            }\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d699fe1-8e31-47c5-ae5c-0123c165239b",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Patient",
+                    "_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"given\": \"<string>\",\n  \"name\": \"<string>\",\n  \"family\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"identifier\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<integer>\",\n  \"_sort\": \"_lastUpdated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"At least one of family, given, name, birthdate, phone or identifier fields must be filled\\\",\\n            \\\"location\\\": \\\"allValueNull\\\"\\n        },\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"Invalid parameter XXXX\\\",\\n            \\\"location\\\": \\\"XXXXX\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abf9c30e-7e04-425b-b383-5a35efffa3e2",
+          "name": "Access Patient by id",
+          "request": {
+            "name": "Access Patient by id",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Patient",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83a6f05d-d4bc-44e1-add0-47028e4c7a27",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"resourceType\\\": \\\"Patient\\\",\\n  \\\"id\\\": \\\"[id]\\\",\\n  \\\"meta\\\": {\\n    \\\"versionId\\\": \\\"2\\\",\\n      \\\"lastUpdated\\\": \\\"2022-10-04T09:34:43.000+00:00\\\",\\n        \\\"tag\\\": [\\n          {\\n            \\\"system\\\": \\\"https://www.lifen.fr/default\\\",\\n            \\\"code\\\": \\\"DEFAULT\\\",\\n            \\\"display\\\": \\\"Default tag\\\"\\n          }\\n        ]\\n  },\\n  \\\"extension\\\": [\\n    {\\n      \\\"url\\\": \\\"http://hl7.org/fhir/StructureDefinition/birthPlace\\\",\\n      \\\"valueAddress\\\": {\\n        \\\"city\\\": \\\"[city]\\\",\\n        \\\"district\\\": \\\"77487\\\",\\n        \\\"postalCode\\\": \\\"77000\\\",\\n        \\\"country\\\": \\\"FRA\\\"\\n      }\\n    },\\n    {\\n      \\\"url\\\": \\\"http://lifen.fr/fhir/StructureDefinition/Patient/Extension/ReliabilityINS\\\",\\n      \\\"valueCode\\\": \\\"QUALI\\\"\\n    },\\n    {\\n      \\\"url\\\": \\\"http://lifen.fr/fhir/StructureDefinition/Resource/Extension/DatabaseReference\\\",\\n      \\\"valueString\\\": \\\"[databse_reference]\\\"\\n    }\\n  ],\\n  \\\"identifier\\\": [\\n    {\\n      \\\"use\\\": \\\"official\\\",\\n      \\\"type\\\": {\\n        \\\"coding\\\": [\\n          {\\n            \\\"system\\\": \\\"http://interopsante.org/fhir/valueset/fr-patient-identifier-type\\\",\\n            \\\"version\\\": \\\"1.0\\\",\\n            \\\"code\\\": \\\"PI\\\",\\n            \\\"display\\\": \\\"PI\\\"\\n          }\\n        ]\\n      },\\n      \\\"system\\\": \\\"urn:oid:1.2.250.1.71.4.2.2.[structure_id]\\\",\\n      \\\"value\\\": \\\"[ipp_value]\\\"\\n    }\\n  ],\\n  \\\"name\\\": [\\n      {\\n        \\\"use\\\": \\\"maiden\\\",\\n        \\\"family\\\": \\\"MICHUE\\\",\\n        \\\"given\\\": [\\n          \\\"PAULETTE\\\"\\n        ]\\n      },\\n      {\\n        \\\"use\\\": \\\"usual\\\",\\n        \\\"family\\\": \\\"MICHUE\\\",\\n        \\\"given\\\": [\\n          \\\"PAULETTE\\\"\\n        ]\\n      },\\n      {\\n        \\\"use\\\": \\\"official\\\",\\n        \\\"family\\\": \\\"MICHUE\\\",\\n        \\\"given\\\": [\\n          \\\"PAULETTE\\\"\\n        ]\\n      }\\n    ],\\n    \\\"gender\\\": \\\"female\\\",\\n    \\\"birthDate\\\": \\\"1940-11-10\\\",\\n    \\\"multipleBirthInteger\\\": 1,\\n    \\\"deceasedDateTime\\\": \\\"2022-01-31T00:00:00+01:00\\\",\\n    \\\"managingOrganization\\\": {\\n        \\\"reference\\\": \\\"Organization/[structure_id]\\\"\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6f25ad1-a0b8-4f38-aeb0-e33f9bf61d3f",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"NOTFOUND\\\",\\n            \\\"diagnostics\\\": \\\"Unknown service (GET) : Patient/[id]\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5a4eb9c-7992-465b-a4cf-565a938d0462",
+              "name": "415",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"STRUCTURE\\\",\\n            \\\"diagnostics\\\": \\\"Issue with media type\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authentication.lifen.fr/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "8cc3c44a-8190-4c66-a6f0-98dea2830839",
+    "name": "lifen-authentication-api CommunicationRequest Patient API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

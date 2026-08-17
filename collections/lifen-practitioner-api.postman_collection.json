@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "e0a631e2-7629-4a0f-bc54-65dd5a85fa64",
+      "name": "Practitioner",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "081c54c6-0c62-4e15-a92f-328134cb8413",
+          "name": "Search healthcare professional",
+          "request": {
+            "name": "Search healthcare professional",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "Practitioner",
+                "$search-for-mss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"given\": \"<string>\",\n  \"family\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6d4d9b9-dd1b-414e-bf29-c376f90a6610",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Practitioner",
+                    "$search-for-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"given\": \"<string>\",\n  \"family\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"resourceType\\\": \\\"Bundle\\\",\\n\\t\\\"id\\\": \\\"aff6fcd5-76fb-40eb-bfb0-64fde9a0678c\\\",\\n\\t\\\"type\\\": \\\"searchset\\\",\\n\\t\\\"total\\\": 451247,\\n\\t\\\"entry\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"fullUrl\\\": \\\"https://api.post-prod.lifen.fr/fhir/v3/Practitioner/[id]\\\",\\n\\t\\t\\t\\\"resource\\\": {\\n\\t\\t\\t\\t\\\"resourceType\\\": \\\"Practitioner\\\",\\n\\t\\t\\t\\t\\\"id\\\": \\\"[id]\\\",\\n\\t\\t\\t\\t\\\"identifier\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"system\\\": \\\"urn:oid:1.2.250.1.71.4.2.1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"value\\\": \\\"811111111111111\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"name\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"use\\\": \\\"official\\\",\\n\\t\\t\\t\\t\\t\\t\\\"family\\\": \\\"Michue\\\",\\n\\t\\t\\t\\t\\t\\t\\\"given\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"Paulette\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"prefix\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"DR\\\"\\n\\t\\t\\t\\t\\t\\t]\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"telecom\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6673280\\\",\\n\\t\\t\\t\\t\\t\\t\\\"system\\\": \\\"email\\\",\\n\\t\\t\\t\\t\\t\\t\\\"value\\\": \\\"mail1@mssante.fr\\\",\\n\\t\\t\\t\\t\\t\\t\\\"use\\\": \\\"work\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6673280\\\",\\n\\t\\t\\t\\t\\t\\t\\\"system\\\": \\\"email\\\",\\n\\t\\t\\t\\t\\t\\t\\\"value\\\": \\\"mail2@mssante.fr\\\",\\n\\t\\t\\t\\t\\t\\t\\\"use\\\": \\\"work\\\",\\n\\t\\t\\t\\t\\t\\t\\\"rank\\\": 1 \\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"address\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"42941332\\\",\\n\\t\\t\\t\\t\\t\\t\\\"use\\\": \\\"work\\\",\\n\\t\\t\\t\\t\\t\\t\\\"line\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"CLINIQUE TEST\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"71 RUE TEST\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"12345 ST TEST CEDEX\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"city\\\": \\\"TEST\\\",\\n\\t\\t\\t\\t\\t\\t\\\"postalCode\\\": \\\"12345\\\",\\n\\t\\t\\t\\t\\t\\t\\\"country\\\": \\\"FRA\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t]\\n\\t\\t\\t},\\n\\t\\t\\t\\\"search\\\": {\\n\\t\\t\\t\\t\\\"mode\\\": \\\"match\\\"\\n\\t\\t\\t}\\n\\t\\t}\\n]}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d66a3603-8744-4022-b88c-457bacea254e",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "Practitioner",
+                    "$search-for-mss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"given\": \"<string>\",\n  \"family\": \"<string>\",\n  \"telecom\": \"<string>\",\n  \"address\": \"<string>\",\n  \"_id\": \"<string>\",\n  \"_count\": \"<string>\",\n  \"_sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"resourceType\\\": \\\"OperationOutcome\\\",\\n    \\\"issue\\\": [\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"At least one of family, given, name, birthdate, phone or identifier fields must be filled\\\",\\n            \\\"location\\\": \\\"allValueNull\\\"\\n        },\\n        {\\n            \\\"severity\\\": \\\"ERROR\\\",\\n            \\\"code\\\": \\\"PROCESSING\\\",\\n            \\\"diagnostics\\\": \\\"Invalid parameter XXXX\\\",\\n            \\\"location\\\": \\\"XXXXX\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authentication.lifen.fr/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "85d0b334-3fdc-4ca2-b876-53f2e18ecd2b",
+    "name": "lifen-authentication-api CommunicationRequest Practitioner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

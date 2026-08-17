@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "lifen-authentication-api CommunicationRequest Encounter API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Encounter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Access Encounter Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authentication.lifen.fr/v3/Encounter/_search",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Access Encounter Information"
+        },
+        {
+          "info": {
+            "name": "Access Encounter by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authentication.lifen.fr/v3/Encounter/:id",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Access Encounter by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

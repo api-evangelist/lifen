@@ -177,6 +177,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/lifen-capability-edges.yml
+  name: Lifen Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/lifen/overview
 - type: DomainSecurity

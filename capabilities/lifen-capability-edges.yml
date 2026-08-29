@@ -1,0 +1,35 @@
+slug: lifen
+provider: Lifen
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: CommunicationRequest
+  spec_file: lifen-communicationrequest-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.85
+  evidence: '"Send document to the EHR", "Send document to Healthcare Professionals" ($send-to-mss), "Check
+    sending status"'
+  reason: FHIR R4 operations that transmit clinical documents into hospital EHRs and to clinicians over
+    the MSSanté secure-messaging network are health information exchange / interoperability operations,
+    not clinical care delivery itself.
+- tag: Coverage
+  spec_file: lifen-coverage-api-openapi.yml
+  capability_id: BC-2800.30
+  capability_id_l1: BC-2800
+  capability_name: Eligibility & Benefits Verification
+  confidence: 0.7
+  evidence: POST /v3/Coverage/_search  access-coverage-patient-information  Access Coverage Patient information
+  reason: FHIR Coverage resource holds insurance coverage/benefit information for a patient; searching
+    it supports eligibility & benefits verification. Thin context (one search op), so moderate confidence.

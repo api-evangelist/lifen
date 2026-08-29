@@ -13,6 +13,18 @@ description: 'Lifen (Honestica SAS, Paris) is a French digital-health company wh
   encounter events. The company is ISO 27001 certified and an HDS (Hebergeur de Donnees de Sante)
   certified health-data host.'
 url: https://raw.githubusercontent.com/api-evangelist/lifen/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve

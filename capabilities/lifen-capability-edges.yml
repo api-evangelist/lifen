@@ -11,25 +11,17 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 1
 edges:
 - tag: CommunicationRequest
   spec_file: lifen-communicationrequest-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
-  confidence: 0.85
-  evidence: '"Send document to the EHR", "Send document to Healthcare Professionals" ($send-to-mss), "Check
-    sending status"'
-  reason: FHIR R4 operations that transmit clinical documents into hospital EHRs and to clinicians over
-    the MSSanté secure-messaging network are health information exchange / interoperability operations,
-    not clinical care delivery itself.
-- tag: Coverage
-  spec_file: lifen-coverage-api-openapi.yml
-  capability_id: BC-2800.30
-  capability_id_l1: BC-2800
-  capability_name: Eligibility & Benefits Verification
-  confidence: 0.7
-  evidence: POST /v3/Coverage/_search  access-coverage-patient-information  Access Coverage Patient information
-  reason: FHIR Coverage resource holds insurance coverage/benefit information for a patient; searching
-    it supports eligibility & benefits verification. Thin context (one search op), so moderate confidence.
+  confidence: 0.8
+  evidence: POST /v3/CommunicationRequest/$send-to-ehr 'Send document to the EHR'; POST /v3/CommunicationRequest/$send-to-mss
+    'Send document to Healthcare Professionals'; 'Check sending status'
+  reason: Operations push clinical documents into hospital EHRs and to practitioners over the French MSSanté
+    secure-messaging network with delivery tracking — this is operation of health information exchange
+    connections and FHIR endpoints, i.e. healthcare interoperability operations, not clinical documentation
+    authoring.

@@ -129,6 +129,8 @@ apis:
   humanURL: https://developer.lifen.fr/reference/patient
   baseURL: https://api.lifen.fr/fhir/v3
   tags:
+  - Patients
+  tags_raw:
   - Patient
   properties:
   - type: OpenAPI
@@ -161,6 +163,8 @@ apis:
   humanURL: https://developer.lifen.fr/reference/patient
   baseURL: https://api.lifen.fr/fhir/v3
   tags:
+  - Tokens
+  tags_raw:
   - Token
   properties:
   - type: OpenAPI

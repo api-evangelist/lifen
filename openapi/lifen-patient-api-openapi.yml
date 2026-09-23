@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: lifen-authentication-api CommunicationRequest Patient API
+  title: lifen-fhir-api Patient API
   version: '3'
 servers:
-- url: https://authentication.lifen.fr/
+- url: https://api.lifen.fr/fhir
 security:
-- {}
+- sec0: []
 tags:
 - name: Patient
 paths:
@@ -490,6 +490,13 @@ paths:
         - curl
       tags:
       - Patient
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: bearer
 x-readme:
   headers: []
   explorer-enabled: false

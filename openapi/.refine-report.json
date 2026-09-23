@@ -1,26 +1,52 @@
 {
   "provider": "lifen",
   "sources": [
-    "lifen-communicationrequest-api-openapi.yml",
-    "lifen-coverage-api-openapi.yml",
-    "lifen-encounter-api-openapi.yml",
-    "lifen-organization-api-openapi.yml",
-    "lifen-patient-api-openapi.yml",
-    "lifen-practitioner-api-openapi.yml",
-    "lifen-token-api-openapi.yml"
+    "_original/lifen-authentication-api-openapi.json",
+    "_original/lifen-fhir-api-openapi.json"
   ],
   "outputs": [
+    "lifen-token-api-openapi.yml",
     "lifen-communicationrequest-api-openapi.yml",
     "lifen-coverage-api-openapi.yml",
     "lifen-encounter-api-openapi.yml",
     "lifen-organization-api-openapi.yml",
     "lifen-patient-api-openapi.yml",
-    "lifen-practitioner-api-openapi.yml",
-    "lifen-token-api-openapi.yml"
+    "lifen-practitioner-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "lifen-authentication-api-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "lifen-authentication-api-openapi.json: tagged paths POST /v1/token -> Token",
+    "lifen-authentication-api-openapi.json: declared missing tag: Token",
+    "lifen-fhir-api-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/Patient/_search -> Patient",
+    "lifen-fhir-api-openapi.json: tagged paths GET /v3/Patient/{id} -> Patient",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/Coverage/_search -> Coverage",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/Encounter/_search -> Encounter",
+    "lifen-fhir-api-openapi.json: tagged paths GET /v3/Encounter/{id} -> Encounter",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/CommunicationRequest/$send-to-ehr -> CommunicationRequest",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/CommunicationRequest/$send-to-mss -> CommunicationRequest",
+    "lifen-fhir-api-openapi.json: tagged paths GET /v3/CommunicationRequest/$tracking?transaction-id={transaction-id} -> CommunicationRequest",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/Practitioner/$search-for-mss -> Practitioner",
+    "lifen-fhir-api-openapi.json: tagged paths POST /v3/Organization/$search-for-mss -> Organization",
+    "lifen-fhir-api-openapi.json: declared missing tag: CommunicationRequest",
+    "lifen-fhir-api-openapi.json: declared missing tag: Coverage",
+    "lifen-fhir-api-openapi.json: declared missing tag: Encounter",
+    "lifen-fhir-api-openapi.json: declared missing tag: Organization",
+    "lifen-fhir-api-openapi.json: declared missing tag: Patient",
+    "lifen-fhir-api-openapi.json: declared missing tag: Practitioner",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "lifen-communicationrequest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lifen-coverage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lifen-encounter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lifen-organization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lifen-patient-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lifen-practitioner-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lifen-token-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

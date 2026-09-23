@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: lifen-authentication-api CommunicationRequest Organization API
+  title: lifen-fhir-api Organization API
   version: '3'
 servers:
-- url: https://authentication.lifen.fr/
+- url: https://api.lifen.fr/fhir
 security:
-- {}
+- sec0: []
 tags:
 - name: Organization
 paths:
@@ -175,6 +175,13 @@ paths:
         - curl
       tags:
       - Organization
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: bearer
 x-readme:
   headers: []
   explorer-enabled: false

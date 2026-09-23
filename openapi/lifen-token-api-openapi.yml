@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: lifen-authentication-api CommunicationRequest Token API
+  title: lifen-authentication-api Token API
   version: '3'
 servers:
 - url: https://authentication.lifen.fr/
@@ -12,7 +12,22 @@ paths:
   /v1/token:
     post:
       summary: Authenticate application
-      description: "Accessing Lifen's APIs in Machine To Machine involves obtaining an Access Token with the Client credentials grant flow of OAuth 2.0 from a back-end server.\n\nGet a token : \nA request to Lifen must be perfomed to generate an access token. In the request, the client has to provide his credentials and some configuration.\n\nPerform an API call :\nThe Access Token allows you to make requests to the API on the behalf of the client. Each request must include the Access Token in the Authorization header using the Bearer format.\n\nExample :\n`curl -H \"Authorization: Bearer $ACCESS_TOKEN\" https://api.lifen.fr/fhir/v3/$endpoint`"
+      description: 'Accessing Lifen''s APIs in Machine To Machine involves obtaining an Access Token with the Client credentials grant flow of OAuth 2.0 from a back-end server.
+
+
+        Get a token :
+
+        A request to Lifen must be perfomed to generate an access token. In the request, the client has to provide his credentials and some configuration.
+
+
+        Perform an API call :
+
+        The Access Token allows you to make requests to the API on the behalf of the client. Each request must include the Access Token in the Authorization header using the Bearer format.
+
+
+        Example :
+
+        `curl -H "Authorization: Bearer $ACCESS_TOKEN" https://api.lifen.fr/fhir/v3/$endpoint`'
       operationId: authenticate-application
       requestBody:
         content:
